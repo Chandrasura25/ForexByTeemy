@@ -67,8 +67,34 @@
                     </ul>
                 </nav>
             </header>
-            <div class="banner"></div>
-            <div id="about"></div>
+            <div class="banner">
+                <div class="textBox">
+                    <h2>Forex By Teemy</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
+                      voluptatum necessitatibus commodi blanditiis dolor reprehenderit
+                      inventore ad rerum mollitia facere facilis vero, soluta, tempore
+                      dolorum aut suscipit sit libero quo?
+                    </p>
+                    <a href="#">Read More</a>
+                  </div>
+                  <div class="imgBox">
+                    <img src="{{asset('image/img1.jpg')}}" alt="" />
+                  </div>
+            </div>
+            <section id="about" class="about">
+                <div class="row">
+                    <div class="col50">
+                        <h2 class="titleText"><span>A</span>bout Us</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolorem dicta esse totam voluptate assumenda minima doloremque obcaecati recusandae voluptatem, ratione molestias repellendus repellat? Dolore recusandae sed distinctio officiis tempora porro nulla ipsa itaque debitis dolorem et, ex dolor omnis explicabo totam ipsam modi repellendus! Beatae, aperiam illum nulla sint atque, reiciendis enim quidem alias quos, vero mollitia dolores error? Dolore sed consequuntur rerum porro, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid optio veniam, accusamus sed, voluptates dicta at ipsa animi quas, numquam provident nostrum!<br><br> quisquam harum est in odio tempora unde atque nihil iusto similique aspernatur eum reprehenderit! Perspiciatis at laudantium voluptate odit fugit delectus, possimus quod minima quam? Maiores corrupti iure odit amet aut doloribus perferendis doloremque eius! Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officiis fuga a nobis asperiores explicabo neque nihil facere dolore maxime!</p>
+                    </div>
+                    <div class="col50">
+                        <div class="imgBx">
+                            <img src="images/img1.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
         <script>
             let lastScrollTop =0;
