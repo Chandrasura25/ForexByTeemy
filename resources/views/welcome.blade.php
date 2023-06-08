@@ -17,7 +17,7 @@
             <header>
                 <nav id="navbar">
                     <a href="#" class="brand">
-                        <span><img src="" alt=""></span>
+                        <span><img src="{{asset('image/logo.jpg')}}" alt=""></span>
                         <span>Teemy</span>
                     </a>
                     <div class="menuToggle"></div>
@@ -48,20 +48,20 @@
                         </li>
                         <li style="--i:4;">
                             <a href="#">
-                                <span>Contact</span>
-                                <span><i class="fas fa-envelope"></i></span>
-                            </a>
-                        </li>
-                        <li style="--i:5;">
-                            <a href="#">
                                 <span>Members</span>
                                 <span><i class="fas fa-users"></i></span>
                             </a>
                         </li>
-                        <li style="--i:6;">
-                            <a href="#">
+                        <li style="--i:5;">
+                            <a href="#services">
                                 <span>Services</span>
                                 <span><i class="fas fa-cogs"></i></span>
+                            </a>
+                        </li>
+                        <li style="--i:6;">
+                            <a href="#contact">
+                                <span>Contact</span>
+                                <span><i class="fas fa-envelope"></i></span>
                             </a>
                         </li>
                     </ul>
@@ -69,7 +69,7 @@
             </header>
             <div class="banner">
                 <div class="textBox">
-                    <h2>Forex By Teemy</h2>
+                    <h2 class="name" data-text="Forex By Teemy">Forex By Teemy</h2>
                     <p>
                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Architecto
                       voluptatum necessitatibus commodi blanditiis dolor reprehenderit
@@ -79,22 +79,176 @@
                     <a href="#">Read More</a>
                   </div>
                   <div class="imgBox">
-                    <img src="{{asset('image/img1.jpg')}}" alt="" />
+                    <img src="{{asset('image/img2.jpg')}}" alt="" />
                   </div>
             </div>
             <section id="about" class="about">
                 <div class="row">
                     <div class="col50">
                         <h2 class="titleText"><span>A</span>bout Us</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dolorem dicta esse totam voluptate assumenda minima doloremque obcaecati recusandae voluptatem, ratione molestias repellendus repellat? Dolore recusandae sed distinctio officiis tempora porro nulla ipsa itaque debitis dolorem et, ex dolor omnis explicabo totam ipsam modi repellendus! Beatae, aperiam illum nulla sint atque, reiciendis enim quidem alias quos, vero mollitia dolores error? Dolore sed consequuntur rerum porro, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid optio veniam, accusamus sed, voluptates dicta at ipsa animi quas, numquam provident nostrum!<br><br> quisquam harum est in odio tempora unde atque nihil iusto similique aspernatur eum reprehenderit! Perspiciatis at laudantium voluptate odit fugit delectus, possimus quod minima quam? Maiores corrupti iure odit amet aut doloribus perferendis doloremque eius! Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officiis fuga a nobis asperiores explicabo neque nihil facere dolore maxime!</p>
+                        <p>
+                           <span> Teemy helps clients to create amazing Forex experience.</span>
+                            <br><br><span>Teemy can help you unlock better trading opportunities through convenient tools and one on one consultation.</span>
+                            <br><br>
+                            <span>Our Forex Analyst knows collaboration is the essence of any project. It’s a simple philosophy we followed for nearly two decades. And it delivers results.</span>
+                        </p>
                     </div>
                     <div class="col50">
                         <div class="imgBx">
-                            <img src="images/img1.jpg" alt="">
+                            <img src="{{asset('image/img3.jpg')}}" alt="">
                         </div>
                     </div>
                 </div>
             </section>
+            <section class="portfolio">
+                    <div class="title">
+                        <h2 class="titleText">The <span>P</span>ortfolio</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        <div class="content">
+                            <div class="box">
+                                <div class="imgBx">
+                                    <img src="/image/port3.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>1st Place Gainer 2012</h3>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="imgBx">
+                                    <img src="/image/port2.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>3rd Place Aprill 11 2012</h3>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="imgBx">
+                                    <img src="/image/port1.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>1st Place Gainer, 2011</h3>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="imgBx">
+                                    <img src="/image/port6.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>10th Place Gainer, 2015</h3>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="imgBx">
+                                    <img src="/image/port5.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>6th Place June 2015</h3>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="imgBx">
+                                    <img src="/image/port4.png" alt="">
+                                </div>
+                                <div class="text">
+                                    <h3>8th Place Gainer 2014</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <a href="#" class="btn">View All</a>
+                    </div>
+            </section>
+            <section class="services" id="services">
+                <div class="title">
+                    <h2 class="titleText">Our <span>S</span>ervices</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                </div>
+                <div class="container">
+                    <div class="serviceBox">
+                      <div class="icon" style="--i: #4eb7ff">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                      <div class="content">
+                        <h2>Signals</h2>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+                          provident repellat corrupti, est reiciendis quidem tempore quas ex
+                          similique iste.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="serviceBox">
+                        <div class="icon" style="--i: #fd6494">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="content">
+                          <h2>Consultations</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+                            provident repellat corrupti, est reiciendis quidem tempore quas ex
+                            similique iste.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="serviceBox">
+                        <div class="icon" style="--i: #43f390">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="content">
+                          <h2>SEO</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+                            provident repellat corrupti, est reiciendis quidem tempore quas ex
+                            similique iste.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="serviceBox">
+                        <div class="icon" style="--i: #ffb508">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="content">
+                          <h2>Tickets</h2>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+                            provident repellat corrupti, est reiciendis quidem tempore quas ex
+                            similique iste.
+                          </p>
+                        </div>
+                      </div>
+                </div>
+            </section>
+            <section class="contact" id="contact">
+                <div class="title">
+                    <h2 class="titleText">Our <span>C</span>ontacts</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="contactForm">
+                    <h3>Send Message</h3>
+                  <form action="{{route('send-email')}}" method="POST">
+                    @csrf
+                    <div class="inputBox">
+                        <input type="email" name="emailCc" placeholder="Mail CC">
+                    </div>
+                    <div class="inputBox">
+                        <input type="email" name="emailBcc" placeholder="Mail BCC">
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Subject" name="emailSubject">
+                    </div>
+                    <div class="inputBox">
+                        <textarea placeholder="Your Message..." name="emailBody"></textarea>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Submit">
+                    </div>
+                  </form>
+                </div>
+            </section>
+        <div class="copyrightText">
+          <p>Copyright 2023 <a href="/">ForexByTeemy</a>. All Right Reserved</p>
+         </div>
         </div>
         <script>
             let lastScrollTop =0;

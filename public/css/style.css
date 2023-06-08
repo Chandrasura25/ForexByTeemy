@@ -12,10 +12,19 @@ body {
     position: relative;
     background: #262626;
     height: 100vh;
-    padding:0 100px;
+    padding: 0 100px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    animation: bg 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+@keyframes bg {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 .banner::before {
     content: "";
@@ -29,42 +38,65 @@ body {
     transform: skewX(-25deg);
     z-index: 1;
 }
-section{
+section {
     padding: 100px;
 }
-.row{
+.row {
     position: relative;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.row .col50{
+.row .col50 {
     position: relative;
     width: 48%;
 }
-.titleText{
+.titleText {
     color: #111;
     font-size: 2em;
     font-weight: 300;
 }
-.titleText span{
+.titleText span {
     color: #37d72f;
     font-weight: 700;
     font-size: 1.5em;
 }
-.row .col50 .imgBx{
+.row .col50 .imgBx {
     position: relative;
     width: 100%;
     height: 100%;
     /*min-height: 300px;*/
 }
-.row .col50 .imgBx img{
+.row .col50 .imgBx img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.name {
+    color: transparent;
+    position: relative;
+    width: fit-content;
+}
+.name::before {
+    content: attr(data-text);
+    position: absolute;
+    color: #fff;
+    overflow: hidden;
+    border-right: 1px solid #fff;
+    animation: texttype 10s steps(13) infinite;
+    white-space: nowrap;
+}
+@keyframes texttype {
+    0%,
+    100% {
+        width: 0;
+    }
+    50% {
+        width: 100%;
+    }
 }
 nav {
     position: fixed;
@@ -137,30 +169,35 @@ ul li:hover a span:nth-child(2) {
 }
 .brand span:nth-child(1) {
     position: absolute;
-    transform: translateY(-80px);
-    font-size: 1.5em;
+    transform: translateY(-85px);
+}
+.brand span:nth-child(1) img{
+    max-width: 150px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .icon .brand span:nth-child(1) {
-    transform: translateY(-5px);
+    transform: translateY(-13px);
     color: #fff;
 }
 .icon .brand span:nth-child(2) {
     transform: translateY(35px);
-}
-.banner .textBox{
+} 
+.banner .textBox {
     position: relative;
     max-width: 600px;
     z-index: 2;
     color: #fff;
 }
-.banner .textBox h2{
+.banner .textBox h2 {
     font-size: 3em;
 }
-.banner .textBox p{
+.banner .textBox p {
     font-size: 1.1em;
     margin: 5px 0 25px;
 }
-.banner .textBox a{
+.banner .textBox a {
     position: relative;
     display: inline-block;
     background: #fff;
@@ -172,20 +209,235 @@ ul li:hover a span:nth-child(2) {
     letter-spacing: 1px;
     font-weight: 500;
 }
-.banner .imgBox{
+.banner .imgBox {
     position: relative;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     z-index: 2;
 }
-.banner .imgBox img{
+.banner .imgBox img {
     position: absolute;
+    object-fit: cover;
     bottom: 0;
+    width: 100%;
     height: 90%;
     z-index: 10;
+}
+.about {
+    animation: scale-up-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+.about p span{
+    font-size: 1.7em;
+}
+p{
+    font-weight: 300;
+}
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.portfolio .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.portfolio .content .box{
+    width: 330px;
+    margin: 20px;
+    border: 15px solid #fff;
+    box-shadow: 0 5px 35px rgba(0, 0, 0, .08);
+}
+.portfolio .content .box .imgBx{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+.portfolio .content .box .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio .content .box .text{
+    padding: 15px 0 5px;
+}
+.portfolio .content .box .text h3{
+    font-weight: 400;
+    color: #111;
+}
+.btn{
+    font-size: 1em;
+    color: #fff;
+    background: #37d72f;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .5s;
+}
+.btn:hover{
+    letter-spacing: 6px;
+}
+.contact{
+    background: url(/image/img4.jpg);
+    background-size: cover;
+}
+.contact .title,.contact .titleText,.services .title,.services .titleText{
+    color: #fff;
+}
+.contactForm{
+    padding: 75px 50px;
+    background: #fff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-top: 50px;
+}
+.contactForm h3{
+    color: #111;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.contactForm .inputBox{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea{
+    width: 100%;
+    border: 1px solid #555;
+    padding: 10px;
+    color: #111;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    resize: none;
+}
+.contactForm .inputBox input[type='submit']{
+    font-size: 1em;
+    color: #fff;
+    background: #37d72f;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border: none;
+    transition: .5s;
+    max-width: 100px;
+    font-weight: 500;
+    cursor: pointer;
+}
+@keyframes scale-up-bottom {
+    0% {
+        transform: scale(0.5);
+        transform-origin: 50% 100%;
+    }
+    100% {
+        transform: scale(1);
+        transform-origin: 50% 100%;
+    }
+}
+.services{
+    background: #203240;
+}
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.container .serviceBox{
+    position: relative;
+    width: 250px;
+    height: 280px;
+    background: #51446e;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.container .serviceBox .icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--i);
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition-delay: 0.25s;
+}
+.container .serviceBox:hover .icon{
+    top: 30px;
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    transition-delay: 0s;
+}
+.container .serviceBox .icon i{
+    font-size: 5em;
+    color: #fff;
+    transition: 0.5s;
+    transition-delay: 0.25s;
+}
+.container .serviceBox:hover .icon i{
+    font-size: 2em;
+    transition-delay: 0s;
+}
+.container .serviceBox .content{
+    position: relative;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 100px;
+    z-index: 1;
+    transform: scale(0);
+    transition: 0.5s;
+    transition-delay: 0s;
+}
+.container .serviceBox:hover .content{
+    transform: scale(1);
+    transition-delay: 0.25s;
+}
+.container .serviceBox .content h2{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.container .serviceBox .content p{
+    font-weight: 300;
+    line-height: 1.2em;
+}
+.copyrightText{
+    padding: 8px 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.copyrightText p{
+    color: #333;
+}
+.copyrightText a{
+    color: #37d72f;
+    font-weight: 500;
+    text-decoration: none;
 }
 @media (max-width: 991px) {
     nav {
@@ -226,19 +478,19 @@ ul li:hover a span:nth-child(2) {
     .icon ul li a span:nth-child(2) {
         transform: translateX(-35px);
     }
-    section{
+    section {
         padding: 20px;
     }
-    .banner .content h2{
+    .banner .content h2 {
         font-size: 3em;
     }
-    .row{
+    .row {
         flex-direction: column;
     }
-    .row .col50{
+    .row .col50 {
         width: 100%;
     }
-    .row .col50 .imgBx{
+    .row .col50 .imgBx {
         height: 300px;
         margin-top: 20px;
     }
@@ -251,7 +503,6 @@ ul li:hover a span:nth-child(2) {
         background-repeat: no-repeat;
         background-position: center;
         cursor: pointer;
-        filter: invert(0);
     }
     .icon .menuToggle {
         filter: invert(1);
@@ -261,5 +512,40 @@ ul li:hover a span:nth-child(2) {
         background-size: 25px;
         background-repeat: no-repeat;
         background-position: center;
+    }
+    .banner {
+        padding: 150px 50px 0;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .banner::before {
+        width: 300px;
+        transform: skewX(-25deg) translateX(50%);
+    }
+    .banner .textBox {
+        max-width: 100%;
+    }
+    .title{
+        text-align: center;
+    }
+    .titleText{
+        font-size: 1.8em;
+        line-height: 1.5em;
+        margin-bottom: 15px;
+        font-weight: 300;
+    }
+    .testimonials .content .box{
+        margin: 10px;
+        padding: 20px;
+    }
+    .contactForm{
+       padding: 35px 40px;
+       margin-top: 20px;
+       margin-bottom: 30px; 
+    }
+}
+@media (max-width: 480px){
+    .banner .content h2{
+        font-size: 2.2em;
     }
 }
