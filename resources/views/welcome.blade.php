@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ForexByTeemy</title>
        
         <!-- Fonts -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     </head>
     <body>
-        <div>
+        <div> 
             <header>
                 <nav id="navbar">
                     <a href="#" class="brand">
@@ -35,19 +35,19 @@
                             </a>
                         </li>
                         <li style="--i:2;">
-                            <a href="#">
+                            <a href="{{ route('login') }}">
                                 <span>Affiliates</span>
                                 <span><i class="fas fa-handshake"></i></span>
                             </a>
                         </li>
                         <li style="--i:3;">
-                            <a href="#">
+                            <a href="{{ route('login') }}">
                                 <span>Store</span>
                                 <span><i class="fas fa-store"></i></span>
                             </a>
                         </li>
                         <li style="--i:4;">
-                            <a href="#">
+                            <a href="{{ route('login') }}">
                                 <span>Members</span>
                                 <span><i class="fas fa-users"></i></span>
                             </a>
@@ -226,19 +226,30 @@
                 </div>
                 <div class="contactForm">
                     <h3>Send Message</h3>
-                  <form action="{{route('send-email')}}" method="POST">
-                    @csrf
+                    @if (isset($message)) 
+                        <div class="alert alert-{{$success?'success':'danger'}}" role="alert">
+                            {{ $message }}
+                        </div>
+                    @endif 
+                <form action="{{route('send-email')}}" method="POST">
+                        @csrf
                     <div class="inputBox">
-                        <input type="email" name="emailCc" placeholder="Mail CC">
+                        <input type="text" placeholder="Name" name="name">
+                        @if($errors->get('name')!==null)  
+                        <p class="text-danger text-sm">{{$errors->first('name')}}</p>
+                        @endif
                     </div>
                     <div class="inputBox">
-                        <input type="email" name="emailBcc" placeholder="Mail BCC">
+                        <input type="email" placeholder="Email" name="email">
+                        @if($errors->get('email')!==null)
+                        <p class="text-danger text-sm">{{$errors->first('email')}}</p>
+                        @endif
                     </div>
                     <div class="inputBox">
-                        <input type="text" placeholder="Subject" name="emailSubject">
-                    </div>
-                    <div class="inputBox">
-                        <textarea placeholder="Your Message..." name="emailBody"></textarea>
+                        <textarea placeholder="Your Message..." name="message"></textarea>
+                        @if($errors->get('message')!==null)
+                        <p class="text-danger text-sm">{{$errors->first('message')}}</p>
+                        @endif
                     </div>
                     <div class="inputBox">
                         <input type="submit" value="Submit">

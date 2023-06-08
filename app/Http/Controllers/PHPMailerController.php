@@ -2,38 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use PHPMailer\PHPMailer\PHPMailer;  
-use PHPMailer\PHPMailer\Exception;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 class PHPMailerController extends Controller
 {
-    public function composeEmail(Request $request){
-    require 'vendor/autoload.php';
-    $mail = new PHPMailer(true); 
-    try {                      
-          //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'user@example.com';                     //SMTP username
-    $mail->Password   = 'secret';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    public function composeEmail(Request $request)
+    {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $message = $request->input('message');
 
-    //Recipients
-        $mail->setFrom('sender@example.com', 'SenderName');
-        $mail->addAddress($request->emailRecipient);
-        $mail->addCC($request->emailCc);
-        $mail->addBCC($request->emailBcc);
+        $mail = new PHPMailer(true);
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|max:50|min:10',
+            'message' => 'required|min:15',
+            'name' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return view('welcome')->with('errors', $validator->errors());
+        } else {
+            try {
+                // Server settings
+                $mail->SMTPDebug = SMTP::DEBUG_OFF; // Enable verbose debug output 
+                $mail->isSMTP();
+                $mail->Host =  'smtp.googlemail.com' ; // Specify your SMTP server
+                $mail->SMTPAuth = true;
+                $mail->Username = 'support@forexbyteemy.com'; // SMTP username
+                $mail->Password = 'your-email-password'; // SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+                $mail->Port = 465; // TCP port to connect to, use 587 for `PHPMailer::ENCRYPTION_STARTTLS`
 
-        $mail->addReplyTo('sender@example.com', 'SenderReplyName');
-        $mail->isHTML(true);                // Set email content format to HTML
+                // Recipients
+                $mail->setFrom($email, $name);
+                $mail->addAddress('support@forexbyteemy.com', 'Teemy'); // Add a recipient
 
-        $mail->Subject = $request->emailSubject;
-        $mail->Body    = $request->emailBody;
-    } catch (Exception $e) {
-        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                // Content
+                $mail->isHTML(false);
+                $mail->Subject = 'New Contact Form Submission';
+                $mail->Body = "Name: $name\nEmail: $email\n\n$message";
+
+                $sent = $mail->send();
+                if ($sent) {
+
+                    // Create a new instance of the Contact model
+                    $contact = new Contact();
+                    $contact->name = $name;
+                    $contact->email = $email;
+                    $contact->message = $message;
+
+                    // Save the contact record to the database
+                    $contact->save();
+                }
+
+                return view('welcome')->with('message', 'Email sent successfully')->with('success', true);
+            } catch (Exception $e) {
+                return view('welcome')->with('message', 'Email sending failed: ' . $mail->ErrorInfo)->with('success', false);
+            }
+        }
     }
-}
 }
