@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 
 class PHPMailerController extends Controller
 {
@@ -27,22 +26,22 @@ class PHPMailerController extends Controller
             return view('welcome')->with('errors', $validator->errors());
         } else {
             try {
+
                 // Server settings
-                $mail->SMTPDebug = SMTP::DEBUG_OFF; // Enable verbose debug output 
                 $mail->isSMTP();
-                $mail->Host =  'smtp.googlemail.com' ; // Specify your SMTP server
+                $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server address
                 $mail->SMTPAuth = true;
-                $mail->Username = 'support@forexbyteemy.com'; // SMTP username
-                $mail->Password = 'your-email-password'; // SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-                $mail->Port = 465; // TCP port to connect to, use 587 for `PHPMailer::ENCRYPTION_STARTTLS`
+                $mail->Username = 'support@forexbyteemy.com'; // Replace with your SMTP username (email address)
+                $mail->Password = 'support2A$'; // Replace with your SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port = 465;
 
                 // Recipients
                 $mail->setFrom($email, $name);
                 $mail->addAddress('support@forexbyteemy.com', 'Teemy'); // Add a recipient
 
                 // Content
-                $mail->isHTML(false);
+                $mail->isHTML(true);
                 $mail->Subject = 'New Contact Form Submission';
                 $mail->Body = "Name: $name\nEmail: $email\n\n$message";
 
