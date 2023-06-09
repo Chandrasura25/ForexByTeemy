@@ -47,9 +47,9 @@
                             </a>
                         </li>
                         <li style="--i:4;">
-                            <a href="{{ route('login') }}">
-                                <span>Members</span>
-                                <span><i class="fas fa-users"></i></span>
+                            <a href="{{ route('blog') }}">
+                                <span>Blog</span>
+                                <span><i class="fas fa-blog"></i></span>
                             </a>
                         </li>
                         <li style="--i:5;">

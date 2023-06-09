@@ -52,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            // 'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -67,42 +67,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
+        return User::create([
+            'name' => 'user',
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        try {
-            $mail = new PHPMailer(true);
+        // try {
+        //     $mail = new PHPMailer(true);
 
-            // Server settings
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server address
-            $mail->SMTPAuth = true;
-            $mail->Username = 'support@forexbyteemy.com'; // Replace with your SMTP username (email address)
-            $mail->Password = 'support2A$'; // Replace with your SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port = 465;
+        //     // Server settings
+        //     $mail->isSMTP();
+        //     $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server address
+        //     $mail->SMTPAuth = true;
+        //     $mail->Username = 'support@forexbyteemy.com'; // Replace with your SMTP username (email address)
+        //     $mail->Password = 'support2A$'; // Replace with your SMTP password
+        //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        //     $mail->Port = 465;
 
-            // Sender and recipient
-            $mail->setFrom('support@forexbyteemy.com', 'Teemy'); // Replace with your email and name
-            $mail->addAddress($user->email); // Send the email to the user's email address
+        //     // Sender and recipient
+        //     $mail->setFrom('support@forexbyteemy.com', 'Teemy'); // Replace with your email and name
+        //     $mail->addAddress($user->email); // Send the email to the user's email address
 
-            // Email content
-            $mail->isHTML(false);
-            $mail->Subject = 'Thank you for signing up';
-            $mail->Body = 'Thank you for signing up! We appreciate your registration.';
+        //     // Email content
+        //     $mail->isHTML(false);
+        //     $mail->Subject = 'Thank you for signing up';
+        //     $mail->Body = 'Thank you for signing up! We appreciate your registration.';
 
-            // Send the email
-            $mail->send();
+        //     // Send the email
+        //     $mail->send();
 
-            // Redirect or return a response indicating successful user registration
-            return redirect()->back()->with('user', $user);
-        } catch (Exception $e) {
-            // Handle the exception if the email sending fails
-            // Redirect or return a response indicating the failure
-            return redirect()->back()->with('error', 'Failed to send email');
-        }
+        //     // Redirect or return a response indicating successful user registration
+        //     return redirect()->back()->with('user', $user);
+        // } catch (Exception $e) {
+        //     // Handle the exception if the email sending fails
+        //     // Redirect or return a response indicating the failure
+        //     return redirect()->back()->with('error', 'Failed to send email');
+        // }
     }
 }

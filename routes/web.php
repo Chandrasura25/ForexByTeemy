@@ -22,4 +22,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");

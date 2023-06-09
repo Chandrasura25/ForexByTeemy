@@ -5,7 +5,7 @@
     <form method="POST" action="{{ route('register') }}">
            <h2>{{ __('Register') }}</h2>
             @csrf
-            <div class="inputBox">
+            {{-- <div class="inputBox">
                 <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 <label for="name">{{ __('Name') }}</label>
                 @error('name')
@@ -13,7 +13,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-            </div>
+            </div> --}}
             <div class="inputBox">
                 <input id="username" type="text" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                 <label for="username">{{ __('Username') }}</label>
