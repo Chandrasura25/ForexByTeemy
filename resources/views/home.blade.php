@@ -22,6 +22,12 @@
                 <li>
                     <a href="#">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                         <span class="title">Profile</span>
                     </a>
                 </li>
@@ -49,12 +55,7 @@
                         <span class="title">Help</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
+                
                 <li>
                     <a  href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">    
