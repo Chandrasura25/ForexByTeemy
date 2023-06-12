@@ -7,10 +7,11 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     /*
@@ -68,7 +69,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => 'user',
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -104,5 +104,17 @@ class RegisterController extends Controller
         //     // Redirect or return a response indicating the failure
         //     return redirect()->back()->with('error', 'Failed to send email');
         // }
+    }
+    protected function createFromLink($referrer, $ref_source){
+        return view('auth.register')->with('referrer', $referrer)->with('ref_source', $ref_source);
+    }
+    protected function saveFromLink(Request $request){
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        Auth::guard()->login($user);
+
+        return redirect($this->redirectPath());
     }
 }
