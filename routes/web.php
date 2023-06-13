@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,4 @@ Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::resource('/profile', ProfileController::class);
 Route::get('/register/{referral?}/{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
+Route::get('/admin',[AdminController::class,'index']);
