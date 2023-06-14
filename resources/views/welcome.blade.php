@@ -100,7 +100,7 @@
             <section class="portfolio">
                     <div class="title">
                         <h2 class="titleText">The <span>P</span>ortfolio</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        <p>Diversify. Grow. Succeed. Build a winning portfolio for financial prosperity.</p>
                         <div class="content">
                             <div class="box">
                                 <div class="imgBx">
@@ -159,7 +159,7 @@
             <section class="services" id="services">
                 <div class="title">
                     <h2 class="titleText">Our <span>S</span>ervices</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    <p>Comprehensive services to meet all your needs. Quality, reliability, and expertise guaranteed. </p>
                 </div>
                 <div class="container">
                     <div class="serviceBox">

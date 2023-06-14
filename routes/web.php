@@ -28,7 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::resource('/profile', ProfileController::class);
-Route::get('/register/{referral?}/{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
+Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
 
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');

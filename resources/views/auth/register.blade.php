@@ -37,11 +37,11 @@
                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
             </div>
             @if ( isset($ref_source ))
-            <div class="inputBox">
+            <div class="inputBox" style="display: none">
                 <input id="ref_source" type="text" name="ref_source" value="{{$ref_source}}" readonly>
                 <label for="ref_source">{{ __('Ref_source') }}</label>
             </div>
-            <div class="inputBox">
+            <div class="inputBox" style="display: none">
                 <input id="referrer" type="text" name="referrer" value="{{$referrer}}" readonly>
                 <label for="referrer">{{ __('Referrer') }}</label>
             </div>
