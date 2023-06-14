@@ -9,25 +9,35 @@
 </head>
 <body>
     <section class="section">
-       <form method="post" class="signin" action="">
+       <form method="post" class="signin" action="{{route('admin.signup')}}">
+        @csrf
             <div class="content">
                 <h2>Sign Up</h2>
                 <div class="form">
                     <div class="inputBx">
-                        <input type="email" required name="email"> 
-                        <i>Email Address</i>
-                     </div>
-                    <div class="inputBx">
                        <input type="text" required name="username"> 
                        <i>Username</i>
                     </div>
+                    @error('username')
+                    <small>{{$message}} </small> 
+                    @enderror
+                    <div class="inputBx">
+                        <input type="email" required name="email" autofocus> 
+                        <i>Email Address</i> 
+                    </div>
+                    @error('email')
+                    <small>{{$message}} </small> 
+                    @enderror
                     <div class="inputBx">
                         <input type="password" required name="password"> 
                         <i>Password</i>
-                     </div>
+                    </div>
+                    @error('password')
+                    <small>{{$message}} </small> 
+                    @enderror
                     <div class="links">
                         <a href="#"></a>
-                        <a href="#">Signin</a>
+                        <a href="{{route('admin.login')}}">Signin</a>
                     </div> 
                     <div class="inputBx">
                         <input type="submit" value="Register">

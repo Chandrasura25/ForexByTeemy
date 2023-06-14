@@ -9,21 +9,28 @@
 </head>
 <body>
     <section class="section">
-       <form method="post" class="signin">
+       <form method="post" class="signin" action="{{route('admin.signin')}}">
+        @csrf
             <div class="content">
                 <h2>Sign In</h2>
                 <div class="form">
                     <div class="inputBx">
-                       <input type="text" required> 
-                       <i>Username</i>
-                    </div>
-                    <div class="inputBx">
-                        <input type="password" required> 
-                        <i>Password</i>
+                        <input type="text" required name="username"> 
+                        <i>Username</i>
                      </div>
+                     @error('username')
+                     <small>{{$message}} </small> 
+                     @enderror
+                     <div class="inputBx">
+                        <input type="password" required name="password"> 
+                        <i>Password</i>
+                    </div>
+                    @error('password')
+                    <small>{{$message}} </small> 
+                    @enderror
                     <div class="links">
                         <a href="#">Forgot Password</a>
-                        <a href="#">Signup</a>
+                        <a href="{{route('admin.register')}}">Signup</a>
                     </div> 
                     <div class="inputBx">
                         <input type="submit" value="Login">

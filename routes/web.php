@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
@@ -21,19 +22,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::resource('/profile', ProfileController::class);
 Route::get('/register/{referral?}/{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
-Route::get('/admin', [AdminController::class, 'index']);
 
-// Private Routes
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/admindashboard', [AdminController::class,'dashboard'])->name('dashboard');
-
-});
+// ADMINISTRATION
+Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
+Route::post('/admin', [AdminAuthController::class, 'register'])->name('admin.signup');
+// Admin Login
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.signin');
+// Admin Dashboard
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
+// Admin Logout
+Route::post('/admin/logout', 'AdminAuthController@logout')->name('admin.logout');
