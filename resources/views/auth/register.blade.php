@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') 
 
 @section('content')
 <div class="body">
@@ -52,7 +52,7 @@
     </form>
 </div>
 <script>
-    let label = document.querySelectorAll('label').forEach(label=>{    
+    let label = document.querySelectorAll('label').forEach(label=>{        
         label.innerHTML = label.innerText.split('').map((letters,i)=> `<span style="transition-delay:${i * 50}ms">${letters}</span>`).join('');
     }) 
 </script>

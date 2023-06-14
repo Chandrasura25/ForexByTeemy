@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome'); 
+    return view('welcome');
 });
 
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
@@ -30,4 +30,10 @@ Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::resource('/profile', ProfileController::class);
 Route::get('/register/{referral?}/{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
-Route::get('/admin',[AdminController::class,'index']);
+Route::get('/admin', [AdminController::class, 'index']);
+
+// Private Routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/admindashboard', [AdminController::class,'dashboard'])->name('dashboard');
+
+});
