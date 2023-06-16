@@ -40,3 +40,7 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
 // Admin Logout
 Route::post('/admin/logout', 'AdminAuthController@logout')->name('admin.logout');
+
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any', '.*');

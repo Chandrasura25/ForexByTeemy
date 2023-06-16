@@ -35,6 +35,13 @@
                     @error('password')
                     <small>{{$message}} </small> 
                     @enderror
+                    <div class="inputBx">
+                        <input type="file" required name="image_path" accept=".jpg,.png,.gif,.svg" > 
+                        <i>Picture</i>
+                    </div>
+                    @error('image_path')
+                    <small>{{$message}} </small> 
+                    @enderror
                     <div class="links">
                         <a href="#"></a>
                         <a href="{{route('admin.login')}}">Signin</a>

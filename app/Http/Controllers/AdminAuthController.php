@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class AdminAuthController extends Controller
 {
     public function showRegisterForm()
@@ -17,11 +18,14 @@ class AdminAuthController extends Controller
             'username'=>'required|min:6|max:15',
             'email' => 'required|string|email|max:255|unique:admins',
             'password'=>'required|min:8',
+            'image_path'=>'required',
         ]);
+        $image_path = Cloudinary::upload($request->file('image_path')->getRealPath())->getSecurePath();
         $admin= Admin::create([
             'username'=>$request->username,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
+            'image_path'=>$image_path,
         ]);
         Auth::guard('admin')->login($admin);
 
