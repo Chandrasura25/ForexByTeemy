@@ -11,7 +11,7 @@ class AdminAuthController extends Controller
 {
     public function showRegisterForm()
     {
-        return view('admin.register');
+        return view('admin.register');  
     }
     public function register(Request $request){
         $request->validate([
@@ -39,8 +39,18 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('username', 'password');
-
+        $loginField = $request->input('username');
+        $password = $request->input('password');
+    
+        // Determine if the input is an email or username
+        $field = filter_var($loginField, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+    
+        // Build the credentials array
+        $credentials = [
+            $field => $loginField,
+            'password' => $password,
+        ];
+    
         // Attempt to authenticate the admin user
         if (Auth::guard('admin')->attempt($credentials)) {
             // Authentication passed
@@ -48,10 +58,11 @@ class AdminAuthController extends Controller
         } else {
             // Authentication failed
             return redirect()->route('admin.login')->withErrors([
-                'username' => 'Invalid credentials.',
+                'login' => 'Invalid credentials.',
             ]);
         }
     }
+    
     public function logout()
     {
         Auth::guard('admin')->logout();

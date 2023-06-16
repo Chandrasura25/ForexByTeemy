@@ -15,7 +15,8 @@
                 @enderror
             </div>
             <div class="inputBox">
-                <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                <input id="email" type="text"  name="email" value="{{ old('email') }}" required autocomplete="email">
+                <input id="login" type="text" name="login" value="{{ old('login') }}" class="@error('email') is-invalid @enderror" required autofocus>
                 <label for="email">{{ __('Email Address') }}</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -52,8 +53,19 @@
     </form>
 </div>
 <script>
-    let label = document.querySelectorAll('label').forEach(label=>{        
-        label.innerHTML = label.innerText.split('').map((letters,i)=> `<span style="transition-delay:${i * 50}ms">${letters}</span>`).join('');
-    }) 
+    document.querySelectorAll('label').forEach(label => {
+        const text = label.innerText.trim().split(' ');
+
+        const transformedText = text.map((word, index) => {
+            const letters = word.split('').map((letter, i) => {
+                return `<span style="transition-delay:${(i + index * word.length) * 50}ms">${letter}</span>`;
+            });
+
+            return `<span>${letters.join('')}</span>`;
+        });
+
+        label.innerHTML = transformedText.join(' ');
+    });
 </script>
+
 @endsection

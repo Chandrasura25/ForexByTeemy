@@ -1,3 +1,4 @@
+@if($admin)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    @cloudinaryJS
 </head>
 <body>
     <div class="body">
@@ -83,7 +85,7 @@
                         </label>
                     </div>
                     <div class="user">
-                        <img src="images/user.jpg" alt="">
+                        <img src="{{$admin->image_path }}" alt="">
                     </div>
                   </div>
                   <!-- card -->
@@ -259,3 +261,6 @@
     </script>
 </body>
 </html>
+@else
+    <p>Admin not logged in</p>
+@endif

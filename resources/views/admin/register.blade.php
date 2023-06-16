@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Registration</title>
     <link rel="stylesheet" href="/css/adminform.css">
+    @cloudinaryJS
 </head>
 <body>
     <section class="section">
-       <form method="post" class="signin" action="{{route('admin.signup')}}">
+       <form method="post" class="signin" action="{{route('admin.signup')}}" enctype="multipart/form-data">
         @csrf
             <div class="content">
                 <h2>Sign Up</h2>

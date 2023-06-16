@@ -16,7 +16,7 @@
                 <div class="form">
                     <div class="inputBx">
                         <input type="text" required name="username"> 
-                        <i>Username</i>
+                        <i>Username Or Email Address</i>
                      </div>
                      @error('username')
                      <small>{{$message}} </small> 
