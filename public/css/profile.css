@@ -8,6 +8,7 @@
     height: 100vh;
     background: #37d72f;
     overflow: hidden;
+    transition: 0.5s;
 }
 .body .wave {
     position: absolute;

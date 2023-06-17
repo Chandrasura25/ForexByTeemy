@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     @cloudinaryJS
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="blur">
         <div class="navigation">
             <ul>
                 <li>
@@ -20,9 +21,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span class="title">Home</span>
+                    <a href="#" onclick="setoggle()">
+                        <span class="icon"><i class="fas fa-upload" aria-hidden="true"></i></span>
+                        <span class="title">Upload</span>
                     </a>
                 </li>
                 <li>
@@ -81,7 +82,7 @@
                 </label>
             </div>
             <div class="user">
-                <img src="images/user.jpg" alt="">
+                <img src="{{$user->profile_pic}}" alt="">
             </div>
           </div>
           <!-- card -->
@@ -232,9 +233,24 @@
            </div>
         </div>
     </div>
+    <div id="popup">
+        <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
+            @csrf
+            <h2>Upload Your Profile Picture</h2>
+            <span class="close" onclick="setoggle()">&times;</span>
+            <input type="file" id="fileInput" name="profile_pic" accept=".jpg,.jpeg,.png,.svg,.gif">
+            <button class="closeBtn" onclick="setoggle()">Upload</button>
+        </form>
+    </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
+        let popup = document.getElementById('popup')
+        let blur = document.getElementById('blur')
+        function setoggle(){
+           popup.classList.toggle('active')
+           blur.classList.toggle('active')
+        }
        let toggle = document.querySelector('.toggle');
        let navigation = document.querySelector('.navigation');
        let main = document.querySelector('.main');
@@ -254,61 +270,62 @@
        item.addEventListener('mouseover',activeLink));
     </script> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
     <script>
         const ctx = document.getElementById('myChart');
-const earning = document.getElementById('earning');
+        const earning = document.getElementById('earning');
 
-new Chart(ctx, {
-    type: 'polarArea',
-    data: {
-        labels: ['Facebook', 'Youtube', 'Amazon'],
-        datasets: [{
-            label: 'Traffic Source',
-            data: [120, 190, 300],
-            backgroundColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54,162,235,1)',
-                'rgba(255,206,86,1)'
-            ]
-        }]
-    },
-    options: {
-        responsive: true
-    }
-});
-
-new Chart(earning, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets: [{
-            label: 'Traffic Source',
-            data: [120, 190, 300, 150, 200, 450, 330, 130, 410, 500, 140, 240],
-            backgroundColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54,162,235,1)',
-                'rgba(255,206,86,1)',
-                'rgba(75,192,192,1)',
-                'rgba(153,102,255,2)',
-                'rgba(255,159,64,1)',
-                'rgba(255,99,132,1)',
-                'rgba(75,192,192,1)',
-                'rgba(255,206,86,1)',
-                'rgba(54,162,235,1)',
-                'rgba(153,102,255,2)',
-                'rgba(255,159,64,1)'
-            ]
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+        new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Facebook', 'Youtube', 'Amazon'],
+                datasets: [{
+                    label: 'Traffic Source',
+                    data: [120, 190, 300],
+                    backgroundColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54,162,235,1)',
+                        'rgba(255,206,86,1)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true
             }
-        },
-        responsive: true
-    }
-});
+        });
+        
+        new Chart(earning, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Traffic Source',
+                    data: [120, 190, 300, 150, 200, 450, 330, 130, 410, 500, 140, 240],
+                    backgroundColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54,162,235,1)',
+                        'rgba(255,206,86,1)',
+                        'rgba(75,192,192,1)',
+                        'rgba(153,102,255,2)',
+                        'rgba(255,159,64,1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(75,192,192,1)',
+                        'rgba(255,206,86,1)',
+                        'rgba(54,162,235,1)',
+                        'rgba(153,102,255,2)',
+                        'rgba(255,159,64,1)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true
+            }
+        });
 </script>  
 </body>
 </html>

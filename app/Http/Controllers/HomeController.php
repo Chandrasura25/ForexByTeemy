@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        return view('home',['user'=>$user]);
+    }
+    public function uploadImg(Request $request)
+    {
+        $request->validate([
+            'profile_pic' => 'required',
+        ]);
+        $profile_pic = Cloudinary::upload($request->file('profile_pic')->getRealPath())->getSecurePath();
+        // update the user profile
+        $user = auth()->user();
+        $user->profile_pic = $profile_pic;
+        $user->save();
+        return redirect()->route('home')->with('success', 'Picture updated successfully');
     }
 }

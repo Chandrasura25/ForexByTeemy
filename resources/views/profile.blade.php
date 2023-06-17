@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
     <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-    <section class="body">
+    <section class="body" id="blur">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
         <div class="wave wave3"></div>
@@ -40,11 +41,11 @@
                         </a>
                     </li>
                     <li class="list" data-color="#0fbcf9">
-                        <a href="#">
+                        <a href="#" onclick="setoggle()">
                             <span class="icon">
-                                <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+                                <i class="fa-solid fa-upload" aria-hidden="true"></i>
                             </span>
-                            <span class="title">Help</span>
+                            <span class="title">Upload</span>
                         </a>
                     </li>
                     <li class="list" data-color="#ffa801">
@@ -64,9 +65,12 @@
                <div class="left">
                    <div class="card">
                         <div class="profile">
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <input type="file" name="avatar" id="avatar">
-                                <img src="/image/avatar.jpg" alt="">
+                            <form>
+                                @if($user->profile_pic)
+                                  <img src="{{ asset($user->profile_pic) }}" alt="Profile Picture">
+                                @else
+                                    <img src="{{ asset('/image/avatar.jpg') }}" alt="Default Picture">
+                                @endif
                             </form>
                         </div>
                         <div class="content">
@@ -107,7 +111,22 @@
             </div>
         </div>
     </section>
+    <div id="popup">
+        <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
+            @csrf
+            <h2>Upload Your Profile Picture</h2>
+            <span class="close" onclick="setoggle()">&times;</span>
+            <input type="file" id="fileInput" name="profile_pic" accept=".jpg,.jpeg,.png,.svg,.gif">
+            <button class="closeBtn" onclick="setoggle()">Upload</button>
+        </form>
+    </div>
     <script>
+        let popup = document.getElementById('popup')
+        let blur = document.getElementById('blur')
+        function setoggle(){
+           popup.classList.toggle('active')
+           blur.classList.toggle('active')
+        }
         let list = document.querySelectorAll('li');
         for (let i = 0; i < list.length; i++) {
             list[i].onmouseover = function (){
