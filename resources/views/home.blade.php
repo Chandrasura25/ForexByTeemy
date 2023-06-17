@@ -89,8 +89,8 @@
           <div class="cardBox">
             <div class="card">
                <div>
-                <div class="numbers">1,504</div>
-                <div class="cardName">Daily Views</div>
+                <div class="numbers">04</div>
+                <div class="cardName">Daily Clicks</div>
                </div> 
                <div class="iconBx">
                 <ion-icon name="eye-outline"></ion-icon>
@@ -99,7 +99,7 @@
             <div class="card">
                 <div>
                  <div class="numbers">50</div>
-                 <div class="cardName">Sales</div>
+                 <div class="cardName">Commission</div>
                 </div> 
                 <div class="iconBx">
                  <ion-icon name="cart-outline"></ion-icon>
@@ -107,7 +107,7 @@
              </div>
              <div class="card">
                 <div>
-                 <div class="numbers">504</div>
+                 <div class="numbers">04</div>
                  <div class="cardName">Comment</div>
                 </div> 
                 <div class="iconBx">
@@ -116,7 +116,7 @@
              </div>
              <div class="card">
                 <div>
-                 <div class="numbers">$6,504</div>
+                 <div class="numbers">$04</div>
                  <div class="cardName">Earning</div>
                 </div> 
                 <div class="iconBx">

@@ -8,7 +8,7 @@ use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +42,18 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 // Admin Logout
 Route::post('/admin/logout', 'AdminAuthController@logout')->name('admin.logout');
 
-Route::get('/{any}', function () {
+Route::get('/{any?}', function ($any = null) {
+    if ($any) {
+        $segments = explode('/', $any);
+        $lastSegment = end($segments);
+        
+        // Check if the specific route exists, if not, redirect to the parent route
+        if (!Route::has($lastSegment)) {
+            array_pop($segments);
+            $parentRoute = implode('/', $segments);
+            return redirect($parentRoute);
+        }
+    }
+
     return view('welcome');
 })->where('any', '.*');

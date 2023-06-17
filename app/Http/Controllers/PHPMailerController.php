@@ -29,13 +29,13 @@ class PHPMailerController extends Controller
 
                 // Server settings
                 $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server address
-                $mail->SMTPAuth = true;
-                $mail->Username = 'support@forexbyteemy.com'; // Replace with your SMTP username (email address)
+                $mail->Host       = 'mail.forexbyteemy.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'support@forexbyteemy.com';
                 $mail->Password = 'support2A$'; // Replace with your SMTP password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-                $mail->Port = 465;
-
+                $mail->SMTPSecure = 'ssl';  // Use 'ssl' for SSL/TLS encryption
+                $mail->Port       = 465;    // Use 465 for SSL/TLS encryption
+                
                 // Recipients
                 $mail->setFrom($email, $name);
                 $mail->addAddress('support@forexbyteemy.com', 'Teemy'); // Add a recipient

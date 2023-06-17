@@ -36,6 +36,6 @@ class HomeController extends Controller
         $user = auth()->user();
         $user->profile_pic = $profile_pic;
         $user->save();
-        return redirect()->route('home')->with('success', 'Picture updated successfully');
+        return redirect()->back();
     }
 }
