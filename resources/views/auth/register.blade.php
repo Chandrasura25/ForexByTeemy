@@ -1,8 +1,8 @@
-@extends('layouts.app') 
+@extends('layouts.app')  
 
 @section('content')
 <div class="body">
-    <form method="POST"  action="{{ isset($ref_source) ? route('registerbylink') : route('register')  }}">
+    <form method="POST"  action="{{ isset($referrer) ? route('registerbylink') : route('register')  }}"> 
            <h2>{{ __('Register') }}</h2>
             @csrf
             <div class="inputBox">
@@ -36,19 +36,28 @@
                 <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
             </div>
-            @if ( isset($ref_source ))
-            <div class="inputBox" style="display: none">
-                <input id="ref_source" type="text" name="ref_source" value="{{$ref_source}}" readonly>
-                <label for="ref_source">{{ __('Ref_source') }}</label>
-            </div>
+            @if (isset($referrer))
             <div class="inputBox" style="display: none">
                 <input id="referrer" type="text" name="referrer" value="{{$referrer}}" readonly>
                 <label for="referrer">{{ __('Referrer') }}</label>
             </div>
+            @if (isset($ref_source))
+                <div class="inputBox" style="display: none">
+                    <input id="ref_source" type="text" name="ref_source" value="{{$ref_source}}" readonly>
+                    <label for="ref_source">{{ __('Ref_source') }}</label>
+                </div>
+            @else
+                <div class="inputBox" style="display: none">
+                    <input id="ref_source" type="hidden" name="ref_source" value="">
+                    <label for="ref_source">{{ __('Ref_source') }}</label>
+                </div>
             @endif
-            <div class="inputBox">
-                <input type="submit" value="{{ __('Register') }}">                    
-            </div>
+        @endif
+        <div class="inputBox">
+            <input type="submit" value="{{ __('Register') }}">
+        </div>
+        
+
     </form>
 </div>
 <script>

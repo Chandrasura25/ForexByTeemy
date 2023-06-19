@@ -113,12 +113,18 @@ class RegisterController extends Controller
         if (session()->has('ref_source') && session()->has('referrer')) {
             $ref_source = session('ref_source');
             $referrer = session('referrer');
+            session()->forget(['ref_source', 'referrer']);
 
         } elseif (request()->hasCookie('ref_source') && request()->hasCookie('referrer')) {
             $ref_source = request()->cookie('ref_source');
             $referrer = request()->cookie('referrer');
-
+            cookie()->forget(['ref_source', 'referrer']);
         }
+
+        if (empty($ref_source)) {
+            $ref_source = null;
+        }
+
         $user = User::create([
             'username' => $data['username'],
             'email' => $data['email'],
@@ -126,9 +132,7 @@ class RegisterController extends Controller
             'ref_source' => $ref_source,
             'referrer' => $referrer,
         ]);
-        session()->forget(['ref_source', 'referrer']);
-        cookie()->forget('ref_source');
-        cookie()->forget('referrer');
+
         return $user;
     }
 
@@ -145,12 +149,30 @@ class RegisterController extends Controller
         return view('auth.register')->with('referrer', $referrer)->with('ref_source', $ref_source);
 
     }
+    protected function FromLink($referrer)
+    {
+        // Cookie expires in 60 minutes
+        cookie()->queue('referrer', $referrer, 60);
+
+        session(['referrer' => $referrer]);
+
+        return view('auth.register')->with('referrer', $referrer);
+
+    }
 
     protected function saveFromLink(Request $request)
+
     {
         $this->validator($request->all())->validate();
-
-        $user = $this->create($request->all());
+        
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request['password']),
+            'ref_source' => $request->ref_source,
+            'referrer' => $request->referrer,
+        ]);
+        return $user;
 
         Auth::guard()->login($user);
 

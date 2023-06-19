@@ -23,12 +23,13 @@ use Illuminate\Support\Str;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::resource('/affiliate', AffiliateController::class);
+Route::get('/register/{referral}', [RegisterController::class, 'FromLink'])->name('refer');
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
+Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');

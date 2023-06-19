@@ -78,6 +78,7 @@ section .wave.wave4 {
     display: flex;
     gap: 30px;
     align-items: center;
+    overflow: hidden;
 }
 .navigation {
     position: relative;
@@ -208,119 +209,83 @@ section .wave.wave4 {
     justify-content: space-between;
     position: relative;
     height: 100%;
-    gap: 35px;
     width: 100%;
 }
 .container .left {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
+    width: 70%;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
 }
-.container .left .card {
-    height: 300px;
+.container .right{
     background: #fff;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    gap: 30px;
-}
-.container .left .card:nth-child(2) {
-    margin-top: 30px;
-    height: 180px;
-    padding: 20px;
-    overflow: hidden;
-}
-.container .left .card:nth-child(2) h2 {
-   font-size: 1.6em;
-   font-weight: bold;
-   text-align: center;
-}
-.container .left .card .profile {
-    width: 300px;
-    height: 100%;
+    width: 30%;
     position: relative;
 }
-.container .left .card .profile img {
+.container .right .card {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 35px 35px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .right .card .profile {
+   position: relative;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+.container .right .card .profile img {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    top: 0;
+    top:0;
     left: 0;
+    object-fit: cover;
 }
-.container .left .card .content {
-    padding: 40px 0px;
-}
-.container .right {
-    height: 100%;
-    width: fit-content;
-    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.2);
-}
-.box {
+.container .content{
     position: relative;
-    width: 320px;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-    border-radius: 6px;
-    border-left: 2px solid rgba(255, 255, 255, 0.05);
-    border-right: 2px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: 20px;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.3) 0%,
-        rgba(255, 255, 255, 0.1) 15%,
-        transparent 50%,
-        transparent 85%,
-        rgba(255, 255, 255, 0.3) 100%
-    );
-}
-.box .form {
-    position: relative;
-    width: 100%;
-}
-.box .form h2 {
-    margin-top: 20px;
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
     text-align: center;
+    padding: 5px 0;
+    color: #333;
 }
-.box .form .inputBx {
+.container .content h2 {
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 7px;
+}
+.right .box {
+    position: absolute;
+    bottom: 0;
+    padding: 7px;
+    width: auto;
+    max-width: 300px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.left .title {
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 10px;
+    color: #fff;
+}
+.left .title span {
+    font-style: italic;
+}
+.left .bucket{
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
-}
-.box .form .inputBx input,
-.box .form .inputBx textarea {
-    width: 100%;
-    outline: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.2);
-    padding: 10px 15px;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 300;
-}
-.box .form .inputBx input[type="submit"] {
-    background: #fff;
-    color: #111;
-    max-width: 100px;
-    padding: 8px 10px;
-    box-shadow: none;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-}
-.box .form .inputBx input::placeholder,
-.box .form .inputBx textarea::placeholder {
-    color: #fff;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 @media (max-width: 991px) {
     .container {

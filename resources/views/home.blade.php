@@ -29,16 +29,14 @@
                     </li>
                     <li class="list" data-color="#3c40c6">
                         <a href="/affiliate">
-                            <span class="icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
-                            <span class="title">Home</span>
+                            <span class="icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></span>
+                            <span class="title">Affiliate</span>
                         </a>
                     </li>
                     <li class="list" data-color="#f53b57">
-                        <a href="#">
-                            <span class="icon">
-                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
-                            </span>
-                            <span class="title">Password</span>
+                        <a href="/store">
+                            <span class="icon"><i class="fas fa-store"></i></span>
+                            <span class="title">Store Purchases</span>
                         </a>
                     </li>
                     <li class="list" data-color="#0fbcf9">
@@ -50,11 +48,9 @@
                         </a>
                     </li>
                     <li class="list" data-color="#ffa801">
-                        <a href="#">
-                            <span class="icon">
-                                <i class="fa-solid fa-gear" aria-hidden="true"></i>
-                            </span>
-                            <span class="title">Settings</span>
+                        <a href="/services">
+                            <span class="icon"><i class="fas fa-cogs"></i></span>
+                            <span class="title">My Services</span>
                         </a>
                     </li>
                     <div class="indicator">
@@ -64,50 +60,47 @@
             </div>
             <div class="container">
                <div class="left">
-                   <div class="card">
-                        <div class="profile">
-                            <form>
-                                @if($user->profile_pic)
-                                  <img src="{{ asset($user->profile_pic) }}" alt="Profile Picture">
-                                @else
-                                    <img src="{{ asset('/image/avatar.jpg') }}" alt="Default Picture">
-                                @endif
-                            </form>
-                        </div>
-                        <div class="content">
-                            <h2>Username - <span>{{$user->username}}</span></h2>
-                            <h3>Fullname - <span>{{$user->name}}</span></h3>
-                            <h4>Number - <span>{{$user->number}}</span></h2>
-                            <p>Email Address - <span>{{$user->email}}</span></p>
-                        </div>
-                   </div>
-                   <div class="card">
-                    <h2>About <span>{{$user->username}}</span></h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum quisquam odio aut provident ipsam atque eveniet sequi cupiditate distinctio eum nobis perferendis id unde, incidunt sunt eaque ullam eligendi culpa. A, beatae fugiat repellat ratione veniam, id nihil ducimus doloremque natus, delectus tempore dicta distinctio voluptatibus perferendis.</p>
-                   </div>
+                  <h2 class="title">Welcome <span>{{$user->username}}</span></h2>
+                  <div class="bucket">
+                    <div class="inputBx">
+                        <span>Name</span>
+                        <input type="text" value="{{$user->name}}" disabled>
+                    </div>
+                    <div class="inputBx">
+                        <span>Username</span>
+                        <input type="text" value="{{$user->username}}" disabled>
+                    </div>
+                    <div class="inputBx">
+                        <span>Email</span>
+                        <input type="text" value="{{$user->email}}" disabled>
+                    </div>
+                    <div class="inputBx">
+                        <span>Bio</span>
+                        <textarea type="text" value="{{$user->bio}}" disabled></textarea>
+                    </div>
+                    <div class="inputBx">
+                        <span>Number</span>
+                        <input type="text" value="{{$user->number}}" disabled>
+                    </div>
+                  </div>
                 </div>
                <div class="right">
-                <section class='section'>
-                    <div class="box">
-                        <div class="form">
-                            <h2>Add More Details</h2>
-                            <form action="">
-                                <div class="inputBx">
-                                    <input type="text"placeholder="Fullname"name="" id="">
-                                </div>
-                                <div class="inputBx">
-                                    <input type="text" placeholder="Phone Number"name="" id="">
-                                </div>
-                                <div class="inputBx">
-                                    <textarea name="" id="" placeholder="Tell us a little bit about yourself"></textarea>
-                                </div>
-                                <div class="inputBx">
-                                    <input type="submit" value="Save">
-                                </div>
-                            </form>
+                    <div class="card">
+                        <div class="profile">
+                            @if($user->profile_pic)
+                              <img src="{{ asset($user->profile_pic) }}" alt="Profile Picture">
+                            @else
+                                <img src="{{ asset('/image/avatar.jpg') }}" alt="Default Picture">
+                            @endif
                         </div>
                     </div>
-                </section>
+                    <div class="content">
+                        <h2>{{$user->username}}</h2>
+                        <p>{{$user->email}}</p>
+                    </div>
+                    <div class="box">
+                        <canvas id="myChart"></canvas>
+                    </div>
                </div>
             </div>
         </div>
@@ -146,6 +139,37 @@
              bg.style.backgroundColor = color
             })
         })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script>
+        const ctx = document.getElementById('myChart');
+        const user = @json($user);
+
+        const labels = ['Name', 'Username', 'Email', 'Password', 'Bio', 'Number','profile_pic'];
+        const values = [
+            user.name ? 1 : 0,
+            user.username ? 1 : 0,
+            user.email ? 1 : 0,
+            user.password ? 1 : 0,
+            user.bio ? 1 : 0,
+            user.number ? 1 : 0,
+            user.profile_pic ? 1 : 0,
+        ];
+        new Chart(ctx, {
+            type: 'pie',
+            label: 'Profile',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8C4A8C', '#FF9F40', '#4BFF40', '#BAF484'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8C4A8C', '#FF9F40', '#4BFF40', '#BAF484']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
     </script>
 </body>
 </html>

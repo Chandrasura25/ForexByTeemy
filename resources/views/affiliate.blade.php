@@ -21,21 +21,21 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                <li>
                     <a href="#" onclick="setoggle()">
                         <span class="icon"><i class="fas fa-upload" aria-hidden="true"></i></span>
                         <span class="title">Upload</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/profile">
+                    <a href="/home">
                         <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                         <span class="title">Profile</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-handshake"></i></span>
-                        <span class="title">Affiliates</span>
                     </a>
                 </li>
                 <li>
