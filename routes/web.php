@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PHPMailerController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -27,7 +27,7 @@ Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->nam
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
-Route::resource('/profile', ProfileController::class);
+Route::resource('/affiliate', AffiliateController::class);
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
 // ADMINISTRATION
