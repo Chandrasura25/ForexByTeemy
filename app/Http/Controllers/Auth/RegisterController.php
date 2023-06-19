@@ -175,7 +175,7 @@ class RegisterController extends Controller
         return $user;
 
         Auth::guard()->login($user);
-
+    //    saving directly from the referrer source
         return redirect($this->redirectPath());
     }
 }
