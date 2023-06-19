@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li style="--i:4;">
-                            <a href="{{ route('blog') }}">
+                            <a href="/blog">
                                 <span>Blog</span>
                                 <span><i class="fas fa-blog"></i></span>
                             </a>

@@ -41,13 +41,13 @@
                 <li>
                     <a href="#">
                         <span class="icon"><i class="fas fa-store"></i></span>
-                        <span class="title">Store</span>
+                        <span class="title">Store Purchases</span>
                     </a>
                 </li>
                 <li>
                     <a href="/settings">
                         <span class="icon"><i class="fas fa-cogs"></i></span>
-                        <span class="title">Services</span>
+                        <span class="title">My Services</span>
                     </a>
                 </li>
                 <li>
@@ -90,16 +90,25 @@
             <div class="card">
                <div>
                 <div class="numbers">04</div>
-                <div class="cardName">Daily Clicks</div>
+                <div class="cardName">Credits</div>
                </div> 
                <div class="iconBx">
-                <ion-icon name="eye-outline"></ion-icon>
+                <i class="fa-solid fa-coins" aria-hidden="true"></i>
                </div>
             </div>
             <div class="card">
                 <div>
-                 <div class="numbers">50</div>
-                 <div class="cardName">Commission</div>
+                    <div class="numbers">50</div>
+                    <div class="cardName">Clicks & Conversion</div>
+                </div> 
+                <div class="iconBx">
+                 <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                </div>
+             </div>
+             <div class="card">
+                <div>
+                 <div class="numbers">04</div>
+                 <div class="cardName">Sales & Commission</div>
                 </div> 
                 <div class="iconBx">
                  <ion-icon name="cart-outline"></ion-icon>
@@ -107,22 +116,14 @@
              </div>
              <div class="card">
                 <div>
-                 <div class="numbers">04</div>
-                 <div class="cardName">Comment</div>
-                </div> 
-                <div class="iconBx">
-                 <ion-icon name="chatbubbles-outline"></ion-icon>
-                </div>
-             </div>
-             <div class="card">
-                <div>
                  <div class="numbers">$04</div>
-                 <div class="cardName">Earning</div>
+                 <div class="cardName">Status Paid</div>
                 </div> 
                 <div class="iconBx">
                  <ion-icon name="cash-outline"></ion-icon>
                 </div>
              </div>
+             
           </div>
           <!-- graph -->
            <div class="graphBox">
@@ -138,7 +139,7 @@
                <!-- list -->
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Orders</h2>
+                    <h2>Sales & Commission</h2>
                     <a href="#" class="btn">View All</a>
                 </div>
                 <table>
@@ -155,7 +156,7 @@
                         <td>Casual shoes</td>
                         <td>$100</td>
                         <td>Paid</td>
-                        <td><span class="status delivered">Delivered </span></td>
+                        <td><span class="status delivered">Delivered</span></td>
                       </tr>
                       <tr>
                         <td>Denim Shirts</td>
@@ -193,7 +194,7 @@
             <!-- new customer -->
             <div class="recentCustomers">
                 <div class="cardHeader">
-                    <h2>Recent Customers</h2>
+                    <h2>Recent SignUps</h2>
                 </div>
                 <table>
                     <tr>
@@ -244,6 +245,7 @@
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     <script>
         let popup = document.getElementById('popup')
         let blur = document.getElementById('blur')
@@ -263,24 +265,23 @@
        let list = document.querySelectorAll('.navigation li');
        function activeLink(){
         list.forEach((item)=>
-        item.classList.remove('hovered'));
+        item.classList.remove('hovered'));  
         this.classList.add('hovered')
        } 
        list.forEach((item)=>
        item.addEventListener('mouseover',activeLink));
-    </script> 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-
+    </script>    
+     
     <script>
-        const ctx = document.getElementById('myChart');
-        const earning = document.getElementById('earning');
+        const ctx = document.getElementById('myChart'); 
+        const earning = document.getElementById('earning'); 
 
-        new Chart(ctx, {
-            type: 'polarArea',
+        new Chart(ctx, { 
+            type: 'doughnut',
             data: {
-                labels: ['Facebook', 'Youtube', 'Amazon'],
+                labels: ['Facebook', 'Youtube', 'Instagram'], 
                 datasets: [{
-                    label: 'Traffic Source',
+                    label: 'Affiliate Sales',
                     data: [120, 190, 300],
                     backgroundColor: [
                         'rgba(255,99,132,1)',
@@ -293,39 +294,58 @@
                 responsive: true
             }
         });
-        
-        new Chart(earning, {
-            type: 'bar',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                datasets: [{
-                    label: 'Traffic Source',
-                    data: [120, 190, 300, 150, 200, 450, 330, 130, 410, 500, 140, 240],
-                    backgroundColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54,162,235,1)',
-                        'rgba(255,206,86,1)',
-                        'rgba(75,192,192,1)',
-                        'rgba(153,102,255,2)',
-                        'rgba(255,159,64,1)',
-                        'rgba(255,99,132,1)',
-                        'rgba(75,192,192,1)',
-                        'rgba(255,206,86,1)',
-                        'rgba(54,162,235,1)',
-                        'rgba(153,102,255,2)',
-                        'rgba(255,159,64,1)'
-                    ]
-                }]
+
+
+        var data = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets: [
+            {
+              label: 'Clicks',
+              backgroundColor: 'rgba(54,162,235,1)',
+              data: [100, 150, 120, 200, 180, 250, 220, 210, 190, 170, 220, 240]
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                responsive: true
+            {
+              label: 'Sales',
+              backgroundColor: 'rgba(255, 99, 132, 1)',
+              data: [50, 80, 70, 90, 100, 120, 110, 100, 95, 85, 100, 110]
+            },
+            {
+              label: 'Earnings',
+              backgroundColor: 'rgba(255,206,86,1)',
+              data: [500, 600, 550, 700, 650, 800, 750, 720, 680, 620, 750, 780]
             }
-        });
-</script>  
+          ]
+        };
+
+        // Chart configuration
+        var config = {
+          type: 'bar',
+          data: data,
+          options: {
+            plugins: {
+              title: {
+                display: true,
+                text: 'Yearly Metrics',
+                font: {
+                  size: 18
+                }
+              }
+            },
+            responsive: true,
+            scales: {
+              x: {
+                stacked: true,
+              },
+              y: {
+                stacked: true,
+                beginAtZero: true
+            }
+            }
+        }
+        };
+        var myChart = new Chart(document.getElementById('earning'), config);
+
+        
+    </script>  
 </body>
 </html>

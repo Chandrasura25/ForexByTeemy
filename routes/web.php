@@ -25,8 +25,7 @@ Route::get('/', function () {
 });
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::resource('/profile', ProfileController::class);
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
