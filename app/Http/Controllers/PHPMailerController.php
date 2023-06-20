@@ -31,19 +31,71 @@ class PHPMailerController extends Controller
                 $mail->isSMTP();
                 $mail->Host       = 'mail.forexbyteemy.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'support@forexbyteemy.com';
-                $mail->Password = 'support2A$'; // Replace with your SMTP password
-                $mail->SMTPSecure = 'ssl';  // Use 'ssl' for SSL/TLS encryption
-                $mail->Port       = 465;    // Use 465 for SSL/TLS encryption
-                
-                // Recipients
+                $mail->Username   = 'supportm@forexbyteemy.com';
+                $mail->Password = 'support@Mail'; // Replace with your SMTP password
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
                 $mail->setFrom($email, $name);
-                $mail->addAddress('support@forexbyteemy.com', 'Teemy'); // Add a recipient
+                $mail->addAddress('supportm@forexbyteemy.com', 'Teemy'); // Add a recipient
 
                 // Content
                 $mail->isHTML(true);
                 $mail->Subject = 'New Contact Form Submission';
-                $mail->Body = "Name: $name\nEmail: $email\n\n$message";
+                $mail->Body = '
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                      <style>
+                        body {
+                          font-family: Arial, sans-serif;
+                          background-color: #f5f5f5;
+                          color: #333333;
+                          margin: 0;
+                          padding: 20px;
+                        }
+                    
+                        .container {
+                          max-width: 600px;
+                          margin: 0 auto;
+                          background-color: #ffffff;
+                          padding: 40px;
+                          border-radius: 5px;
+                          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                        }
+                    
+                        h1 {
+                          color: #555555;
+                          font-size: 25px;
+                          margin-bottom: 20px;
+                        }
+                    
+                        p {
+                          margin-bottom: 10px;
+                        }
+                    
+                        .label {
+                          font-weight: bold;
+                        }
+                    
+                        .content {
+                          margin-top: 10px;
+                        }
+                      </style>
+                    </head>
+                    <body>
+                      <div class="container">
+                        <h1>Contact Information</h1>
+                        <p class="label">Name:</p>
+                        <p class="content">' . $name . '</p>
+                        <p class="label">Email:</p>
+                        <p class="content">' . $email . '</p>
+                        <p class="label">Message:</p>
+                        <p class="content">' . nl2br($message) . '</p>
+                      </div>
+                    </body>
+                    </html>';
+
+                $mail->ContentType = "text/html";
 
                 $sent = $mail->send();
                 if ($sent) {
@@ -57,7 +109,7 @@ class PHPMailerController extends Controller
                     // Save the contact record to the database
                     $contact->save();
                 }
-
+                
                 return view('welcome')->with('message', 'Email sent successfully')->with('success', true);
             } catch (Exception $e) {
                 return view('welcome')->with('message', 'Email sending failed: ' . $mail->ErrorInfo)->with('success', false);

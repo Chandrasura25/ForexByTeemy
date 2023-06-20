@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class RegisterController extends Controller
 {
@@ -65,46 +67,6 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'username' => $data['username'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-    // try {
-    //     $mail = new PHPMailer(true);
-
-    //     // Server settings
-    //     $mail->isSMTP();
-    //     $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server address
-    //     $mail->SMTPAuth = true;
-    //     $mail->Username = 'support@forexbyteemy.com'; // Replace with your SMTP username (email address)
-    //     $mail->Password = 'support2A$'; // Replace with your SMTP password
-    //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    //     $mail->Port = 465;
-
-    //     // Sender and recipient
-    //     $mail->setFrom('support@forexbyteemy.com', 'Teemy'); // Replace with your email and name
-    //     $mail->addAddress($user->email); // Send the email to the user's email address
-
-    //     // Email content
-    //     $mail->isHTML(false);
-    //     $mail->Subject = 'Thank you for signing up';
-    //     $mail->Body = 'Thank you for signing up! We appreciate your registration.';
-
-    //     // Send the email
-    //     $mail->send();
-
-    //     // Redirect or return a response indicating successful user registration
-    //     return redirect()->back()->with('user', $user);
-    // } catch (Exception $e) {
-    //     // Handle the exception if the email sending fails
-    //     // Redirect or return a response indicating the failure
-    //     return redirect()->back()->with('error', 'Failed to send email');
-    // }
-    // }
-
     protected function create(array $data)
     {
         $ref_source = null;
@@ -132,8 +94,76 @@ class RegisterController extends Controller
             'ref_source' => $ref_source,
             'referrer' => $referrer,
         ]);
+        if ($user) {
+            try {
+                $mail = new PHPMailer(true);
 
-        return $user;
+                // Server settings
+                $mail->isSMTP();
+                $mail->Host = 'mail.forexbyteemy.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'supportm@forexbyteemy.com';
+                $mail->Password = 'support@Mail';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+                $mail->setFrom('supportm@forexbyteemy.com', 'Teemy');
+                $mail->addAddress($user->email);
+                // Content
+                $mail->isHTML(true);
+                $mail->Subject = 'Thank you for signing up';
+
+                $body = '
+                        <!DOCTYPE html>
+                        <html>
+                        <head>
+                          <style>
+                            body {
+                              font-family: Arial, sans-serif;
+                              background-color: #f5f5f5;
+                              color: #333333;
+                              margin: 0;
+                              padding: 20px;
+                            }
+                        
+                            .container {
+                              max-width: 600px;
+                              margin: 0 auto;
+                              background-color: #ffffff;
+                              padding: 40px;
+                              border-radius: 5px;
+                              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                            }
+                        
+                            h1 {
+                              color: #555555;
+                              margin-bottom: 20px;
+                            }
+                        
+                            p {
+                              margin-bottom: 10px;
+                            }
+                          </style>
+                        </head>
+                        <body>
+                          <div class="container">
+                            <h1>Thank you for signing up</h1>
+                            <p>We appreciate your registration.</p>
+                            <p>Feel free to contact us if you have any questions.</p>
+                            <p>Best regards,</p>
+                            <p>Your Company</p>
+                          </div>
+                        </body>
+                        </html>';
+                        
+                $mail->Body = $body;
+                $mail->ContentType = "text/html";
+
+                $mail->send();
+                return $user;
+            } catch (Exception $e) {
+                return redirect()->back()->with('error', 'Failed to send email');
+            }
+        }
     }
 
     protected function createFromLink($referrer, $ref_source)
@@ -161,10 +191,9 @@ class RegisterController extends Controller
     }
 
     protected function saveFromLink(Request $request)
-
     {
         $this->validator($request->all())->validate();
-        
+
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
@@ -172,10 +201,79 @@ class RegisterController extends Controller
             'ref_source' => $request->ref_source,
             'referrer' => $request->referrer,
         ]);
-        return $user;
+        if ($user) {
+            try {
+                $mail = new PHPMailer(true);
 
-        Auth::guard()->login($user);
-    //    saving directly from the referrer source
-        return redirect($this->redirectPath());
+                // Server settings
+                $mail->isSMTP();
+                $mail->Host = 'mail.forexbyteemy.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'supportm@forexbyteemy.com';
+                $mail->Password = 'support@Mail';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+                $mail->setFrom('supportm@forexbyteemy.com', 'Teemy');
+                $mail->addAddress($user->email);
+                // Content
+                $mail->isHTML(true);
+                $mail->Subject = 'Thank you for signing up';
+
+                $body = '
+                <!DOCTYPE html>
+                <html>
+                <head>
+                  <style>
+                    body {
+                      font-family: Arial, sans-serif;
+                      background-color: #f5f5f5;
+                      color: #333333;
+                      margin: 0;
+                      padding: 20px;
+                    }
+
+                    .container {
+                      max-width: 600px;
+                      margin: 0 auto;
+                      background-color: #ffffff;
+                      padding: 40px;
+                      border-radius: 5px;
+                      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    }
+
+                    h1 {
+                      color: #555555;
+                      margin-bottom: 20px;
+                    }
+
+                    p {
+                      margin-bottom: 10px;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <h1>Thank you for signing up</h1>
+                    <p>We appreciate your registration.</p>
+                    <p>Feel free to contact us if you have any questions.</p>
+                    <p>Best regards,</p>
+                    <p>ForexByTeemy</p>
+                  </div>
+                </body>
+                </html>';
+
+                $mail->Body = $body;
+
+                $mail->ContentType = "text/html";
+                $mail->send();
+                return $user;
+                Auth::guard()->login($user);
+                //    saving directly from the referrer source
+                return redirect($this->redirectPath());
+            } catch (Exception $e) {
+                return redirect()->back()->with('error', 'Failed to send email');
+            }
+        }
+
     }
 }
