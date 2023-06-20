@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('coupon_code')->unique();
             $table->string('discount');
-            $table->string('effectivity');
+            $table->enum('effectivity', ['first purchases', 'forever']);
             $table->string('status')->default('active');
             $table->string('username');
             $table->timestamps();
