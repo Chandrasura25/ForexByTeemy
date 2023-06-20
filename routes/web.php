@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PHPMailerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,3 +57,32 @@ Route::get('/{any?}', function ($any = null) {
 
     return view('welcome');
 })->where('any', '.*');
+
+
+// Route::get('/{any}', function ($any) {
+//     session_start();
+//     $_SESSION['ref'] = substr(strrchr(request()->getRequestUri(), '/'), 1);
+//     $newlink = substr(request()->getRequestUri(), 1, strrpos(request()->getRequestUri(), '/'));
+//     $AffiliateName = substr(strrchr(request()->getRequestUri(), '/'), 1);
+//     $ServerName = request()->getHost();
+//     $CompleteUrl = request()->getRequestUri();
+//     $AffiliateUrl = "/coupon=" . $AffiliateName;
+//     $LeftoverUrl = substr(request()->getRequestUri(), 0, strrpos(request()->getRequestUri(), '/'));
+//     $LeftoverUrl = ltrim($LeftoverUrl, "/\\");
+//     $FullLink = url('/') . '/' . $LeftoverUrl;
+//     $FullServerName = url('/');
+
+//     if ($LeftoverUrl == "") {
+//         echo "none found " . $FullServerName;
+//         return Redirect::away($FullServerName);
+//     }
+
+//     if (file_exists($LeftoverUrl)) {
+//         echo "Link Found" . $FullLink;
+//         return Redirect::away($FullLink);
+//     }
+
+//     echo "going home " . $FullServerName;
+//     return Redirect::away($FullServerName);
+// })->where('any', '.*');
+

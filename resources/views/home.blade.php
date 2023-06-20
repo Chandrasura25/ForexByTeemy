@@ -28,18 +28,12 @@
                         </a>
                     </li>
                     <li class="list" data-color="#3c40c6">
-                        <a href="/affiliate">
-                            <span class="icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></span>
-                            <span class="title">Affiliate</span>
+                        <a href="#">
+                            <span class="icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+                            <span class="title">Password</span>
                         </a>
                     </li>
                     <li class="list" data-color="#f53b57">
-                        <a href="/store">
-                            <span class="icon"><i class="fas fa-store"></i></span>
-                            <span class="title">Store Purchases</span>
-                        </a>
-                    </li>
-                    <li class="list" data-color="#0fbcf9">
                         <a href="#" onclick="setoggle()">
                             <span class="icon">
                                 <i class="fa-solid fa-upload" aria-hidden="true"></i>
@@ -47,11 +41,17 @@
                             <span class="title">Upload</span>
                         </a>
                     </li>
-                    <li class="list" data-color="#ffa801">
+                    <li class="list" data-color="#0fbcf9">
                         <a href="/services">
-                            <span class="icon"><i class="fas fa-cogs"></i></span>
-                            <span class="title">My Services</span>
-                        </a>
+                                <span class="icon"><i class="fas fa-store"></i></span>
+                                <span class="title">My Services</span>
+                            </a>
+                    </li>
+                    <li class="list" data-color="#ffa801">
+                            <a href="/affiliate">
+                                <span class="icon"><i class="fas fa-handshake"></i></span>
+                                <span class="title">Affiliate</span>
+                            </a>
                     </li>
                     <div class="indicator">
         
@@ -60,44 +60,51 @@
             </div>
             <div class="container">
                <div class="left">
-                  <h2 class="title">Welcome <span>{{$user->username}}</span></h2>
-                  <div class="bucket">
-                    <div class="inputBx">
-                        <span>Name</span>
-                        <input type="text" value="{{$user->name}}" disabled>
-                    </div>
-                    <div class="inputBx">
-                        <span>Username</span>
-                        <input type="text" value="{{$user->username}}" disabled>
-                    </div>
-                    <div class="inputBx">
-                        <span>Email</span>
-                        <input type="text" value="{{$user->email}}" disabled>
-                    </div>
-                    <div class="inputBx">
-                        <span>Bio</span>
-                        <textarea type="text" value="{{$user->bio}}" disabled></textarea>
-                    </div>
-                    <div class="inputBx">
-                        <span>Number</span>
-                        <input type="text" value="{{$user->number}}" disabled>
-                    </div>
-                  </div>
-                </div>
-               <div class="right">
-                    <div class="card">
-                        <div class="profile">
-                            @if($user->profile_pic)
-                              <img src="{{ asset($user->profile_pic) }}" alt="Profile Picture">
-                            @else
-                                <img src="{{ asset('/image/avatar.jpg') }}" alt="Default Picture">
-                            @endif
+                  <div class="contactForm">
+                    <h2 class="title">Welcome <span>{{$user->username}}</span></h2>
+                        <div class="formBox">
+                            <div class="inputBox w50">
+                                <input type="text" value="{{$user->name}}" disabled>
+                                <span>FullName</span>
+                            </div>
+                            <div class="inputBox w50">
+                                <input type="text" value="{{$user->username}}" disabled>
+                                <span>Username</span>
+                            </div>
+                            <div class="inputBox w50">
+                                <input type="text" value="{{$user->email}}" disabled>
+                                <span>Email Address</span>
+                            </div>
+                            <div class="inputBox w50">
+                                <input type="text" value="{{$user->number}}" disabled>
+                                <span>Mobile Number</span>
+                            </div>
+                            <div class="inputBox w100">
+                                <textarea type="text" value="{{$user->bio}}" disabled></textarea>
+                                <span>Your Bio here...</span>
+                            </div>
+                            <div class="inputBox w100">
+                                <input type="submit" value="Edit">
+                            </div>
                         </div>
                     </div>
-                    <div class="content">
-                        <h2>{{$user->username}}</h2>
-                        <p>{{$user->email}}</p>
-                    </div>
+                </div>
+               <div class="right">
+                    <div class="cover">
+                        <div class="card">
+                            <div class="profile">
+                                @if($user->profile_pic)
+                                  <img src="{{ asset($user->profile_pic) }}" alt="Profile Picture">
+                                @else
+                                    <img src="{{ asset('/image/avatar.jpg') }}" alt="Default Picture">
+                                @endif
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h2>{{$user->username}}</h2>
+                            <p>{{$user->email}}</p>
+                        </div>
+                   </div>
                     <div class="box">
                         <canvas id="myChart"></canvas>
                     </div>

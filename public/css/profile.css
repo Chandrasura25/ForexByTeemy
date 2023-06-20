@@ -267,32 +267,142 @@ section .wave.wave4 {
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
 }
-.left .title {
-    font-size: 22px;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin: 10px;
-    color: #fff;
-}
 .left .title span {
     font-style: italic;
 }
-.left .bucket{
+.container .contactForm {
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 10px;
+    background:#fff;
+    padding: 70px 50px;
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.25);
+}
+.container .contactForm h2 {
+  color: #0f3959;
+  font-size: 24px;
+  font-weight: 500;
+}
+.container .contactForm .formBox {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+.container .contactForm .formBox .inputBox {
+  position: relative;
+  margin-bottom: 35px;
+}
+.container .contactForm .formBox .inputBox.w50 {
+  width: 47%;
+}
+.container .contactForm .formBox .inputBox.w100 {
+  width: 100%;
+}
+.container .contactForm .formBox .inputBox input,
+.container .contactForm .formBox .inputBox textarea {
+  width: 100%;
+  resize: none;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: 300;
+  color: #333;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #777;
+}
+.container .contactForm .formBox .inputBox textarea {
+  height: 120px;
+}
+.container .contactForm .formBox .inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight: 300;
+  transition: 0.3s;
+}
+.container .contactForm .formBox .inputBox input:focus ~ span,
+.container .contactForm .formBox .inputBox input:not(:placeholder-shown) ~ span,
+.container .contactForm .formBox .inputBox textarea:focus ~ span,
+.container .contactForm .formBox .inputBox textarea:not(:placeholder-shown) ~ span {
+  transform: translateY(-20px);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #095a55;
+}
+.container .contactForm .formBox .inputBox input[type="submit"] {
+  position: relative;
+  cursor: pointer;
+  background: #095a55;
+  color: #fff;
+  border: none;
+  max-width: 150px;
+  padding: 12px;
+}
+.container .contactForm .formBox .inputBox input[type="submit"]:hover {
+  background: #0d948b;
 }
 @media (max-width: 991px) {
     .container {
-        flex-direction: column;
-        margin-left: 100px;
+        flex-direction:column;
+        justify-content: unset;
+        margin-left: 10px;
     }
-    .container .left {
+    .container .left, .container .right {
         width: 100%;
     }
+    .container .left{
+        height:65%;
+    }
+    .container .right {
+        height:35%;
+        display:flex;
+    }
+    .container .contactForm{
+        padding:50px;
+    }
+    .glass{
+        gap:0px;
+    }
+    .navigation{
+        width:80px;
+    }
+    .right .box {
+        right:0;
+    }
+    .cover{
+        position: relative;
+        margin-left: 50px;
+    }
+}
+
+@media (max-width: 830px) {
+    .container .right {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      transform:translateY(-60px);
+      align-items: center;
+    }
+  
+    .right .box {
+      position: relative;
+      left: auto;
+      top: auto;
+      box-shadow: none;
+      transform: none;
+    }
+  }
+@media (max-width: 600px){
+    .container .contactForm{
+        padding: 25px;
+    }
+    .container .contactForm .formBox .inputBox.w50{
+        width: 100%;
+    }
+   
 }

@@ -90,7 +90,7 @@
             <div class="card">
                <div>
                 <div class="numbers">04</div>
-                <div class="cardName">Credits</div>
+                <div class="cardName">Credits & Coupons</div>
                </div> 
                <div class="iconBx">
                 <i class="fa-solid fa-coins" aria-hidden="true"></i>
