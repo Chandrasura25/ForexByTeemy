@@ -87,7 +87,7 @@
           </div>
           <!-- card -->
           <div class="cardBox">
-            <div class="card">
+            <a href="/credit" class="card">
                <div>
                 <div class="numbers">04</div>
                 <div class="cardName">Credits & Coupons</div>
@@ -95,8 +95,8 @@
                <div class="iconBx">
                 <i class="fa-solid fa-coins" aria-hidden="true"></i>
                </div>
-            </div>
-            <div class="card">
+            </a>
+            <a href="/clicks" class="card">
                 <div>
                     <div class="numbers">50</div>
                     <div class="cardName">Clicks & Conversion</div>
@@ -104,8 +104,8 @@
                 <div class="iconBx">
                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
                 </div>
-             </div>
-             <div class="card">
+             </a>
+             <a href="/sales" class="card">
                 <div>
                  <div class="numbers">04</div>
                  <div class="cardName">Sales & Commission</div>
@@ -113,8 +113,8 @@
                 <div class="iconBx">
                  <ion-icon name="cart-outline"></ion-icon>
                 </div>
-             </div>
-             <div class="card">
+            </a>
+             <a href="/status" class="card">
                 <div>
                  <div class="numbers">$04</div>
                  <div class="cardName">Status Paid</div>
@@ -122,7 +122,7 @@
                 <div class="iconBx">
                  <ion-icon name="cash-outline"></ion-icon>
                 </div>
-             </div>
+             </a>
              
           </div>
           <!-- graph -->

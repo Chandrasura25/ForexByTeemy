@@ -23,8 +23,9 @@ return new class extends Migration
             $table->string('ref_source')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('profile_pic')->nullable(); 
-            $table->string('effectivity')->nullable(); 
             $table->string('discount')->nullable();
+            $table->string('coupons')->nullable();
+            $table->string('effectivity')->nullable(); 
             $table->timestamp('last_activity')->nullable();
             $table->rememberToken();
             $table->timestamps();
