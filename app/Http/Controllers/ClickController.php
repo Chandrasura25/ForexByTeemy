@@ -9,9 +9,13 @@ class ClickController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
+    }
+    public function index(){
+        $user = auth()->user();
+        return view('click',['user'=>$user]);
     }
 
     /**

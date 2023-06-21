@@ -96,7 +96,7 @@
                 <i class="fa-solid fa-coins" aria-hidden="true"></i>
                </div>
             </a>
-            <a href="/clicks" class="card">
+            <a href="/click" class="card">
                 <div>
                     <div class="numbers">50</div>
                     <div class="cardName">Clicks & Conversion</div>

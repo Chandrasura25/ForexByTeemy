@@ -4,7 +4,8 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CreditController;
+use App\Http\Controllers\ClickController;
 use App\Http\Controllers\PHPMailerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,11 +27,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
-Route::resource('/affiliate', AffiliateController::class);
 Route::get('/register/{referral}', [RegisterController::class, 'FromLink'])->name('refer');
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
+Route::resource('/affiliate', AffiliateController::class);
+Route::resource('/click',ClickController::class);
+Route::get('/credit',[CreditController::class,'index'])->name('credit');
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
 Route::post('/admin', [AdminAuthController::class, 'register'])->name('admin.signup');
