@@ -6,31 +6,29 @@
 body{
     background:#D6D7EC;
 }
-.container{
-    width: 100%;
-    height: 100vh;
-    padding: 30px;
-}
-.container .title h2{
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-.content form{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-}
 .content .left,.content .right{
     position: relative;
-    width: 50%;
     min-height: 500px;
-    background: #fff;
 }
 .content .title{
     background: #E7E8E8;
-    text-transform: uppercase;
     font-size: 1.2em;
     padding:5px 10px;
+}
+.content .chanBx{
+    position:relative;
+    margin: 20px;
+}
+.chanBx h5{
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.chanBx .chan{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.chanBx .chan .inputBx{
+    position: relative;
+    margin-bottom: 10px;
 }

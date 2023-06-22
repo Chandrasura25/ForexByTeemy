@@ -10,7 +10,7 @@ class Coupon extends Model
     use HasFactory;
     protected $fillable = [
         'coupon_code',
-        'coupon_channel',
+        'coupon_channel_id',
         'coupon_type',
         'discount',
         'effectivity',
@@ -20,7 +20,10 @@ class Coupon extends Model
         'start_date',
         'end_date',
     ];
-
+    public function couponChannel()
+    {
+        return $this->belongsTo(CouponChannel::class, 'coupon_channel_id');
+    }
     // Define the relationship with the User model
     public function user()
     {

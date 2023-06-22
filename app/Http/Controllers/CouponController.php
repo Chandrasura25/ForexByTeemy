@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Coupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\CouponChannel;
 class CouponController extends Controller
 {
     /**
@@ -25,10 +25,9 @@ class CouponController extends Controller
      */
     public function create()
     {
-        $coupon = Schema::getColumnListing('coupons');
-        $couponTypes = Coupon::distinct('coupon_type')->pluck('coupon_type');
-        return  $couponTypes;
-        // return view('coupon.create', compact('couponChannels', 'couponTypes'));
+        $channels = CouponChannel::get();
+        
+        return view('coupon.create', ['channels' => $channels]);
     }
 
     /**
