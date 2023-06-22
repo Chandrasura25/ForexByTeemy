@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background:#D6D7EC;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    padding: 30px;
+}
+.container .title h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.content form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+.content .left,.content .right{
+    position: relative;
+    width: 50%;
+    min-height: 500px;
+    background: #fff;
+}
+.content .title{
+    background: #E7E8E8;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    padding:5px 10px;
+}

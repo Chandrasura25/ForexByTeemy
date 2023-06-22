@@ -6,6 +6,7 @@ use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CreditController;
 use App\Http\Controllers\ClickController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\PHPMailerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->nam
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
+Route::resource('/coupon',CouponController::class);
 Route::get('/credit',[CreditController::class,'index'])->name('credit');
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
@@ -43,7 +45,7 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 // Admin Dashboard
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
 // Admin Logout
-Route::post('/admin/logout', 'AdminAuthController@logout')->name('admin.logout');
+Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 Route::get('/{any?}', function ($any = null) {
     if ($any) {

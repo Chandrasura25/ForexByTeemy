@@ -6,7 +6,7 @@
         <div class="navigate">
             <div class="toggleMe"><span></span></div>
             <ul class="ul">
-                <li style="--i:0"><a href="#">Home</a></li>
+                <li style="--i:0"><a href="/coupon/create">Create Coupon</a></li>
                 <li style="--i:1"><a href="#">About</a></li>
                 <li style="--i:2"><a href="#">Services</a></li>
                 <li style="--i:3"><a href="#">Work</a></li>
@@ -16,6 +16,33 @@
         </div>
     </div> 
 </div>
+<div class="cardBox">
+    <a href="#" class="card">
+       <div>
+        <div class="numbers">04</div>
+        <div class="cardName">Total Customers</div>
+       </div> 
+    </a>
+    <a href="#" class="card">
+        <div>
+            <div class="numbers">50</div>
+            <div class="cardName">Total Orders</div>
+        </div> 
+     </a>
+     <a href="/sales" class="card">
+        <div>
+         <div class="numbers">$04</div>
+         <div class="cardName">Total Credits</div>
+        </div>
+    </a>
+     <a href="/status" class="card">
+        <div>
+         <div class="numbers">04</div>
+         <div class="cardName">Available Coupons</div>
+        </div>
+     </a>
+     
+  </div>
 <script type="text/javascript">
     let navigation = document.querySelector('.navigate')
     document.querySelector('.toggleMe').onclick = function (){
