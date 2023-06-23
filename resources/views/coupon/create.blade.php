@@ -15,7 +15,7 @@
             <h2>Add Coupon</h2>
             <a href="/credit" class="btn btn-secondary text-decoration-none">Go Back</a>
         </div>
-        @if (isset($message)) 
+        @if (isset($message))  
             <div class="alert alert-{{$success?'success':'danger'}}  py-2 w-50" role="alert">
                 {{ $message }}
             </div>
@@ -52,17 +52,20 @@
                                   <label for="floatingSelect">Coupon Type</label>
                                 </div>
                                 <div class="form-floating" id="percentageInput">
-                                  <input type="text" class="form-control" id="percentage" placeholder="Percentage off" name="percentage_off">
+                                  <input type="number" class="form-control" id="percentage" placeholder="Percentage off" name="percentage_off">
                                   <label for="percentage">Percentage off</label>
                                 </div>
                                 <div class="form-floating" id="fixedInput">
-                                  <input type="text" class="form-control" id="fixed" placeholder="Fixed amount" name="fixed_amount">
+                                  <input type="number" class="form-control" id="fixed" placeholder="Fixed amount" name="fixed_amount">
                                   <label for="fixed">Fixed amount</label>
                                 </div>
                                 <div class="form-floating mt-2">
                                     <textarea class="form-control" name="description" required placeholder="Description" id="floatingTextarea" name="description"></textarea>
                                     <label for="floatingTextarea">Description</label>
                                 </div>
+                                @error('description')
+                                <small>{{$message}} </small> 
+                                @enderror
                             </div>                              
                         </div>
                      </div>

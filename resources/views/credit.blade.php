@@ -7,7 +7,7 @@
             <div class="toggleMe"><span></span></div>
             <ul class="ul">
                 <li style="--i:0"><a href="/coupon/create">Create Coupon</a></li>
-                <li style="--i:1"><a href="#">About</a></li>
+                <li style="--i:1"><a href="#">Create Credit</a></li>
                 <li style="--i:2"><a href="#">Services</a></li>
                 <li style="--i:3"><a href="#">Work</a></li>
                 <li style="--i:4"><a href="#">Team</a></li>
@@ -42,26 +42,69 @@
         </div>
      </a>
   </div>
-  <div class="details">
-    <div class="recentOrders">
-     <div class="cardHeader">
-         <h2>Available Coupons</h2>
-         <a href="#" class="btn">View All</a>
-     </div>
-     <table>
-         <thead>
-           <tr>
-            <td>Coupon Code</td>
-            <td>Coupon Type</td>
-            <td>Coupon Channel</td>
-            <td>Description</td>
-            <td>Effectivity</td>
-            <td>Percent Off / Fixed Amount</td>
-            <td>Status</td>
-           </tr>
-         </thead>
-     </table>
+   <div class="coupons">
+        @if ($coupons->count() > 0)
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Available Coupons</h2>
+                <a href="#" class="btn">View All</a>
+            </div>
+            <table>
+                <thead>
+                  <tr>
+                   <td>Coupon Code</td>
+                   <td>Coupon Type</td>
+                   <td>Coupon Channel</td>
+                   <td>Description</td>
+                   <td>Effectivity</td>
+                   <td>Percent Off / Fixed Amount</td>
+                   <td>Status</td>
+                   <td>Actions</td>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($coupons as $coupon)
+                        <tr>
+                            <td>{{ $coupon->coupon_code }}</td>
+                            <td>{{ $coupon->coupon_type }}</td>
+                            <td>{{$coupon->couponChannel->name}}</td>
+                            <td>{{ $coupon->description }}</td>
+                            <td>{{ $coupon->effectivity }}</td>
+                            <td>
+                                @if ($coupon->percentage_off)
+                                    {{ $coupon->percentage_off }}
+                                @else
+                                    {{ $coupon->fixed_amount }}
+                                @endif
+                            </td>
+                            <td>
+                                <form action="/status/{{$coupon->id}}" method="post">
+                                @csrf
+                                  <button type="submit" class="{{ $coupon->status === 'active' ? 'delivered':'pending' }}">
+                                      {{ $coupon->status }}
+                                  </button>   
+                                </form>                     
+                            </td>
+                            <td>
+                                <div class="actionBx">
+                                    <a href="/coupon/{{$coupon->id}}/edit"><i class="fas fa-pen"></i></a>
+                                    <form action="/coupon/{{$coupon->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @else
+        <h2>Add Coupons</h2>
+        @endif
     </div>
+    
 </div>
 <script type="text/javascript">
     let navigation = document.querySelector('.navigate')

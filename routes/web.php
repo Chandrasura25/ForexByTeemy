@@ -46,6 +46,7 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
 // Admin Logout
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
 
 Route::get('/{any?}', function ($any = null) {
     if ($any) {
