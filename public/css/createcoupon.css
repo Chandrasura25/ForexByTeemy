@@ -8,7 +8,7 @@ body{
 }
 .content .left,.content .right{
     position: relative;
-    min-height: 500px;
+    min-height: 550px;
 }
 .content .title{
     background: #E7E8E8;
@@ -31,4 +31,12 @@ body{
 .chanBx .chan .inputBx{
     position: relative;
     margin-bottom: 10px;
+}
+@media (max-width: 991px){
+    .content form{
+        flex-wrap: wrap;
+    }
+    .content .left,.content .right{
+        width: 100% !important;
+    }
 }

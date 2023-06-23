@@ -12,13 +12,9 @@ class Coupon extends Model
         'coupon_code',
         'coupon_channel_id',
         'coupon_type',
-        'discount',
-        'effectivity',
         'description',
-        'status',
+        'effectivity',
         'username',
-        'start_date',
-        'end_date',
     ];
     public function couponChannel()
     {
