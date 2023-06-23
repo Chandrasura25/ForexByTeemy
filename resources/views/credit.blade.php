@@ -41,8 +41,28 @@
          <div class="cardName">Available Coupons</div>
         </div>
      </a>
-     
   </div>
+  <div class="details">
+    <div class="recentOrders">
+     <div class="cardHeader">
+         <h2>Available Coupons</h2>
+         <a href="#" class="btn">View All</a>
+     </div>
+     <table>
+         <thead>
+           <tr>
+            <td>Coupon Code</td>
+            <td>Coupon Type</td>
+            <td>Coupon Channel</td>
+            <td>Description</td>
+            <td>Effectivity</td>
+            <td>Percent Off / Fixed Amount</td>
+            <td>Status</td>
+           </tr>
+         </thead>
+     </table>
+    </div>
+</div>
 <script type="text/javascript">
     let navigation = document.querySelector('.navigate')
     document.querySelector('.toggleMe').onclick = function (){

@@ -150,7 +150,7 @@ class RegisterController extends Controller
                             <p>We appreciate your registration.</p>
                             <p>Feel free to contact us if you have any questions.</p>
                             <p>Best regards,</p>
-                            <p>Your Company</p>
+                            <p>ForexByTeemy</p>
                           </div>
                         </body>
                         </html>';

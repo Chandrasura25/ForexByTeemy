@@ -40,3 +40,8 @@ body{
         width: 100% !important;
     }
 }
+@media (max-width: 420px){
+    .chanBx .chan{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

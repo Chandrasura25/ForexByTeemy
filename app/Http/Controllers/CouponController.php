@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coupon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use App\Models\CouponChannel;
+use Illuminate\Http\Request;
+
 class CouponController extends Controller
 {
     /**
@@ -26,7 +26,7 @@ class CouponController extends Controller
     public function create()
     {
         $channels = CouponChannel::get();
-        
+
         return view('coupon.create', ['channels' => $channels]);
     }
 
@@ -34,8 +34,33 @@ class CouponController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {  
+        $channels = CouponChannel::get();
+        $request->validate([
+            'coupon_code' => 'required',
+            'coupon_channel_id' => 'required',
+            'coupon_type' => 'required',
+            'description' => 'required|min:6',
+            'effectivity' => 'required',
+        ]);
+        $coupon = Coupon::create([
+            'coupon_code' => $request->coupon_code,
+            'coupon_channel_id' => $request->coupon_channel_id,
+            'coupon_type' => $request->coupon_type,
+            'percentage_off' => $request->percentage_off,
+            'fixed_amount' => $request->fixed_amount,
+            'description' => $request->description,
+            'effectivity' => $request->effectivity,
+            'username' => auth()->user()->username,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'minimum_purchase' => $request->minimum_purchase,
+        ]);
+        if ($coupon) {
+            return view('coupon.create')->with('message', 'Coupon created successfully.')->with('success', true)->with('channels', $channels);
+        } else {
+            return view('coupon.create')->with('message', 'An error occured')->with('success', false)->with('channels', $channels);
+        }
     }
 
     /**

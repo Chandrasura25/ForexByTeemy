@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Create Coupons</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/createcoupon.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container-fluid p-4 m-0">
-        <div class="mb-3 fw-bold text-uppercase display-6">
+        <div class="mb-3 fw-bold text-uppercase display-6 d-flex justify-content-between">
             <h2>Add Coupon</h2>
+            <a href="/credit" class="btn btn-secondary text-decoration-none">Go Back</a>
         </div>
+        @if (isset($message)) 
+            <div class="alert alert-{{$success?'success':'danger'}}  py-2 w-50" role="alert">
+                {{ $message }}
+            </div>
+        @endif 
         <div class="content">
-            <form action="" method="post" class="d-flex gap-4 justify-content-between align-items-center">
+            <form action="/coupon" method="post" class="d-flex gap-4 justify-content-between align-items-center">
+                @csrf
                 <div class="left bg-white w-50">
                     <h2 class="title">General</h2>
                      <div class="formBx">
@@ -29,7 +36,6 @@
                                 </div>
                             @endforeach
                             </div>
-                           <input type="hidden" name="channel_channel_id" id="channel_id">
                         </div>
                         <div class="p-3">
                             <div>
@@ -79,7 +85,7 @@
                                         <label for="startDate">Start Date</label>
                                     </div>         
                                     <div class="form-floating mb-2">
-                                        <input type="datetime-local" class="form-control" id="endDate" name="start_date">
+                                        <input type="datetime-local" class="form-control" id="endDate" name="end_date">
                                         <label for="endDate">End Date</label>
                                     </div>
                                 </div>   
@@ -91,8 +97,8 @@
                                     <input type="text" class="form-control" id="minimumPurchase" placeholder="Minimum Purchase" name="minimum_purchase">
                                     <label for="minimumPurchase">Minimum Purchase</label>
                                 </div> 
-                                <div class="fixed-bottom d-flex justify-content-end p-5">
-                                    <button class="btn btn-primary">Save</button>
+                                <div class="position-absolute bottom-0 end-0 p-4">
+                                    <button class="btn btn-outline-primary px-4">Save</button>
                                 </div>                                                  
                             </div> 
                         </div>
