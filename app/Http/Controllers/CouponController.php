@@ -34,7 +34,7 @@ class CouponController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {  
+    {
         $channels = CouponChannel::get();
         $request->validate([
             'coupon_code' => 'required',
@@ -75,9 +75,9 @@ class CouponController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {   
+    {
         $channels = CouponChannel::get();
-        return view('coupon.edit')->with('coupon', Coupon::findOrFail($id))->with('channels', $channels); 
+        return view('coupon.edit')->with('coupon', Coupon::findOrFail($id))->with('channels', $channels);
     }
 
     /**
@@ -86,31 +86,28 @@ class CouponController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-        'coupon_channel_id' => 'required',
-        'coupon_type' => 'required',
-        'description' => 'required|min:6',
-        'effectivity' => 'required',
+            'coupon_channel_id' => 'required',
+            'coupon_type' => 'required',
+            'description' => 'required|min:6',
+            'effectivity' => 'required',
         ]);
         $coupon = Coupon::findOrFail($id);
-        return $request;
-        // $coupon->update([
-        //     'coupon_code' => $request->coupon_code,
-        //     'coupon_channel_id' => $request->coupon_channel_id,
-        //     'coupon_type' => $request->coupon_type,
-        //     'percentage_off' => $request->percentage_off,
-        //     'fixed_amount' => $request->fixed_amount,
-        //     'description' => $request->description,
-        //     'effectivity' => $request->effectivity,
-        //     'username' => auth()->user()->username, 
-        //     'start_date' => $request->start_date,
-        //     'end_date' => $request->end_date,
-        //     'minimum_purchase' => $request->minimum_purchase,
-        // ]);
-        // if ($coupon) {
-        //     return view('coupon.edit')->with('message', 'Coupon updated successfully.')->with('success', true);
-        // }else{
-        // return view('coupon.edit')->with('message', 'An error occured')->with('success', false);
-        // }
+        $coupon->update([
+            'coupon_channel_id' => $request->coupon_channel_id,
+            'coupon_type' => $request->coupon_type,
+            'percentage_off' => $request->percentage_off,
+            'fixed_amount' => $request->fixed_amount,
+            'description' => $request->description,
+            'effectivity' => $request->effectivity,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'minimum_purchase' => $request->minimum_purchase,
+        ]);
+        if ($coupon) {
+            return redirect('/credit');
+        } else {
+            return view('coupon.edit')->with('message', 'An error occured')->with('success', false);
+        }
     }
 
     /**
@@ -124,17 +121,17 @@ class CouponController extends Controller
     }
     public function toggleStatus($couponId)
     {
-        $coupon = Coupon::findOrFail($couponId); 
-    
-        if ($coupon->status === 'active') { 
+        $coupon = Coupon::findOrFail($couponId);
+
+        if ($coupon->status === 'active') {
             $coupon->status = 'inactive';
         } else {
             $coupon->status = 'active';
         }
-    
+
         $coupon->save();
-    
-        return redirect()->back()->with('success', 'Coupon status toggled successfully.'); 
+
+        return redirect()->back()->with('success', 'Coupon status toggled successfully.');
     }
-    
+
 }

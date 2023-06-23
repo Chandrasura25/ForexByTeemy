@@ -108,26 +108,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
-    $(document).ready(function() {
-    // Show/hide date inputs based on the selected effectivity
-    var selectedEffectivity = $('#floatingEffect').val();
-    if (selectedEffectivity === 'unlimited usage') {
-        $('#dateInputs').show();
-    } else {
-        $('#dateInputs').hide();
-    }
-
-    // Show/hide date inputs when the effectivity is changed
-    $('#floatingEffect').change(function() {
-        var selectedEffectivity = $(this).val();
-        if (selectedEffectivity === 'unlimited usage') {
-            $('#dateInputs').show();
-        } else {
-            $('#dateInputs').hide();
-        }
-    });
-  });
-
+   
     $(document).ready(function() {
         // Show/hide minimum purchase input based on the checkbox status
         var isChecked = $('#flexCheckDefault').prop('checked');
@@ -191,6 +172,55 @@
     toggleInputFields();
   });
 });
+$(document).ready(function() {
+  // Get the initial effectivity value
+  var initialEffectivity = $('#floatingEffect').val();
+
+  // Hide/show input fields based on the selected effectivity
+  function toggleEffectivityFields() {
+    var selectedEffectivity = $('#floatingEffect').val();
+
+    if (selectedEffectivity === 'unlimited usage') {
+      // Clear the values of both inputs
+      $('#startDate').val('');
+      $('#endDate').val('');
+
+      // Show the date inputs
+      $('#dateInputs').show();
+    } else {
+      // Clear the values of both inputs
+      $('#startDate').val('');
+      $('#endDate').val('');
+
+      // Hide the date inputs
+      $('#dateInputs').hide();
+    }
+  }
+
+  // Call the function initially to set the input fields based on the initial effectivity
+  toggleEffectivityFields();
+
+  // Handle the change event of effectivity select input
+  $('#floatingEffect').change(function() {
+    toggleEffectivityFields();
+  });
+});
+$(document).ready(function() {
+  // Handle the change event of the minimum purchase checkbox
+  $('#flexCheckDefault').change(function() {
+    if ($(this).is(':checked')) {
+      // Show the minimum purchase input
+      $('#minimumPurchaseInput').show();
+    } else {
+      // Clear the value of the minimum purchase input
+      $('#minimumPurchase').val('');
+
+      // Hide the minimum purchase input
+      $('#minimumPurchaseInput').hide();
+    }
+  });
+});
+
 </script>
 </body>
 </html>
