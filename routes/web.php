@@ -3,10 +3,11 @@
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AffiliateController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CreditController;
 use App\Http\Controllers\ClickController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\OpenAIController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,8 @@ Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
 Route::get('/credit',[CreditController::class,'index'])->name('credit');
+// CHATBOT
+Route::post('/bot',[OpenAIController::class,'chatOpenAi'])->name('chatbot');
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
 Route::post('/admin', [AdminAuthController::class, 'register'])->name('admin.signup');

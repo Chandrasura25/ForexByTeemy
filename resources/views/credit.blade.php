@@ -99,6 +99,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="pagination">
+                {{ $coupons->links() }}
+            </div>
         </div>
         @else
         <h2>Add Coupons</h2>

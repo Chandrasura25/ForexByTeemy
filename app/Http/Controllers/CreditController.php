@@ -12,7 +12,7 @@ class CreditController extends Controller
     }
     public function index()
     {
-        $coupons = Coupon::where('username', auth()->user()->username)->with('couponChannel')->get();  
+        $coupons = Coupon::where('username', auth()->user()->username)->with('couponChannel')->paginate(10);
         $user = auth()->user();
         return view('credit', ['coupons' => $coupons, 'user' => $user]);
     }
