@@ -25,9 +25,19 @@ class CouponController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        $coupon_code = $this->generateCouponCode($user->username, $user->id);
         $channels = CouponChannel::get();
+        return view('coupon.create', ['channels' => $channels, 'coupon_code' => $coupon_code]);
+    }
 
-        return view('coupon.create', ['channels' => $channels]);
+    private function generateCouponCode($username, $userId)
+    {
+        $code = substr($username, 0, 3); // Take the first three characters of the username
+        $code .= str_pad($userId, 3, '0', STR_PAD_LEFT) + mt_rand(100, 999); // Append a three-digit padded user ID
+        $code .= mt_rand(10, 99); // Append a two-digit random number
+
+        return $code;
     }
 
     /**
@@ -56,10 +66,12 @@ class CouponController extends Controller
             'end_date' => $request->end_date,
             'minimum_purchase' => $request->minimum_purchase,
         ]);
+        $user = auth()->user();
+        $coupon_code = $this->generateCouponCode($user->username, $user->id);
         if ($coupon) {
-            return view('coupon.create')->with('message', 'Coupon created successfully.')->with('success', true)->with('channels', $channels);
+            return view('coupon.create')->with('message', 'Coupon created successfully.')->with('success', true)->with('channels', $channels)->with('coupon_code', $coupon_code);
         } else {
-            return view('coupon.create')->with('message', 'An error occured')->with('success', false)->with('channels', $channels);
+            return view('coupon.create')->with('message', 'An error occured')->with('success', false)->with('channels', $channels)->with('coupon_code', $coupon_code);
         }
     }
 

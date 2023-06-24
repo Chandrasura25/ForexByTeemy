@@ -60,7 +60,9 @@
                                     <textarea class="form-control" name="description" required placeholder="Description" id="floatingTextarea">{{ $coupon->description }}</textarea>
                                     <label for="floatingTextarea">Description</label>
                                 </div>
-                                
+                                @error('description')
+                                <small>{{$message}} </small> 
+                                @enderror
                             </div>                              
                         </div>
                      </div>

@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/">
+                    <a href="/home">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Home</span>
                     </a>
@@ -35,9 +35,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/home">
-                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                        <span class="title">Profile</span>
+                    <a href="/affiliate">
+                        <span class="icon"><i class="fas fa-handshake"></i></span>
+                        <span class="title">Affiliate</span>
                     </a>
                 </li>
                 <li>

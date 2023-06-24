@@ -40,7 +40,7 @@
                         <div class="p-3">
                             <div>
                                 <div class="form-floating mb-2">
-                                  <input type="text" class="form-control" id="floatingInput" placeholder="Coupon Code" required name="coupon_code">
+                                  <input type="text" class="form-control" id="floatingInput" placeholder="Coupon Code" required name="coupon_code" readonly value="{{$coupon_code}}">
                                   <label for="floatingInput">Coupon Code</label>
                                 </div>
                                 <div class="form-floating mb-2">
