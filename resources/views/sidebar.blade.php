@@ -92,6 +92,15 @@
           </main>
         </div>
     </div>
+    <div id="popup">
+        <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
+            @csrf
+            <h2>Upload Your Profile Picture</h2>
+            <span class="close" onclick="setoggle()">&times;</span>
+            <input type="file" id="fileInput" name="profile_pic" accept=".jpg,.jpeg,.png,.svg,.gif">
+            <button class="closeBtn" onclick="setoggle()">Upload</button>
+        </form>
+    </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
