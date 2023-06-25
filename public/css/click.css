@@ -25,7 +25,7 @@
     font-size: 1.3em;
     margin: 10px;
 }
-.cardBx{
+.cardBx {
     position: relative;
     width: 100%;
     display: flex;
@@ -33,29 +33,27 @@
     align-items: center;
     margin-top: 20px;
 }
-.cardBx .ref_link{
+.cardBx .ref_link {
     position: relative;
 }
-.drop{
+.drop {
     position: relative;
     width: 350px;
     height: 350px;
     box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.05),
-            15px 20px 10px rgba(0, 0, 0, 0.05),
-            15px 5px 15px rgba(0, 0, 0, 0.05),
-            inset -10px -10px 15px rgba(255, 255, 255, 0.9);
-
+        15px 20px 10px rgba(0, 0, 0, 0.05), 15px 5px 15px rgba(0, 0, 0, 0.05),
+        inset -10px -10px 15px rgba(255, 255, 255, 0.9);
     transition: 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 52% 48% 33% 67% / 38% 45% 55% 62%;
 }
-.container .drop:hover{
+.container .drop:hover {
     border-radius: 50%;
 }
-.container .drop::before{
-    content: '';
+.container .drop::before {
+    content: "";
     position: absolute;
     top: 50px;
     left: 65px;
@@ -65,8 +63,8 @@
     background: #fff;
     opacity: 0.9;
 }
-.container .drop::after{
-    content: '';
+.container .drop::after {
+    content: "";
     position: absolute;
     top: 90px;
     left: 110px;
@@ -76,7 +74,7 @@
     background: #fff;
     opacity: 0.9;
 }
-.container .drop .content{
+.container .drop .content {
     position: relative;
     display: flex;
     justify-content: center;
@@ -86,36 +84,38 @@
     padding: 40px;
     gap: 15px;
 }
-.container .drop .content h2{
+.container .drop .content h2 {
     position: relative;
     color: #888;
     font-size: 1.5em;
 }
-.container .drop .content form{
+.container .drop .content form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
 }
-.container .drop .content form .inputBox{
+.container .drop .content form .inputBox {
     position: relative;
     width: 230px;
     border-radius: 25px;
-    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),inset -2px -5px 10px rgba(255,255,255,1),15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+        inset -2px -5px 10px rgba(255, 255, 255, 1),
+        15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
 }
-.container .drop .content form .inputBox::before{
-    content: '';
+.container .drop .content form .inputBox::before {
+    content: "";
     position: absolute;
     top: 8px;
     left: 50%;
     transform: translateX(-50%);
     width: 65%;
     height: 5px;
-    background: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
 }
-.container .drop .content form .inputBox input{
+.container .drop .content form .inputBox input {
     border: none;
     outline: none;
     background: transparent;
@@ -123,7 +123,7 @@
     padding: 10px 15px;
     font-size: 1em;
 }
-.container .drop .content form .inputBox input[type='submit']{ 
+.container .drop .content form .inputBox input[type="submit"] {
     color: #fff;
     font-size: 1em;
     text-transform: uppercase;
@@ -131,61 +131,13 @@
     letter-spacing: 0.1em;
     font-weight: 500;
 }
-.container .drop .content form .inputBox:last-child{
+.container .drop .content form .inputBox:last-child {
     background: #ff0f5b;
     transition: 0.5s;
-    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+        15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
     width: 120px;
 }
-.container .drop .content form .inputBox:last-child:hover{
+.container .drop .content form .inputBox:last-child:hover {
     width: 150px;
 }
-/* .btns{
-    position: absolute;
-    right: -120px;
-    bottom: 0;
-    width: 120px;
-    height: 120px;
-    background: #c61dff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    line-height: 1.2em;
-    letter-spacing: 0.1em;
-    font-size: 0.8em;
-    transition: 0.25s;
-    text-align: center;
-    box-shadow: inset 10px 10px 10px rgba(190, 1, 254, 0.05),15px 25px 10px rgba(190, 1, 254, 0.1), 15px 20px 20px rgba(190, 1, 254, 0.1),inset -10px -10px 15px rgba(255,255,255,0.5);
-    border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
-}
-.btns::before{
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 30px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0.45;
-}
-.btns.signup::before{
-    left: 20px;
-    width: 15px;
-    height: 15px;
-}
-.btns.signup{
-    bottom: 150px;
-    right: -120px;
-    width: 80px;
-    height: 80px;
-    border-radius: 49% 51% 52% 48% / 63% 59% 41% 37%;
-    background: #01b4ff;
-    box-shadow: inset 10px 10px 10px rgba(1, 180, 255, 0.05),15px 25px 10px rgba(1, 180, 255, 0.1), 15px 20px 20px rgba(1, 180, 255, 0.1),inset -10px -10px 15px rgba(255,255,255,0.5);
-}
-.btns:hover{
-    border-radius: 50%;
-} */
