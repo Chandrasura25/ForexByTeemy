@@ -29,9 +29,10 @@
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 .cardBx .ref_link {
     position: relative;
@@ -140,4 +141,24 @@
 }
 .container .drop .content form .inputBox:last-child:hover {
     width: 150px;
+}
+.drop:last-child{
+    display: grid;
+    text-align: center;
+    padding: 20px;
+}
+.drop:last-child h2{
+    padding: 10px;
+    font-size: 1.6em;
+    color: #888;
+    text-transform: uppercase;
+}
+.drop:last-child span{
+    background: #37d72f;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    color: #fff;
+    padding: 10px 30px;
+    margin-top: 10px;
+    border-radius: 25px;
 }

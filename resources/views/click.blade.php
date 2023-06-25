@@ -22,7 +22,18 @@
                 </div>
         </div>
         </div>
-        <div class="ref_no"></div>
+        <div class="ref_no">
+            <div class="drop">
+               <div class="">
+                <h2>Total Referrers</h2>
+                <span>00</span>
+               </div>
+               <div class="">
+                <h2>Total Credits</h2>
+                <span>00</span>
+               </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
