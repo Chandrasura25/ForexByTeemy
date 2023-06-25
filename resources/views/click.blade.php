@@ -25,29 +25,38 @@
         <div class="ref_no"></div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {  
+    $(document).ready(function () {
         $('#copyButton').click(function () {
-            var referralLink = $(this).data('clipboard-text');
+            var button = $(this); // Store the button element
             
-            // Create a temporary input element and append it to the body
+            var referralLink = button.data('clipboard-text');
+            
+            
+            // // Create a temporary input element and append it to the body
             var tempInput = $('<input>');
             $('body').append(tempInput);
             
-            // Set the input value to the referral link
+            // // Set the input value to the referral link
             tempInput.val(referralLink).select();
             
-            // Copy the value to the clipboard
+            // // Copy the value to the clipboard
             document.execCommand('copy');
             
-            // Remove the temporary input element
+            // // Remove the temporary input element
             tempInput.remove();
             
-            // Display a success message
-            alert('Link copied to clipboard!');
+            // Change the button text to "Copied" for a minute
+            button.val('Copied');
+            
+            // Reset the button text after a minute
+            setTimeout(function () {
+                button.val('Copy');
+            }, 60000); // 60000 milliseconds = 1 minute 60000 milliseconds = 1 minute
         });
     });
-</script>
+    </script>
+    
 
 @endsection

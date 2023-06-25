@@ -56,7 +56,7 @@
     content: "";
     position: absolute;
     top: 50px;
-    left: 65px;
+    left: 75px;
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -66,7 +66,7 @@
 .container .drop::after {
     content: "";
     position: absolute;
-    top: 90px;
+    top: 80px;
     left: 110px;
     width: 15px;
     height: 15px;
@@ -123,7 +123,7 @@
     padding: 10px 15px;
     font-size: 1em;
 }
-.container .drop .content form .inputBox input[type="submit"] {
+.container .drop .content form .inputBox input[type="button"] {
     color: #fff;
     font-size: 1em;
     text-transform: uppercase;
