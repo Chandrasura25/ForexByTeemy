@@ -266,10 +266,9 @@ class RegisterController extends Controller
 
                 $mail->ContentType = "text/html";
                 $mail->send();
-                return $user;
-                Auth::guard()->login($user);
-                //    saving directly from the referrer source
-                return redirect($this->redirectPath());
+                Auth::guard('web')->login($user);
+
+               return redirect($this->redirectPath());
             } catch (Exception $e) {
                 return redirect()->back()->with('error', 'Failed to send email');
             }

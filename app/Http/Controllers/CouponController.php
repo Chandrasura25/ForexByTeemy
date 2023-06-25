@@ -17,9 +17,24 @@ class CouponController extends Controller
     }
     public function index()
     {
-
+        $coupons = Coupon::where('username', auth()->user()->username)->with('couponChannel')->paginate(10);
+        $couponCount = $this->getTotalCouponCount();
+        $user = auth()->user();
+        return view('coupon.index', ['coupons' => $coupons, 'user' => $user, 'couponCount' => $couponCount]);
     }
+    
+    private function getTotalCouponCount()
+    {
+        $couponCount = Coupon::count();
 
+        if ($couponCount == 0) {
+            return '00';
+        } elseif ($couponCount < 10) {
+            return '0' . $couponCount;
+        } else {
+            return (string) $couponCount;
+        }
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -87,10 +87,10 @@
           </div>
           <!-- card -->
           <div class="cardBox">
-            <a href="/credit" class="card">
+            <a href="/coupon" class="card">
                <div>
-                <div class="numbers">04</div>
-                <div class="cardName">Credits & Coupons</div>
+                <div class="numbers">{{$couponCount}}</div>
+                <div class="cardName">Coupons</div>
                </div> 
                <div class="iconBx">
                 <i class="fa-solid fa-coins" aria-hidden="true"></i>
@@ -99,7 +99,7 @@
             <a href="/click" class="card">
                 <div>
                     <div class="numbers">50</div>
-                    <div class="cardName">Clicks & Conversion</div>
+                    <div class="cardName">Clicks, Credits & Conversion</div>
                 </div> 
                 <div class="iconBx">
                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>

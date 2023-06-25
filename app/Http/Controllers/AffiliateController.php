@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Coupon;
 class AffiliateController extends Controller
 {
     /**
@@ -15,13 +15,24 @@ class AffiliateController extends Controller
     }
     public function index()
     {
-        
+        $couponCount = $this->getTotalCouponCount();
         $user = auth()->user();
         // return $user->username;
-        return view('affiliate',['user'=>$user]);
+        return view('affiliate',['user'=>$user,'couponCount'=>$couponCount]);
         //
     }
+    private function getTotalCouponCount()
+    {
+        $couponCount = Coupon::count();
 
+        if ($couponCount == 0) {
+            return '00';
+        } elseif ($couponCount < 10) {
+            return '0' . $couponCount;
+        } else {
+            return (string) $couponCount;
+        }
+    }
     /**
      * Show the form for creating a new resource.
      */

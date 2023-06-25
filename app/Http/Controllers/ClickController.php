@@ -15,7 +15,8 @@ class ClickController extends Controller
     }
     public function index(){
         $user = auth()->user();
-        return view('click',['user'=>$user]);
+        $myRefLink = url('/register/'.$user->username); 
+        return view('click',['user'=>$user,'myRefLink'=>$myRefLink]);
     }
 
     /**
