@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('home',['user'=>$user]);
+        return view('home',['user'=>$user]); 
     }
     public function uploadImg(Request $request)
     {
@@ -37,5 +37,15 @@ class HomeController extends Controller
         $user->profile_pic = $profile_pic;
         $user->save();
         return redirect()->back();
+    }
+    public function update(Request $request){
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->bio = $request->bio;
+        $user->email = $request->email;
+        $user->number = $request->number;
+        $user->save();
+        return redirect()->route('home');
     }
 }

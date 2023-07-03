@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard</title> 
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -165,12 +165,6 @@
                         <td><span class="status inprogress">In Progress</span></td>
                       </tr>
                       <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>Paid</td>
-                        <td><span class="status delivered">Delivered </span></td>
-                      </tr>
-                      <tr>
                           <td>Freezer</td>
                           <td>$1300</td>
                           <td>Due</td>
@@ -182,12 +176,6 @@
                           <td>Due</td>
                           <td><span class="status return">Return</span></td>
                         </tr>
-                        <tr>
-                          <td>Refrigerator</td>
-                          <td>$1200</td>
-                          <td>Paid</td>
-                          <td><span class="status delivered">Delivered </span></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -196,40 +184,18 @@
                 <div class="cardHeader">
                     <h2>Recent SignUps</h2>
                 </div>
+                @if ($referredUsers->count() < 0)
+                    <h2>No Referred User Yet</h2>
+                @else
                 <table>
+                   @foreach ($referredUsers as $referred)
                     <tr>
-                        <td><div class="imgBx"><img src="images/img1.jpg" alt=""></div></td>
-                        <td><h4>David<br><span>Italy</span></h4></td>
+                        <td><div class="imgBx"><img src="{{$referred->profile_pic}}" alt=""></div></td>
+                        <td><h4>{{$referred->username}}<br><span>{{$referred->number}}</span></h4></td>
                     </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img2.jpg" alt=""></div></td>
-                        <td><h4>Muhammed<br><span>India</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img3.jpg" alt=""></div></td>
-                        <td><h4>Amelia<br><span>France</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img4.jpg" alt=""></div></td>
-                        <td><h4>Olivia<br><span>USA</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img5.jpg" alt=""></div></td>
-                        <td><h4>Amit<br><span>Japan</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img6.jpg" alt=""></div></td>
-                        <td><h4>Ashraf<br><span>India</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img7.jpg" alt=""></div></td>
-                        <td><h4>Diana<br><span>Malaysia</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td><div class="imgBx"><img src="images/img8.jpg" alt=""></div></td>
-                        <td><h4>Amit<br><span>India</span></h4></td>
-                    </tr>
-                </table>
+                    @endforeach 
+                </table> 
+                @endif
             </div>
            </div>
         </div>
@@ -247,7 +213,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     <script>
-        let popup = document.getElementById('popup')
+        let popup = document.getElementById('popup') 
         let blur = document.getElementById('blur')
         function setoggle(){
            popup.classList.toggle('active')

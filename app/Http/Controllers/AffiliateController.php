@@ -25,8 +25,8 @@ class AffiliateController extends Controller
         $couponCount = $this->getTotalCouponCount();
         $user = auth()->user();
         $this->updateTotalCredits($user);
-        // return $user->username;
-        return view('affiliate',['user'=>$user,'couponCount'=>$couponCount]);
+        $referredUsers = $user->referredUsers()->get();
+        return view('affiliate',['user'=>$user,'couponCount'=>$couponCount, 'referredUsers'=>$referredUsers ]);
         //
     }
     private function getTotalCouponCount()

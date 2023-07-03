@@ -334,7 +334,7 @@ section .wave.wave4 {
   letter-spacing: 1px;
   color: #095a55;
 }
-.container .contactForm .formBox .inputBox input[type="submit"] {
+.container .contactForm .formBox .inputBox input[type="submit"],.container .contactForm .formBox .inputBox input[type="button"]  {
   position: relative;
   cursor: pointer;
   background: #095a55;
@@ -343,7 +343,7 @@ section .wave.wave4 {
   max-width: 150px;
   padding: 12px;
 }
-.container .contactForm .formBox .inputBox input[type="submit"]:hover {
+.container .contactForm .formBox .inputBox input[type="submit"]:hover,.container .contactForm .formBox .inputBox input[type="button"]:hover {
   background: #0d948b;
 }
 @media (max-width: 991px) {

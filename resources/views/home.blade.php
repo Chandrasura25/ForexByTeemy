@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <section class="body" id="blur">
@@ -62,31 +63,33 @@
                <div class="left">
                   <div class="contactForm">
                     <h2 class="title">Welcome <span>{{$user->username}}</span></h2>
-                        <div class="formBox">
+                        <form class="formBox" id="content" method="POST" action="{{route('update')}}">
+                            @csrf
                             <div class="inputBox w50">
-                                <input type="text" value="{{$user->name}}" disabled>
+                                <input type="text" value="{{$user->name}}" disabled name="name">
                                 <span>FullName</span>
                             </div>
                             <div class="inputBox w50">
-                                <input type="text" value="{{$user->username}}" disabled>
+                                <input type="text" value="{{$user->username}}" disabled name="username">
                                 <span>Username</span>
                             </div>
                             <div class="inputBox w50">
-                                <input type="text" value="{{$user->email}}" disabled>
+                                <input type="text" value="{{$user->email}}" disabled name="email">
                                 <span>Email Address</span>
                             </div>
                             <div class="inputBox w50">
-                                <input type="text" value="{{$user->number}}" disabled>
+                                <input type="text" value="{{$user->number}}" disabled name="number">
                                 <span>Mobile Number</span>
                             </div>
                             <div class="inputBox w100">
-                                <textarea type="text" value="{{$user->bio}}" disabled></textarea>
+                                <textarea name="bio" value="{{$user->bio}}" disabled></textarea>
                                 <span>Your Bio here...</span>
                             </div>
                             <div class="inputBox w100">
-                                <input type="submit" value="Edit">
+                                <input type="button" id="editButton" value="Edit">
+                                <input type="submit" id="updateButton" value="Update" style="display: none">
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                <div class="right">
@@ -178,5 +181,26 @@
             }
         });
     </script>
+<script>
+    $(document).ready(function() {
+      // Hide the "Update" button initially
+      $('#updateButton').hide();
+  
+      // Handler for the edit button click
+      $('#editButton').click(function(event) {
+        event.preventDefault(); // Prevent form submission
+  
+        // Change input elements to editable
+        $('#content input').removeAttr('disabled');
+        $('#content textarea').removeAttr('disabled');
+  
+        // Show the "Update" button
+        $('#updateButton').show();
+  
+        // Disable the "Edit" button
+        $(this).hide();
+      });
+    });
+  </script>
 </body>
 </html>

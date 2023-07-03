@@ -33,6 +33,8 @@ Route::get('/register/{referral}', [RegisterController::class, 'FromLink'])->nam
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
+Route::post('/update',[App\Http\Controllers\HomeController::class,'update'])->name('update');
+
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
