@@ -23,7 +23,7 @@ class User extends Authenticatable
         'username',
         'ref_source',
         'referrer',
-
+        'credits'
     ];
 
     /**

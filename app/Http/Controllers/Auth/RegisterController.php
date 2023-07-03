@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Credit;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -98,10 +97,10 @@ class RegisterController extends Controller
 
         if ($referrer) {
             // Assign 30 credits to the user registering
-            Credit::create([
-              'username' => $user->username,
-              'amount' => 30,
-          ]);
+            $user->credits()->create([
+                'username' => $user->username,
+                'amount' => 30,
+            ]);
             // Update the total_credits in the users table
             $user->update([
                 'credits' => $user->credits()->sum('amount'),
@@ -112,11 +111,10 @@ class RegisterController extends Controller
                 throw new \Exception('Referrer not found.');
             }
 
-            Credit::create([
-              'username' => $referrer,
-              'amount' => 30,
-          ]);
-  
+            $referringUser->credits()->create([
+                'username' => $referrer,
+                'amount' => 30,
+            ]);
             // Update the total_credits of the referrer
             $referringUser->update([
                 'total_credits' => $referringUser->credits()->sum('amount'),
@@ -232,13 +230,11 @@ class RegisterController extends Controller
         ]);
         if ($referrer) {
             // Assign 30 credits to the user registering
-            // $user->credits()->create([
-            //     'amount' => 30,
-            // ]);
-           Credit::create([
-              'username' => $user->username,
-              'amount' => 30,
-          ]);
+            $user->credits()->create([
+                'username' => $user->username,
+                'amount' => 30,
+            ]);
+
             // Update the total_credits in the users table
             $user->update([
                 'credits' => $user->credits()->sum('amount'),
@@ -249,11 +245,10 @@ class RegisterController extends Controller
                 throw new \Exception('Referrer not found.');
             }
 
-            Credit::create([
-              'username' => $referrer,
-              'amount' => 30,
-          ]);
-  
+            $referringUser->credits()->create([
+                'username' => $referrer,
+                'amount' => 30,
+            ]);
             // Update the total_credits of the referrer
             $referringUser->update([
                 'total_credits' => $referringUser->credits()->sum('amount'),
