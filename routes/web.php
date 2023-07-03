@@ -34,6 +34,7 @@ Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'creat
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
 Route::post('/update',[App\Http\Controllers\HomeController::class,'update'])->name('update');
+Route::post('/updatePass',[App\Http\Controllers\HomeController::class,'updatePassword'])->name('updatePass');
 
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);

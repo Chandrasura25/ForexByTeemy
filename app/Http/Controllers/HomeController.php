@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -45,6 +46,12 @@ class HomeController extends Controller
         $user->bio = $request->bio;
         $user->email = $request->email;
         $user->number = $request->number;
+        $user->save();
+        return redirect()->route('home');
+    }
+    public function updatePassword(Request $request){
+        $user = auth()->user();
+        $user->password = Hash::make($request['password']);
         $user->save();
         return redirect()->route('home');
     }

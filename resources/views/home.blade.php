@@ -29,7 +29,7 @@
                         </a>
                     </li>
                     <li class="list" data-color="#3c40c6">
-                        <a href="#">
+                        <a href="#" onclick="setpass()">
                             <span class="icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
                             <span class="title">Password</span>
                         </a>
@@ -82,11 +82,12 @@
                                 <span>Mobile Number</span>
                             </div>
                             <div class="inputBox w100">
-                                <textarea name="bio" value="{{$user->bio}}" disabled></textarea>
+                                <textarea name="bio" disabled>{{$user->bio}}</textarea>
                                 <span>Your Bio here...</span>
                             </div>
                             <div class="inputBox w100">
                                 <input type="button" id="editButton" value="Edit">
+                                <input type="button" id="cancelButton" value="Cancel" style="display: none">
                                 <input type="submit" id="updateButton" value="Update" style="display: none">
                             </div>
                         </form>
@@ -124,11 +125,25 @@
             <button class="closeBtn" onclick="setoggle()">Upload</button>
         </form>
     </div>
+    <div id="passup">
+        <form action="{{route('updatePass')}}" method="post">
+            @csrf
+            <h2>Update Your Password</h2>
+            <span class="close" onclick="setpass()">&times;</span>
+            <input type="password" id="fileInput" name="password" placeholder='Password'>
+            <button class="closeBtn" onclick="setpass()">Update</button>
+        </form>
+    </div>
     <script>
         let popup = document.getElementById('popup')
+        let passup = document.getElementById('passup')
         let blur = document.getElementById('blur')
         function setoggle(){
            popup.classList.toggle('active')
+           blur.classList.toggle('active')
+        }
+         function setpass(){
+           passup.classList.toggle('active')
            blur.classList.toggle('active')
         }
         let list = document.querySelectorAll('li');
@@ -155,12 +170,11 @@
         const ctx = document.getElementById('myChart');
         const user = @json($user);
 
-        const labels = ['Name', 'Username', 'Email', 'Password', 'Bio', 'Number','profile_pic'];
+        const labels = ['Name', 'Username', 'Email', 'Bio', 'Number','profile_pic'];
         const values = [
             user.name ? 1 : 0,
             user.username ? 1 : 0,
             user.email ? 1 : 0,
-            user.password ? 1 : 0,
             user.bio ? 1 : 0,
             user.number ? 1 : 0,
             user.profile_pic ? 1 : 0,
@@ -172,8 +186,8 @@
                 labels: labels,
                 datasets: [{
                     data: values,
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8C4A8C', '#FF9F40', '#4BFF40', '#BAF484'],
-                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8C4A8C', '#FF9F40', '#4BFF40', '#BAF484']
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8C4A8C', '#FF9F40', '#4BFF40'],
+                    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#8C4A8C', '#FF9F40', '#4BFF40']
                 }]
             },
             options: {
@@ -182,25 +196,43 @@
         });
     </script>
 <script>
-    $(document).ready(function() {
-      // Hide the "Update" button initially
-      $('#updateButton').hide();
-  
-      // Handler for the edit button click
-      $('#editButton').click(function(event) {
-        event.preventDefault(); // Prevent form submission
-  
-        // Change input elements to editable
-        $('#content input').removeAttr('disabled');
-        $('#content textarea').removeAttr('disabled');
-  
-        // Show the "Update" button
-        $('#updateButton').show();
-  
-        // Disable the "Edit" button
-        $(this).hide();
-      });
-    });
-  </script>
+$(document).ready(function() {
+  // Hide the "Update" and "Cancel" buttons initially
+  $('#updateButton').hide();
+  $('#cancelButton').hide();
+
+  // Handler for the edit button click
+  $(document).on('click', '#editButton', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Change input elements to editable
+    $('#content input:not([type="button"], [type="submit"])').removeAttr('disabled');
+    $('#content textarea').removeAttr('disabled');
+
+    // Show the "Update" and "Cancel" buttons
+    $('#updateButton').show();
+    $('#cancelButton').show();
+
+    // Hide the "Edit" button
+    $(this).hide();
+  });
+
+  // Handler for the cancel button click
+  $(document).on('click', '#cancelButton', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Disable the input elements inside the "content" container, excluding buttons
+    $('#content input:not([type="button"], [type="submit"])').attr('disabled', true);
+    $('#content textarea').attr('disabled', true);
+
+    // Hide the "Update" and "Cancel" buttons
+    $('#updateButton').hide();
+    $(this).hide();
+
+    // Show the "Edit" button
+    $('#editButton').show();
+  });
+});
+</script>
 </body>
 </html>

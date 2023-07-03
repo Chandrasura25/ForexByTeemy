@@ -303,12 +303,12 @@ section .wave.wave4 {
 .container .contactForm .formBox .inputBox input,
 .container .contactForm .formBox .inputBox textarea {
   width: 100%;
-  resize: none;
   padding: 5px 0;
   font-size: 18px;
   font-weight: 300;
   color: #333;
   border: none;
+  resize: none;
   outline: none;
   border-bottom: 1px solid #777;
 }
