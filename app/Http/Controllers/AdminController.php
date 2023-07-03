@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $admin = Auth::guard('admin')->user();
+        $admin = Auth::guard('admin')->user(); 
 
         return view('admin.dashboard', compact('admin'));
     }

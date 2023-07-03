@@ -184,7 +184,7 @@
                 <div class="cardHeader">
                     <h2>Recent SignUps</h2>
                 </div>
-                @if ($referredUsers->count() < 0)
+                @if ($referredUsers->count() <= 0)
                     <h2>No Referred User Yet</h2>
                 @else
                 <table>

@@ -9,6 +9,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
@@ -35,7 +36,7 @@ Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->nam
 Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
 Route::post('/update',[App\Http\Controllers\HomeController::class,'update'])->name('update');
 Route::post('/updatePass',[App\Http\Controllers\HomeController::class,'updatePassword'])->name('updatePass');
-
+Route::resource('/sales', SaleController::class);
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
