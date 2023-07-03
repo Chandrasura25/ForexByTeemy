@@ -94,7 +94,32 @@ class RegisterController extends Controller
             'ref_source' => $ref_source,
             'referrer' => $referrer,
         ]);
+
+        if ($referrer) {
+            // Assign 30 credits to the user registering
+            $user->credits()->create([
+                'amount' => 30,
+            ]);
+
+            // Assign 30 credits to the referrer
+            $referringUser = User::where('username', $referrer)->first();
+            if (!$referringUser) {
+                throw new \Exception('Referrer not found.');
+            }
+
+            $referringUser->credits()->create([
+                'amount' => 30,
+            ]);
+            // Update the total_credits of the referrer
+            $referringUser->update([
+                'total_credits' => $referringUser->credits()->sum('amount'),
+            ]);
+        }
         if ($user) {
+            // Update the total_credits in the users table
+            $user->update([
+                'credits' => $user->credits()->sum('amount'),
+            ]);
             try {
                 $mail = new PHPMailer(true);
 
@@ -124,7 +149,7 @@ class RegisterController extends Controller
                               margin: 0;
                               padding: 20px;
                             }
-                        
+
                             .container {
                               max-width: 600px;
                               margin: 0 auto;
@@ -133,12 +158,12 @@ class RegisterController extends Controller
                               border-radius: 5px;
                               box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                             }
-                        
+
                             h1 {
                               color: #555555;
                               margin-bottom: 20px;
                             }
-                        
+
                             p {
                               margin-bottom: 10px;
                             }
@@ -154,7 +179,7 @@ class RegisterController extends Controller
                           </div>
                         </body>
                         </html>';
-                        
+
                 $mail->Body = $body;
                 $mail->ContentType = "text/html";
 
@@ -193,7 +218,7 @@ class RegisterController extends Controller
     protected function saveFromLink(Request $request)
     {
         $this->validator($request->all())->validate();
-
+        $referrer = $request->referrer;
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
@@ -201,7 +226,31 @@ class RegisterController extends Controller
             'ref_source' => $request->ref_source,
             'referrer' => $request->referrer,
         ]);
+        if ($referrer) {
+            // Assign 30 credits to the user registering
+            $user->credits()->create([
+                'amount' => 30,
+            ]);
+
+            // Assign 30 credits to the referrer
+            $referringUser = User::where('username', $referrer)->first();
+            if (!$referringUser) {
+                throw new \Exception('Referrer not found.');
+            }
+
+            $referringUser->credits()->create([
+                'amount' => 30,
+            ]);
+            // Update the total_credits of the referrer
+            $referringUser->update([
+                'total_credits' => $referringUser->credits()->sum('amount'),
+            ]);
+        }
         if ($user) {
+            // Update the total_credits in the users table
+            $user->update([
+                'credits' => $user->credits()->sum('amount'),
+            ]);
             try {
                 $mail = new PHPMailer(true);
 
@@ -268,7 +317,7 @@ class RegisterController extends Controller
                 $mail->send();
                 Auth::guard('web')->login($user);
 
-               return redirect($this->redirectPath());
+                return redirect($this->redirectPath());
             } catch (Exception $e) {
                 return redirect()->back()->with('error', 'Failed to send email');
             }

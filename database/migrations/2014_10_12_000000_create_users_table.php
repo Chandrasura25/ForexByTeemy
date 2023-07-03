@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('number')->nullable();
             $table->string('referrer')->nullable();
             $table->string('ref_source')->nullable();
-            $table->string('credits')->nullable();
+            $table->string('credits')->default(0);
             $table->string('ref_link')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('profile_pic')->nullable(); 
