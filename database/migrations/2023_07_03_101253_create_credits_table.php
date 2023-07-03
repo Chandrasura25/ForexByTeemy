@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('credits', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->integer('amount');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
-            $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
+        
+            $table->foreign('username')->references('username')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
+        
     }
 
     /**

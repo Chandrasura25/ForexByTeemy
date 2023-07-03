@@ -23,6 +23,7 @@ class User extends Authenticatable
         'username',
         'ref_source',
         'referrer',
+
     ];
 
     /**
@@ -44,9 +45,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function credits()
+        public function credits()
     {
-        return $this->hasMany(Credit::class);
+        return $this->hasMany(Credit::class, 'user_id', 'id');
+    }
+
+    public function referredCredits()
+    {
+        return $this->hasMany(Credit::class, 'username', 'username');
     }
 
 }
