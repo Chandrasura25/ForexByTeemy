@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Credit;
 use Illuminate\Http\Request;
 
 class ClickController extends Controller
@@ -13,10 +15,26 @@ class ClickController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index(){
+    private function updateTotalCredits(User $user)
+    {
+        $totalCredits = Credit::where('username', $user->username)->sum('amount'); 
+        $user->update(['credits' => $totalCredits]);
+    }
+    public function index()
+    {
         $user = auth()->user();
-        $myRefLink = url('/register/'.$user->username); 
-        return view('click',['user'=>$user,'myRefLink'=>$myRefLink]);
+        $myRefLink = url('/register/' . $user->username);
+        $this->updateTotalCredits($user);
+        $referrer = $user->username;
+
+        $referringUser = User::where('username', $referrer)->first();
+
+        if ($referringUser) {
+            $totalReferred = $referringUser->referredUsers()->count();
+            $formattedReferrerNumber = ($totalReferred < 10) ? '0' . $totalReferred : $totalReferred;
+
+        }
+        return view('click', ['user' => $user, 'myRefLink' => $myRefLink, 'totalReferred' => $formattedReferrerNumber]);
     }
 
     /**
@@ -24,7 +42,7 @@ class ClickController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

@@ -98,7 +98,7 @@
             </a>
             <a href="/click" class="card">
                 <div>
-                    <div class="numbers">50</div>
+                    <div class="numbers">{{$user->credits}}</div>
                     <div class="cardName">Clicks, Credits & Conversion</div>
                 </div> 
                 <div class="iconBx">

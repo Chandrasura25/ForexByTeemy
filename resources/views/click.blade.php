@@ -25,12 +25,12 @@
         <div class="ref_no">
             <div class="drop">
                <div class="">
-                <h2>Total Referrers</h2>
-                <span>00</span>
+                <h2>Total Referred</h2>
+                <span>{{$totalReferred}}</span>
                </div>
                <div class="">
                 <h2>Total Credits</h2>
-                <span>00</span>
+                <span>{{$user->credits}}</span>
                </div>
             </div>
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Credit;
 use App\Models\Coupon;
 class AffiliateController extends Controller
 {
@@ -13,10 +15,16 @@ class AffiliateController extends Controller
     {
         $this->middleware('auth');
     }
+     private function updateTotalCredits(User $user)
+    {
+        $totalCredits = Credit::where('username', $user->username)->sum('amount'); 
+        $user->update(['credits' => $totalCredits]);
+    }
     public function index()
     {
         $couponCount = $this->getTotalCouponCount();
         $user = auth()->user();
+        $this->updateTotalCredits($user);
         // return $user->username;
         return view('affiliate',['user'=>$user,'couponCount'=>$couponCount]);
         //
