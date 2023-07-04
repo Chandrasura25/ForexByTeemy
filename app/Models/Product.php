@@ -13,7 +13,6 @@ class Product extends Model
         'product_type_id',
         'quantity',
         'price',
-        'image_path',
         'description',
         'commission',
         'expiration_date',
@@ -21,5 +20,9 @@ class Product extends Model
     public function productType()
     {
         return $this->belongsTo(ProductType::class);
+    }
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }
