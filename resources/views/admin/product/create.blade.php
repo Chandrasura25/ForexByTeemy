@@ -19,7 +19,7 @@
         </div>
         @include('flash::message')
         <div class="content">
-            <form action="/product" method="post" class="d-flex gap-4 justify-content-between align-items-center">
+            <form action="/product" method="post" class="d-flex gap-4 justify-content-between align-items-center" enctype="multipart/form-data">
                 @csrf
                 <div class="left bg-white w-50">
                     <h2 class="title">General</h2>
@@ -98,6 +98,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
 </body>
 </html>
