@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+.body{
     background:#D6D7EC;
 }
 .content .left,.content .right{

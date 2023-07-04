@@ -7,11 +7,12 @@
     <title>Create Products</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/createcoupon.css">
+    <link rel="stylesheet" href="/css/createproduct.css">
     <link rel="stylesheet" href="/css/flash.css">
     @cloudinaryJS
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="cover">
     <div class="container-fluid p-4 m-0">
         <div class="mb-3 fw-bold text-uppercase display-6 d-flex justify-content-between">
             <h2>Create Product</h2>
@@ -89,7 +90,7 @@
                                 </div>   
                                 
                                 <div class="position-absolute bottom-0 end-0 p-4">
-                                    <button class="btn btn-outline-primary px-4">Save</button>
+                                    <button class="btn btn-outline-success px-4">Save</button>
                                 </div>                                                  
                             </div> 
                         </div>

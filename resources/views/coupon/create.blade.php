@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/createcoupon.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="body">
     <div class="container-fluid p-4 m-0">
         <div class="mb-3 fw-bold text-uppercase display-6 d-flex justify-content-between">
             <h2>Add Coupon</h2>
