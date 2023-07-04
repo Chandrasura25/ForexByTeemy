@@ -17,6 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_type_id');
             $table->integer('quantity');
             $table->integer('price');
+            $table->string('image_path')->nullable();
+            $table->string('status')->default('active');
             $table->text('description')->nullable();
             $table->integer('commission')->nullable();
             $table->integer('super_affiliate_commission')->nullable();

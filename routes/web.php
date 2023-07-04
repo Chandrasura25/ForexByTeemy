@@ -9,6 +9,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,9 +41,12 @@ Route::resource('/sales', SaleController::class);
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
+Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
 Route::get('/credit',[CreditController::class,'index'])->name('credit');
 // CHATBOT
 Route::post('/bot',[OpenAIController::class,'chatOpenAi'])->name('chatbot');
+
+
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
 Route::post('/admin', [AdminAuthController::class, 'register'])->name('admin.signup');
@@ -51,9 +55,10 @@ Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name(
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.signin');
 // Admin Dashboard
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
+Route::resource('/product', ProductController::class);
 // Admin Logout
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
+
 
 Route::get('/{any?}', function ($any = null) {
     if ($any) {

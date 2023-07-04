@@ -37,6 +37,7 @@ class HomeController extends Controller
         $user = auth()->user();
         $user->profile_pic = $profile_pic;
         $user->save();
+        flash('Profile picture updated successfully!')->success();
         return redirect()->back();
     }
     public function update(Request $request){
@@ -47,12 +48,14 @@ class HomeController extends Controller
         $user->email = $request->email;
         $user->number = $request->number;
         $user->save();
+        flash('Profile updated successfully!')->success();
         return redirect()->route('home');
     }
     public function updatePassword(Request $request){
         $user = auth()->user();
         $user->password = Hash::make($request['password']);
         $user->save();
+        flash('Password changed successfully!')->success();
         return redirect()->route('home');
     }
 }

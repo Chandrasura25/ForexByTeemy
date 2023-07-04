@@ -8,6 +8,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/modal.css">
+    <link href="{{ asset('css/flash.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -62,6 +63,7 @@
             <div class="container">
                <div class="left">
                   <div class="contactForm">
+                    @include('flash::message')
                     <h2 class="title">Welcome <span>{{$user->username}}</span></h2>
                         <form class="formBox" id="content" method="POST" action="{{route('update')}}">
                             @csrf
@@ -233,6 +235,11 @@ $(document).ready(function() {
     $('#editButton').show();
   });
 });
+</script>
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
 </body>
 </html>
