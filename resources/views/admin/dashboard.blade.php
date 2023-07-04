@@ -25,38 +25,43 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                                <span class="icon"><ion-icon name="home"></ion-icon></span>
                                 <span class="title">Home</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/profile">
-                                <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                                <span class="title">Profile</span>
+                            <a href="/product">
+                                <span class="icon"><ion-icon name="pricetags"></ion-icon>
+                                </span>
+                                <span class="title">Products</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="icon"><i class="fas fa-handshake"></i></span>
-                                <span class="title">Affiliates</span>
+                                <span class="icon"><ion-icon name="people"></ion-icon>
+                                </span>
+                                <span class="title">All Affiliates</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="icon"><i class="fas fa-store"></i></span>
+                                <span class="icon"><ion-icon name="storefront"></ion-icon>
+                                </span>
                                 <span class="title">Store</span>
                             </a>
                         </li>
                         <li>
                             <a href="/settings">
-                                <span class="icon"><i class="fas fa-cogs"></i></span>
-                                <span class="title">Services</span>
+                                <span class="icon"><ion-icon name="settings"></ion-icon>
+                                </span>
+                                <span class="title">Settings</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                                <span class="title">Help</span>
+                                <span class="icon"><ion-icon name="newspaper"></ion-icon>
+                                </span>
+                                <span class="title">Blog</span>
                             </a>
                         </li>
                         
@@ -93,7 +98,7 @@
                     <div class="card">
                        <div>
                         <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="cardName">Daily Clicks</div>
                        </div> 
                        <div class="iconBx">
                         <ion-icon name="eye-outline"></ion-icon>
