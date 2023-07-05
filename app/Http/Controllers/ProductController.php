@@ -19,8 +19,8 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products = Product::with('productType','images')->get(); 
-        return view('admin.product.index',['products' => $products]);
+        $products = Product::with('productType', 'images')->get();
+        return view('admin.product.index', ['products' => $products]);
     }
 
     /**
@@ -29,7 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         $product_types = ProductType::all();
-        return view('admin.product.create', ['product_types' => $product_types]); 
+        return view('admin.product.create', ['product_types' => $product_types]);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $uploaded = Cloudinary::upload($image->getRealPath(), [
-                    'folder' => 'products'
+                    'folder' => 'products',
                 ]);
                 $uploadedImages[] = [
                     'product_id' => $product->id,
@@ -92,7 +92,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        return $id;
+        $product = Product::with('productType', 'images')->find($id);
+        return view('admin.product.show', ['product' => $product]);
     }
 
     /**
@@ -100,7 +101,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::with('productType', 'images')->find($id);
+        $product_types = ProductType::all();
+        return view('admin.product.edit', ['product' => $product, 'product_types' => $product_types]);
     }
 
     /**
@@ -116,6 +119,20 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        if ($product) {
+            // Delete associated images
+            $product->images()->delete();
+
+            // Delete the product
+            $product->delete();
+            flash('Product and associated images deleted successfully!')->success();
+            return redirect()->route('admin.product.index');
+        } else {
+            flash('Product not found!')->error();
+            return redirect()->route('admin.product.index');
+        }
     }
+
 }
