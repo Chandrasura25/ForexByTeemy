@@ -19,7 +19,8 @@ class ProductController extends Controller
     }
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::with('productType','images')->get(); 
+        return view('admin.product.index',['products' => $products]);
     }
 
     /**

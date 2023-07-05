@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/product/create">
+                            <a href="/product">
                                 <span class="icon"><ion-icon name="pricetags"></ion-icon>
                                 </span>
                                 <span class="title">Products</span>
