@@ -6,13 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products Available</title>
     <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/menu.css">
     @cloudinaryJS
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>Products Available</h1>
-            <a href="/product/create">Add Product</a>
+            <div class="navigate">
+                <div class="toggleMe"><span></span></div>
+                <ul class="ul">
+                    <li style="--i:0"><a href="/product/create">Create Product</a></li>
+                    <li style="--i:1"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li style="--i:2"><a href="#">Services</a></li>
+                    <li style="--i:3"><a href="#">Work</a></li>
+                </ul>
+            </div>
         </div>
         <div class="content">
             <section>
@@ -62,6 +71,13 @@
                 $(this).addClass('active').siblings().removeClass('active')
             })
         })
+    </script>
+    <script type="text/javascript">
+        let navigation = document.querySelector('.navigate')
+        document.querySelector('.toggleMe').onclick = function (){
+            this.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
     </script>
 </body>
 </html>

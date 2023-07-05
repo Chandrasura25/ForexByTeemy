@@ -63,22 +63,32 @@ class ProductController extends Controller
 
         $uploadedImages = [];
 
+        // if ($request->hasFile('images')) {
+        //     foreach ($request->file('images') as $image) {
+        //         $uploaded = Cloudinary::upload($image->getRealPath(), [
+        //             'folder' => 'products', // Specify the folder name
+        //         ]);
+        
+        //         $uploadedImages[] = [
+        //             'product_id' => $product->id,
+        //             'image_path' => $uploaded->getSecurePath(),
+        //             'public_id' => $uploaded->getPublicId(),
+        //         ];
+        //     }
+        
+        //     Image::insert($uploadedImages);
+        // }
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $uploaded = Cloudinary::upload($image->getRealPath(), [
-                    'folder' => 'products', // Specify the folder name
-                ]);
-        
+                $uploaded = Cloudinary::upload($image->getRealPath());
                 $uploadedImages[] = [
                     'product_id' => $product->id,
                     'image_path' => $uploaded->getSecurePath(),
                     'public_id' => $uploaded->getPublicId(),
                 ];
             }
-        
             Image::insert($uploadedImages);
         }
-
         // Save the uploaded image details to the "images" table
         if ($product) {
             flash('Product created successfully!')->success();

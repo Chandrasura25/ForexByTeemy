@@ -16,7 +16,7 @@
     <div class="container-fluid p-4 m-0">
         <div class="mb-3 fw-bold text-uppercase display-6 d-flex justify-content-between">
             <h2>Create Product</h2>
-            <a href="/admin/dashboard" class="btn btn-dark text-decoration-none px-4">Back</a>
+            <a href="/product" class="btn btn-dark text-decoration-none px-4">Back</a>
         </div>
         @include('flash::message')
         <div class="content">
