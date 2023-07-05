@@ -7,6 +7,7 @@
     <title>Products Available</title>
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/card.css">
     @cloudinaryJS
 </head>
 <body>
@@ -29,14 +30,25 @@
                     <div class="items">
                         <ul>
                             <li class="list active" data-filter="All">All</li>
-                            <li class="list" data-filter="services">Services</li>
-                            <li class="list" data-filter="physical">Physical</li>
-                            <li class="list" data-filter="download">Download</li>
+                            <li class="list" data-filter="Services">Services</li>
+                            <li class="list" data-filter="Physical">Physical</li>
+                            <li class="list" data-filter="Download">Download</li>
                         </ul>
                     </div>
-                    <div class="product">
+                    <div class="products">
                         @foreach ($products as $product)
-                           <div class="itemBox mobile"><img src="img/76.jfif" alt=""></div>
+                           <div class="ui-card itemBox {{$product->productType->name}}">
+                            @if ($product->images->count() > 0)
+                               <img src="{{ $product->images->first()->image_path }}" alt="Product Image">
+                            @else
+                                <p>No image available</p>
+                            @endif
+                            <div class="description">
+                                <h3>Mountain Morning</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi beatae repellendus et quisquam.</p>
+                                <a href="#">Read More</a>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </section>

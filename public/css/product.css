@@ -82,7 +82,7 @@ section ul li.active {
     background: #37d72f;
     color: #fff;
 }
-.product {
+/* .product {
     display: flex;
     flex-wrap: wrap;
 }
@@ -99,4 +99,4 @@ section ul li.active {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
