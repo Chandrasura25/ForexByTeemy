@@ -39,14 +39,26 @@
                         @foreach ($products as $product)
                            <div class="ui-card itemBox {{$product->productType->name}}">
                             @if ($product->images->count() > 0)
-                               <img src="{{ $product->images->first()->image_path }}" alt="Product Image">
+                               <img src="{{ $product->images->first()->image_path }}" alt="{{$product->name}}">
                             @else
                                 <p>No image available</p>
                             @endif
                             <div class="description">
-                                <h3>Mountain Morning</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi beatae repellendus et quisquam.</p>
-                                <a href="#">Read More</a>
+                                <h3>{{$product->name}}</h3>
+                                <p>{{$product->description}}</p>
+                                <div class="amount">
+                                    <span>Price: {{$product->price}}</span>
+                                    <span>Quantity: {{$product->quantity}}</span>
+                                </div>
+                                <a href="product/{{$product->id}}">See More</a>
+                                <div class="action">
+                                    <a href="/product/{{$product->id}}/edit">Edit</a>
+                                    <form action="/product/{{$product->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         @endforeach

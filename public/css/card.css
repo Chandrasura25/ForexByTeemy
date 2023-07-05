@@ -1,5 +1,4 @@
 .products{
-	font-family: arial;
 	font-size: 16px;
 	display: flex;
 	justify-content: space-around;
@@ -35,6 +34,7 @@ img{
 	width: 100%;
 	padding: 15px;
 	text-align: center;
+    text-transform: capitalize;
 	color: #fff;
 	font-size: 18px;
 	transform: translateY(20px);
@@ -49,18 +49,33 @@ img{
 	font-size: 32px;
 	margin: 0 0 20px;
 }
-.description a{
+.amount{
+    font-size: 20px;
+    font-weight: 700;
+}
+.amount span{
+    margin: 0 20px;
+}
+.action{
+    display: flex;
+    justify-content: space-between;
+}
+.description a, .action button{
 	color: #fff;
 	text-decoration: none;
 	display: inline-block;
 	padding: 10px 25px;
-	background: #34aff3;
+	background: #37d72f;
 	border-radius: 5px;
 	transition-delay: .4s;
 	transition: .5s;
 }
-.description a:hover{
-	background: #0e6290;
+.action button{
+    font-size: 16px;
+    cursor: pointer;
+}
+.description a:hover,.action button:hover{
+	background: #1dd114;
 }
 .ui-card:hover .description{
 	transform: translateY(0px);
