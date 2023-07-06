@@ -1,27 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=poppins:wght@200,300,400,500,600,700,800,900&display=swap");
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif, "poppins";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, "poppins";
 }
-.container{
+.container {
     position: relative;
-    padding: 0 120px 0 100px;
+    padding: 0 100px;
     min-height: 100vh;
 }
-.container::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 350px;
-    height: 100%;
-    background: #333;
-    z-index: -2;
-}
-.container::after{
-    content: 'ByTeemy';
+.container::after {
+    content: "ByTeemy";
     position: absolute;
     font-size: 18vw;
     bottom: 0;
@@ -31,43 +21,39 @@
     color: #000;
     opacity: 0.04;
 }
-header{
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 30px 0;
 }
-header .logo{
+header .logo {
     font-weight: 700;
     text-transform: uppercase;
     color: #333;
     text-decoration: none;
     font-size: 30px;
 }
-header .logo span{
+header .logo span {
     color: #78ff00;
 }
-header ul{
+header ul {
     position: relative;
     display: flex;
 }
-header ul li{
+header ul li {
     list-style: none;
     margin: 0 20px;
 }
-header ul li a{
+header ul li a {
     position: relative;
     color: #333;
     font-size: 18px;
     text-decoration: none;
     padding: 4px 10px;
 }
-header ul li:nth-child(3) a,
-header ul li:nth-child(4) a{
-    color: #fff;
-}
-header ul li a::before{
-    content: '';
+header ul li a::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -75,32 +61,87 @@ header ul li a::before{
     height: 100%;
     background: #78ff00;
     z-index: -1;
-    transition: .5s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 header ul li a:hover::before,
-header ul li a.active::before{
+header ul li a.active::before {
     width: 40px;
 }
-.content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /*margin-top: 10px;*/
+.contain {
+    position: relative;
+    padding: 0 40px;
 }
-.menuIcon{
+.firstSection{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.box{
+	position: absolute;
+	width: 350px;
+	height: 400px;
+	background: #37d72f;
+	overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.figure{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.figure img{
+	width: 100%;
+	height: 100%;
+	transition: .5s;
+}
+.box:hover .figure img{
+	transform: scale(0);
+}
+.caption{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #78ff00;
+	transform: scale(2.0);
+	opacity: 0;
+	transition: .5s ;
+}
+.box:hover .caption{
+	transform: scale(1.0);
+	opacity: 1;
+}
+.about{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 40px;
+	text-align: center;
+	color: #fff;
+}
+.about h2{
+	text-transform: uppercase;
+	font-size: 30px;
+}
+.about p{
+	font-size: 1em;
+	margin: 20px 0 0;
+}
+.menuIcon {
     display: none;
 }
-@media (max-width:992px) {
-    .container{
+@media (max-width: 992px) {
+    .container {
         padding: 20px 50px;
     }
-    .container::before{
+    .container::before {
         display: none;
     }
-    header{
+    header {
         padding: 0;
     }
-    header ul{
+    header ul {
         display: none;
         position: fixed;
         top: 0;
@@ -111,22 +152,22 @@ header ul li a.active::before{
         z-index: 100;
         padding: 100px 0;
     }
-    header.active ul{
+    header.active ul {
         display: initial;
     }
-    header ul li{
+    header ul li {
         padding: 20px;
         text-align: center;
     }
-    header ul li a{
+    header ul li a {
         color: #333 !important;
         font-size: 36px;
     }
     header ul li a:hover::before,
-    header ul li a.active::before{
-    width: 100%;
-}
-    .menuIcon{
+    header ul li a.active::before {
+        width: 100%;
+    }
+    .menuIcon {
         display: initial;
         position: fixed;
         right: 50px;
@@ -140,15 +181,15 @@ header ul li a.active::before{
         filter: invert(1);
         background-size: cover;
     }
-    header.active .menuIcon{
-        background:url(/image/close.png);
+    header.active .menuIcon {
+        background: url(/image/close.png);
     }
 }
-@media (max-width: 767px){
-    .container{
+@media (max-width: 767px) {
+    .container {
         padding: 20px 30px;
     }
-    .menuIcon{
+    .menuIcon {
         right: 30px;
     }
 }

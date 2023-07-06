@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
@@ -28,11 +29,9 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/store', function () {
-    return view('store');
-});
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
+Route::get('/store',[StoreController::class,'index'])->name('store');
+Auth::routes(); 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');   
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 Route::get('/register/{referral}', [RegisterController::class, 'FromLink'])->name('refer');
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');

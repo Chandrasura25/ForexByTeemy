@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/flash.css">
     @cloudinaryJS
 </head>
-<body>
+<body class="body">
     @include('layouts.loader')
     <div class="container">
         <div class="header">
@@ -27,7 +27,7 @@
         @include('flash::message')
         <div class="content">
             @if ($products->count() > 0)
-                <section>
+                <section class="section">
                     <div class="items">
                         <ul>
                             <li class="list active" data-filter="All">All</li>

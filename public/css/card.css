@@ -1,9 +1,3 @@
-.products{
-	font-size: 16px;
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
-}
 .ui-card{
 	width: 350px;
     height: 400px;
@@ -12,6 +6,7 @@
 	overflow: hidden;
 	transition: .5s;
 	margin: 20px;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 img{
 	max-width: 100%;
