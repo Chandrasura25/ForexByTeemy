@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li style="--i:3;">
-                            <a href="{{ route('login') }}">
+                            <a href="/store">
                                 <span>Store</span>
                                 <span><i class="fas fa-store"></i></span>
                             </a>

@@ -28,6 +28,9 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/store', function () {
+    return view('store');
+});
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
