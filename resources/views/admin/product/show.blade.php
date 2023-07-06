@@ -28,11 +28,8 @@
             <p>No image available</p>
         @endif
        <ul class="size">
-         <span>Size</span>
-         <li>7</li>
-         <li>8</li>
-         <li>9</li>
-         <li>10</li>
+         <span>Price</span>
+         <li>{{$product->price}}</li>
        </ul>
        <a href="#" class="btn">Add To Cart</a>
      </div>

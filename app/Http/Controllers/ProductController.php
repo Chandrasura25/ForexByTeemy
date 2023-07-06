@@ -126,39 +126,87 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'product_type_id' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'commission' => 'required',
+        ]);
+
         $product = Product::find($id);
 
-        if ($product) {
-            $request->validate([
-                'name' => 'required',
-                'product_type_id' => 'required',
-                'quantity' => 'required',
-                'price' => 'required',
-                'description' => 'required',
-                'commission' => 'required',
-                'expiration_date' => 'required',
-            ]);
-
-            $productData = $request->only([
-                'name',
-                'product_type_id',
-                'quantity',
-                'price',
-                'description',
-                'commission',
-                'expiration_date',
-            ]);
-
-            $product->update($productData);
-
-            flash('Product updated successfully!')->success();
-            return redirect()->route('product.index');
-        } else {
+        if (!$product) {
             flash('Product not found!')->error();
-            return redirect()->route('product.index'); 
+            return redirect()->route('admin.product.index');
         }
+
+        // Update basic product information
+        $product->name = $request->input('name');
+        $product->product_type_id = $request->input('product_type_id');
+        $product->quantity = $request->input('quantity');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        $product->commission = $request->input('commission');
+
+        // Handle image, video, and music updates
+        if ($request->hasFile('images')) {
+            $uploadedImages = [];
+
+            foreach ($request->file('images') as $file) {
+                $fileType = $file->getClientMimeType();
+
+                // Handle image file
+                if (str_contains($fileType, 'image')) {
+                    $uploaded = Cloudinary::upload($file->getRealPath(), [
+                        'folder' => 'products',
+                    ]);
+
+                    $uploadedImages[] = [
+                        'file_type' => 'image',
+                        'file_path' => $uploaded->getSecurePath(),
+                        'public_id' => $uploaded->getPublicId(),
+                    ];
+                }
+                // Handle video file
+                elseif (str_contains($fileType, 'video')) {
+                    $uploaded = Cloudinary::upload($file->getRealPath(), [
+                        'folder' => 'products',
+                        'resource_type' => 'video',
+                    ]);
+
+                    $uploadedImages[] = [
+                        'file_type' => 'video',
+                        'file_path' => $uploaded->getSecurePath(),
+                        'public_id' => $uploaded->getPublicId(),
+                    ];
+                }
+                // Handle music file
+                elseif (str_contains($fileType, 'audio')) {
+                    $uploaded = Cloudinary::upload($file->getRealPath(), [
+                        'folder' => 'products',
+                        'resource_type' => 'auto',
+                    ]);
+
+                    $uploadedImages[] = [
+                        'file_type' => 'audio',
+                        'file_path' => $uploaded->getSecurePath(),
+                        'public_id' => $uploaded->getPublicId(),
+                    ];
+                }
+            }
+
+            // Save the uploaded file details
+            $product->images()->createMany($uploadedImages);
+        }
+
+        // Save the product
+        $product->save();
+        flash('Product updated successfully!')->success();
+        return redirect()->route('admin.product.index');
     }
 
     /**

@@ -76,10 +76,12 @@
                     <h2 class="title">Others</h2>
                         <div class="formBx">
                            <div class="p-3">
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label">Product Image(s)</label>
-                                    <input class="form-control" name="images[]" type="file" id="formFile" multiple accept=".jpg,.png,.jpeg,.svg,.gif">
-                                </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Product Image(s)</label>
+                                <input class="form-control" name="images[]" type="file" id="formFile" multiple accept=".jpg,.png,.jpeg,.svg,.gif,.mp3,.mp4">
+                                <p class="form-text">{{ count($product->images) }} existing image(s)</p>
+                            </div>
+                            
                                 <div class="form-floating mb-2">
                                     <input type="number" class="form-control" id="floatingInput" placeholder="Commission" required name="commission" value="{{$product->commission}}">
                                     <label for="floatingInput">Commission</label>
