@@ -62,19 +62,36 @@ class ProductController extends Controller
         $product = Product::create($productData);
 
         $uploadedImages = [];
+
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $uploaded = Cloudinary::upload($image->getRealPath(), [
+            foreach ($request->file('images') as $file) {
+                $uploaded = Cloudinary::upload($file->getRealPath(), [
                     'folder' => 'products',
                 ]);
-                $uploadedImages[] = [
+
+                $uploadedFile = [
                     'product_id' => $product->id,
-                    'image_path' => $uploaded->getSecurePath(),
+                    'file_path' => $uploaded->getSecurePath(),
                     'public_id' => $uploaded->getPublicId(),
                 ];
+
+                // Determine the file type based on MIME type
+                $fileType = $file->getClientMimeType();
+                if (str_contains($fileType, 'image')) {
+                    $uploadedFile['file_type'] = 'image';
+                } elseif (str_contains($fileType, 'video')) {
+                    $uploadedFile['file_type'] = 'video';
+                } elseif (str_contains($fileType, 'audio')) {
+                    $uploadedFile['file_type'] = 'audio';
+                }
+
+                $uploadedImages[] = $uploadedFile;
             }
+
+            // Save the uploaded file details to the database
             Image::insert($uploadedImages);
         }
+
         // Save the uploaded image details to the "images" table
         if ($product) {
             flash('Product created successfully!')->success();

@@ -31,14 +31,14 @@
                         </li>
                         <li>
                             <a href="/product">
-                                <span class="icon"><ion-icon name="pricetags"></ion-icon>
+                                <span class="icon"><ion-icon name="cube"></ion-icon>
                                 </span>
                                 <span class="title">Products</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="icon"><ion-icon name="people"></ion-icon>
+                                <span class="icon"><ion-icon name="person-add"></ion-icon>
                                 </span>
                                 <span class="title">All Affiliates</span>
                             </a>
@@ -98,10 +98,10 @@
                     <div class="card">
                        <div>
                         <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Clicks</div>
+                        <div class="cardName">Products</div>
                        </div> 
                        <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="cube-outline"></ion-icon>
                        </div>
                     </div>
                     <div class="card">
@@ -116,10 +116,10 @@
                      <div class="card">
                         <div>
                          <div class="numbers">504</div>
-                         <div class="cardName">Comment</div>
+                         <div class="cardName">Users</div>
                         </div> 
                         <div class="iconBx">
-                         <ion-icon name="chatbubbles-outline"></ion-icon>
+                         <ion-icon name="people-outline"></ion-icon>
                         </div>
                      </div>
                      <div class="card">

@@ -76,7 +76,10 @@
                            <div class="p-3">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Product Image(s)</label>
-                                    <input class="form-control" name="images[]" type="file" id="formFile" multiple accept=".jpg,.png,.jpeg,.svg,.gif">
+                                    <input class="form-control" name="images[]" type="file" id="formFile" multiple accept=".jpg,.png,.jpeg,.svg,.gif,.mp4,.mp3" aria-labelledby="imageBlock">
+                                    <div id="imageBlock" class="form-text">
+                                        maximum of 4 images
+                                      </div>
                                 </div>
                                 <div class="form-floating mb-2">
                                     <input type="number" class="form-control" id="floatingInput" placeholder="Commission" required name="commission">

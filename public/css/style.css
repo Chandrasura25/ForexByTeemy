@@ -20,7 +20,7 @@ body {
 .marquee span {
     position: absolute;
     display: block;
-    width: 100%;
+    width: 200%;
     height: 100%;
     font-size: 24px;
     text-align: center;
