@@ -89,8 +89,8 @@
                                                         <span>Price: {{$product->price}}</span>
                                                         <span>Quantity: {{$product->quantity}}</span>
                                                     </div>
-                                                    <a href="product/{{$product->id}}">See More</a>
                                                     <div class="action">
+                                                        <a href="product/{{$product->id}}">See More</a>
                                                         <a href="/cart">Add to Cart</a>
                                                     </div>
                                                 </div>
