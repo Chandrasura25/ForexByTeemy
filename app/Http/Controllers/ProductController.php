@@ -154,10 +154,10 @@ class ProductController extends Controller
             $product->update($productData);
 
             flash('Product updated successfully!')->success();
-            return redirect()->route('product.edit');
+            return redirect()->route('product.index');
         } else {
             flash('Product not found!')->error();
-            return redirect()->route('product.edit');
+            return redirect()->route('product.index'); 
         }
     }
 

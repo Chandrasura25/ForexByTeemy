@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="/css/menu.css">
     <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/css/flash.css">
     @cloudinaryJS
 </head>
 <body>
@@ -73,6 +74,9 @@
         </div>
     </div>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
     <script>
         $(document).ready(function(){
             $('.list').click(function(){
