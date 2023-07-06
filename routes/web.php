@@ -54,7 +54,12 @@ Route::post('/admin', [AdminAuthController::class, 'register'])->name('admin.sig
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.signin');
 // Admin Dashboard
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/edit', [AdminController::class, 'edit'])->name('admin.edit');
+Route::post('/admin/update', [AdminController::class, 'update'])->name('admin.update');
+Route::post('/admin/updatePassword', [AdminController::class, 'updatePassword'])->name('admin.updatePassword');
+Route::post('/admin/updateImage', [AdminController::class, 'updateImage'])->name('admin.updateImage');
+// Admin Products
 Route::resource('/product', ProductController::class);
 // Admin Logout
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');

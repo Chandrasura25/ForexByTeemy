@@ -51,14 +51,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/settings">
+                            <a href="/admin/edit">
                                 <span class="icon"><ion-icon name="settings"></ion-icon>
                                 </span>
                                 <span class="title">Settings</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/blog">
                                 <span class="icon"><ion-icon name="newspaper"></ion-icon>
                                 </span>
                                 <span class="title">Blog</span>
@@ -177,24 +177,6 @@
                                 <td>Paid</td>
                                 <td><span class="status delivered">Delivered </span></td>
                               </tr>
-                              <tr>
-                                  <td>Freezer</td>
-                                  <td>$1300</td>
-                                  <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                              </tr>
-                              <tr>
-                                  <td>Trouser</td>
-                                  <td>$300</td>
-                                  <td>Due</td>
-                                  <td><span class="status return">Return</span></td>
-                                </tr>
-                                <tr>
-                                  <td>Refrigerator</td>
-                                  <td>$1200</td>
-                                  <td>Paid</td>
-                                  <td><span class="status delivered">Delivered </span></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -203,12 +185,18 @@
                         <div class="cardHeader">
                             <h2>Recent Customers</h2>
                         </div>
-                        <table>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img1.jpg" alt=""></div></td>
-                                <td><h4>David<br><span>Italy</span></h4></td>
-                            </tr>
-                        </table>
+                        @if ($users->count() <= 0)
+                        <h2>No User Registered Yet</h2>
+                        @else
+                          <table>
+                             @foreach ($users as $user)
+                              <tr>
+                                  <td><div class="imgBx"><img src="{{$user->profile_pic}}" alt="{{$user->username}}"></div></td>
+                                  <td><h4>{{$user->username}}<br><span>{{$user->number}}</span></h4></td>
+                              </tr>
+                              @endforeach 
+                          </table> 
+                        @endif
                     </div>
                    </div>
                 </div>

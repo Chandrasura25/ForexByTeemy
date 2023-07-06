@@ -190,7 +190,7 @@
                 <table>
                    @foreach ($referredUsers as $referred)
                     <tr>
-                        <td><div class="imgBx"><img src="{{$referred->profile_pic}}" alt=""></div></td>
+                        <td><div class="imgBx"><img src="{{$referred->profile_pic}}" alt="{{$referred->username}}"></div></td>
                         <td><h4>{{$referred->username}}<br><span>{{$referred->number}}</span></h4></td>
                     </tr>
                     @endforeach 
