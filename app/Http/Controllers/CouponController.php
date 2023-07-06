@@ -160,5 +160,5 @@ class CouponController extends Controller
 
         return redirect()->back()->with('success', 'Coupon status toggled successfully.');
     }
-
+   public function transfer(){}
 }

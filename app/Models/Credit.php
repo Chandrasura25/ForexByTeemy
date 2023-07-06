@@ -25,4 +25,10 @@ class Credit extends Model
     {
         return $this->belongsTo(User::class, 'username', 'username');
     }
+    
+    // transfer coupon
+    public function coupon()
+    {
+        return $this->hasMany(Coupon::class, 'coupon_id', 'id');
+    }
 }

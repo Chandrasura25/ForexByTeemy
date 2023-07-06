@@ -24,6 +24,12 @@ class ClickController extends Controller
     {
         $user = auth()->user();
         $myRefLink = url('/register/' . $user->username);
+        $coupon_percent = 20;
+        $user->update([
+            'referral_link' => $myRefLink,
+            'coupon_percent' => $coupon_percent,
+            'personal_coupon' => $user->personal_coupon + 1
+        ]);
         $this->updateTotalCredits($user);
         $referrer = $user->username;
 

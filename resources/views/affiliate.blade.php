@@ -46,9 +46,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/settings">
-                        <span class="icon"><i class="fas fa-cogs"></i></span>
-                        <span class="title">My Services</span>
+                    <a href="/store">
+                        <span class="icon"><ion-icon name="cube-outline"></ion-icon></span>
+                        <span class="title">Store</span>
                     </a>
                 </li>
                 <li>

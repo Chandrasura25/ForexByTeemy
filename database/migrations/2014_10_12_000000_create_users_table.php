@@ -22,11 +22,13 @@ return new class extends Migration
             $table->string('referrer')->nullable();
             $table->string('ref_source')->nullable();
             $table->string('credits')->default(0);
-            $table->string('ref_link')->nullable();
+            $table->string('referral_link')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('profile_pic')->nullable(); 
             $table->string('discount')->nullable();
             $table->string('coupons')->nullable();
+            $table->integer('personal_coupon')->default(0);
+            $table->integer('coupon_percent')->nullable();
             $table->string('effectivity')->nullable(); 
             $table->timestamp('last_activity')->nullable();
             $table->rememberToken();

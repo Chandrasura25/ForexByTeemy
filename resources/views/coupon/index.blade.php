@@ -7,9 +7,9 @@
             <div class="toggleMe"><span></span></div>
             <ul class="ul">
                 <li style="--i:0"><a href="/coupon/create">Create Coupon</a></li>
-                <li style="--i:1"><a href="#">Create</a></li>
-                <li style="--i:2"><a href="#">Services</a></li>
-                <li style="--i:3"><a href="#">Work</a></li>
+                <li style="--i:1"><a href="/store">Store</a></li>
+                {{-- <li style="--i:2"><a href="#">Services</a></li>
+                <li style="--i:3"><a href="#">Work</a></li> --}}
             </ul>
         </div>
     </div> 
@@ -17,19 +17,19 @@
 <div class="cardBox">
     <a href="#" class="card">
        <div>
-        <div class="numbers">04</div>
+        <div class="numbers">00</div>
         <div class="cardName">Total Customers</div>
        </div> 
     </a>
     <a href="#" class="card">
         <div>
-            <div class="numbers">50</div>
-            <div class="cardName">Total Orders</div>
+            <div class="numbers">{{$user->personal_coupon}}</div>
+            <div class="cardName">Personal Coupons</div>
         </div> 
      </a>
      <a href="/sales" class="card">
         <div>
-         <div class="numbers">$04</div>
+         <div class="numbers">{{$user->credits}}</div> 
          <div class="cardName">Total Credits</div>
         </div>
     </a>
@@ -102,7 +102,8 @@
             </div>
         </div>
         @else
-        <h2>Add Coupons</h2>
+         <h2>No Available Coupon! <span>Create Coupons</span></h2>
+         <p>You get a 20% free coupon as an affiliate</p>
         @endif
     </div>
     

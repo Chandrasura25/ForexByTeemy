@@ -47,7 +47,7 @@
                     <li class="list" data-color="#0fbcf9">
                         <a href="/services">
                                 <span class="icon"><i class="fas fa-store"></i></span>
-                                <span class="title">My Services</span>
+                                <span class="title">My Store</span>
                             </a>
                     </li>
                     <li class="list" data-color="#ffa801">

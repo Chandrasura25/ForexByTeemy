@@ -45,7 +45,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/store">
                                 <span class="icon"><ion-icon name="storefront"></ion-icon>
                                 </span>
                                 <span class="title">Store</span>
