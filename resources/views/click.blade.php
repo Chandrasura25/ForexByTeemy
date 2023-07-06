@@ -20,7 +20,7 @@
                         </div>
                     </form>
                 </div>
-        </div>
+            </div>
         </div>
         <div class="ref_no">
             <div class="drop">
@@ -32,6 +32,22 @@
                 <h2>Total Credits</h2>
                 <span>{{$user->credits}}</span>
                </div>
+            </div>
+        </div>
+        <div class="ref_source">
+            <div class="drop">
+                <div class="content">
+                    <h2>Add A Referral Source</h2>
+                    <small>Replace the written ref source with your preferred source like facebook</small>
+                    <form action="">
+                        <div class="inputBox">
+                            <input type="text" name="" value="{{$myRefLink}}-refsource" placeholder="Referrer Link" id="referrerLink">
+                        </div>
+                        <div class="inputBox">
+                            <input type="button" id="copySourceButton" data-clipboard-text="{{$myRefLink}}-refsource" value='Copy'>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -69,5 +85,43 @@
     });
     </script>
     
-
+    <script>
+        document.getElementById("copySourceButton").addEventListener("click", function() {
+            var referrerLink = document.getElementById("referrerLink");
+            var copiedText = referrerLink.value.trim();
+            copyToClipboard(copiedText);
+            changeButtonValue();
+            removeCopiedText();
+        });
+    
+        function copyToClipboard(text) {
+            var tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+        }
+    
+        function changeButtonValue() {
+            var copyButton = document.getElementById("copySourceButton");
+            copyButton.value = "Copied";
+            setTimeout(function() {
+                copyButton.value = "Copy";
+            }, 60000); // 1 minute
+        }
+    
+        function removeCopiedText() {
+            setTimeout(function() {
+                var referrerLink = document.getElementById("referrerLink");
+                referrerLink.value = "";
+            }, 60000); // 1 minute
+        }
+    </script>
+    
+    
+    
+    
+    
+    
 @endsection

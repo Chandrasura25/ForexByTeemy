@@ -14,7 +14,7 @@
     <div class="container-fluid p-4 m-0">
         <div class="mb-2 fw-bold text-uppercase display-6 d-flex justify-content-between">
             <h2>Add Coupon</h2>
-            <a href="/credit" class="btn btn-secondary text-decoration-none">Go Back</a>
+            <a href="/coupon" class="btn btn-secondary text-decoration-none">Go Back</a>
         </div>
         <p class="fw-bold text-uppercase text-warning">You can only assign percentage for your coupons out of the 20% affiliate program advantage</p>
         @if (isset($message))  

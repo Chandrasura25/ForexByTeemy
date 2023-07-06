@@ -23,7 +23,10 @@ class User extends Authenticatable
         'username',
         'ref_source',
         'referrer',
-        'credits'
+        'credits',
+        'referral_link',
+        'coupon_percent',
+        'personal_coupon',
     ];
 
     /**
