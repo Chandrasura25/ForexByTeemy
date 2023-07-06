@@ -16,17 +16,17 @@
 </div>
 <div class="cardBox">
     <a href="#" class="card">
-       <div>
-        <div class="numbers">00</div>
-        <div class="cardName">Total Customers</div>
-       </div> 
-    </a>
-    <a href="#" class="card">
         <div>
             <div class="numbers">{{$user->personal_coupon}}</div>
             <div class="cardName">Personal Coupons</div>
         </div> 
      </a>
+    <a href="#" class="card">
+       <div>
+        <div class="numbers">{{$user->coupon_percent}}</div>
+        <div class="cardName">Coupon Percentage</div>
+       </div> 
+    </a>
      <a href="/sales" class="card">
         <div>
          <div class="numbers">{{$user->credits}}</div> 
@@ -90,6 +90,10 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                    <form action="{{ route('coupon.transfer', $coupon->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"><i class="fas fa-exchange-alt"></i></button>
                                     </form>
                                 </div>
                             </td>

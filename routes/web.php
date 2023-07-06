@@ -43,6 +43,7 @@ Route::resource('/sales', SaleController::class);
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
+Route::post('/coupon/{couponId}/transfer', [CouponController::class, 'transferCoupon'])->name('coupon.transfer');
 Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
 Route::get('/credit',[CreditController::class,'index'])->name('credit');
 // CHATBOT
