@@ -141,7 +141,7 @@ class ProductController extends Controller
 
         if (!$product) {
             flash('Product not found!')->error();
-            return redirect()->route('admin.product.index');
+            return redirect()->route('product.index');
         }
 
         // Update basic product information
@@ -206,7 +206,7 @@ class ProductController extends Controller
         // Save the product
         $product->save();
         flash('Product updated successfully!')->success();
-        return redirect()->route('admin.product.index');
+        return redirect()->route('product.index');
     }
 
     /**
