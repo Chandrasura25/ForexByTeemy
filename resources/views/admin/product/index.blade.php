@@ -24,6 +24,7 @@
                 </ul>
             </div>
         </div>
+        @include('flash::message')
         <div class="content">
             @if ($products->count() > 0)
                 <section>
@@ -39,7 +40,7 @@
                         @foreach ($products as $product)
                            <div class="ui-card itemBox {{$product->productType->name}}">
                             @if ($product->images->count() > 0)
-                               <img src="{{ $product->images->first()->image_path }}" alt="{{$product->name}}">
+                               <img src="{{ $product->images->first()->file_path }}" alt="{{$product->name}}">
                             @else
                                 <p>No image available</p>
                             @endif

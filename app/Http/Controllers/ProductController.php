@@ -128,7 +128,37 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+
+        if ($product) {
+            $request->validate([
+                'name' => 'required',
+                'product_type_id' => 'required',
+                'quantity' => 'required',
+                'price' => 'required',
+                'description' => 'required',
+                'commission' => 'required',
+                'expiration_date' => 'required',
+            ]);
+
+            $productData = $request->only([
+                'name',
+                'product_type_id',
+                'quantity',
+                'price',
+                'description',
+                'commission',
+                'expiration_date',
+            ]);
+
+            $product->update($productData);
+
+            flash('Product updated successfully!')->success();
+            return redirect()->route('product.edit');
+        } else {
+            flash('Product not found!')->error();
+            return redirect()->route('product.edit');
+        }
     }
 
     /**
@@ -145,10 +175,10 @@ class ProductController extends Controller
             // Delete the product
             $product->delete();
             flash('Product and associated images deleted successfully!')->success();
-            return redirect()->route('admin.product.index');
+            return redirect()->route('product.index');
         } else {
             flash('Product not found!')->error();
-            return redirect()->route('admin.product.index');
+            return redirect()->route('product.index');
         }
     }
 

@@ -12,8 +12,8 @@
         <ul class="thumb">
             @if ($product->images->count() > 0)
                 @foreach ($product->images as $image)
-                <li onmouseover="changeImg('{{ $image->image_path }}')">
-                    <img src="{{ $image->image_path }}" alt="{{ $product->name }}">
+                <li onmouseover="changeImg('{{ $image->file_path }}')">
+                    <img src="{{ $image->file_path }}" alt="{{ $product->name }}">
                 </li>
                 @endforeach
             @else

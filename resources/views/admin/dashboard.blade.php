@@ -97,7 +97,7 @@
                   <div class="cardBox">
                     <div class="card">
                        <div>
-                        <div class="numbers">1,504</div>
+                        <div class="numbers">{{$productCount}}</div>
                         <div class="cardName">Products</div>
                        </div> 
                        <div class="iconBx">
@@ -115,7 +115,7 @@
                      </div>
                      <div class="card">
                         <div>
-                         <div class="numbers">504</div>
+                         <div class="numbers">{{$userCount}}</div>
                          <div class="cardName">Users</div>
                         </div> 
                         <div class="iconBx">
