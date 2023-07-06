@@ -79,6 +79,9 @@
                     <img src="{{asset('image/img2.jpg')}}" alt="" />
                   </div>
             </div>
+            <div class="marquee">
+                <span>Under Reconstruction</span>
+            </div>
             <section id="about" class="about">
                 <div class="row">
                     <div class="col50">
