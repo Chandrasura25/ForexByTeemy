@@ -8,28 +8,36 @@
     <link rel="stylesheet" href="/css/store.css">
 </head>
 <body>
+    @include('layouts.loader')
     <div class="container">
         <header>
             <a href="/" class="logo">ForexBy<span>Teemy</span></a>
-            <ul class="navigation">
+            @if (Auth::check())
+             <ul class="navigation">
                 <li><a href="/" >Home</a></li>
                 <li><a href="#" class="active">Store</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/home">Dashboard</a></li>
+             </ul>  
+            @else
+             <ul class="navigation">
+                <li><a href="/" >Home</a></li>
+                <li><a href="#" class="active">Store</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+             </ul>
+            @endif
               <span class="menuIcon" onclick="menuToggle()"></span>
         </header>
         <div class="content">
          
         </div>
-        
     </div>
     <script>
         function menuToggle(){
-            var navigation = document.querySelector('.navigation');
-            var menuIcon = document.querySelector('.menuIcon');
-            navigation.classList.toggle('active');
-            menuIcon.classList.toggle('active');
+         var nav = document.querySelector('header') 
+            nav.classList.toggle('active') 
         }
+    </script>
 </body>
 </html>
