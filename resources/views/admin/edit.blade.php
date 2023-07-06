@@ -7,6 +7,6 @@
     <title>Edit Admin Info</title>
 </head>
 <body>
-    
+    @include('layouts.loader')
 </body>
 </html>

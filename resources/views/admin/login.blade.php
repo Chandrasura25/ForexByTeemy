@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/adminform.css">
 </head>
 <body>
+    @include('layouts.loader')
     <section class="section">
        <form method="post" class="signin" action="{{route('admin.signin')}}">
         @csrf

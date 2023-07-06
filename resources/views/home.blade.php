@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    @include('layouts.loader')
     <section class="body" id="blur">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>

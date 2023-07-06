@@ -12,6 +12,7 @@
     @cloudinaryJS
 </head>
 <body>
+    @include('layouts.loader')
     <div class="body">
         <div class="glass">
             <div class="container">

@@ -13,6 +13,7 @@
     @cloudinaryJS
 </head>
 <body>
+    @include('layouts.loader')
     <div class="container" id="blur">
         <div class="navigation">
             <ul>

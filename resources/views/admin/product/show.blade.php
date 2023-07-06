@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/menu.css">
 </head>
 <body>
+    @include('layouts.loader')
     <div class="navigate">
         <div class="toggleMe"><span></span></div>
         <ul class="ul">

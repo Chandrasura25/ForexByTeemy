@@ -9,6 +9,7 @@
     @cloudinaryJS
 </head>
 <body>
+ @include('layouts.loader')
     <section class="section">
        <form method="post" class="signin" action="{{route('admin.signup')}}" enctype="multipart/form-data">
         @csrf

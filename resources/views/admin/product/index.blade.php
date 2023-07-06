@@ -12,6 +12,7 @@
     @cloudinaryJS
 </head>
 <body>
+    @include('layouts.loader')
     <div class="container">
         <div class="header">
             <h1>Products Available</h1>
