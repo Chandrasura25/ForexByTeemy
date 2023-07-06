@@ -32,12 +32,12 @@
               <span class="menuIcon" onclick="menuToggle()"></span>
         </header>
         <div class="contain">
-         <section class="carousel"></section>
-         <section class="recent">
-            @if ($products->count() > 0)
-            <h2>Recent Products</h2>
-            <div class="firstSection">
-                @foreach ($products->sortByDesc('created_at') as $product)
+            <section class="carousel"></section>
+            <section class="recent">
+               @if ($products->count() > 0)
+               <h2>Recent Products</h2>
+               <div class="firstSection">
+                   @foreach ($products->sortByDesc('created_at') as $product)
                         <div class="ui-card">
                             @if ($product->images->count() > 0)
                                <img src="{{ $product->images->first()->file_path }}" alt="{{$product->name}}">
@@ -55,12 +55,12 @@
                                 <a href="/cart">Add to Cart</a>
                             </div>
                         </div>
-                @endforeach
-            </div>
-           @endif
-         </section>
-         <section class="product">
-            <div class="content">
+                   @endforeach
+               </div>
+              @endif
+            </section>
+            <section>
+               <div class="content">
                 @if ($products->count() > 0)
                     <section class="section">
                         <div class="items">
@@ -72,41 +72,42 @@
                             </ul>
                         </div>
                         <div class="products">
-                            @foreach ($products->sortBy('created_at') as $product)
-                                <div class="box itemBox {{$product->productType->name}}">  
-                                    <div class="figure">
-                                        @if ($product->images->count() > 0)
-                                         <img src="{{ $product->images->first()->file_path }}" alt="{{$product->name}}">
-                                        @else
-                                            <p>No image available</p>
-                                        @endif
-                                        <div class="caption">
-                                            <div class="about">
-                                                <h2>{{$product->name}}</h2>
-                                                <p>{{$product->description}}</p>
-                                                <div class="amount">
-                                                    <span>Price: {{$product->price}}</span>
-                                                    <span>Quantity: {{$product->quantity}}</span>
-                                                </div>
-                                                <a href="product/{{$product->id}}">See More</a>
-                                                <div class="action">
-                                                    <a href="/cart">Add to Cart</a>
+                            @foreach ($products as $product)
+                               <div class="rel">
+                                    <div class="box {{$product->productType->name}}">  
+                                        <div class="figure">
+                                            @if ($product->images->count() > 0)
+                                             <img src="{{ $product->images->first()->file_path }}" alt="{{$product->name}}">
+                                            @else
+                                                <p>No image available</p>
+                                            @endif
+                                            <div class="caption">
+                                                <div class="about">
+                                                    <h2>{{$product->name}}</h2>
+                                                    <p>{{$product->description}}</p>
+                                                    <div class="amount">
+                                                        <span>Price: {{$product->price}}</span>
+                                                        <span>Quantity: {{$product->quantity}}</span>
+                                                    </div>
+                                                    <a href="product/{{$product->id}}">See More</a>
+                                                    <div class="action">
+                                                        <a href="/cart">Add to Cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                              </div>
                             @endforeach
                         </div>
                     </section>
                 @else
                     <div class="create">
-                        <h2>There is no product available</h2>
+                        <h2>Create New <a href="/product/create">Product</a></h2>
                     </div>
                 @endif
-            </div>
-         </section>
+               </div>
+            </section>
         </div>
     </div>
     <script>
@@ -121,11 +122,11 @@
             $('.list').click(function(){
                 const value = $(this).attr('data-filter');
                 if(value == 'All'){
-                    $('.itemBox').show('1000')
+                    $('.box').show('1000')
                 }
                 else{
-                    $('.itemBox').not('.'+value).hide('1000')
-                    $('.itemBox').filter('.'+value).show('1000')
+                    $('.box').not('.'+value).hide('1000')
+                    $('.box').filter('.'+value).show('1000')
                 }
             })
             $('.list').click(function(){
