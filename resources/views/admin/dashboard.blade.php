@@ -66,15 +66,15 @@
                         </li>
                         
                         <li>
-                            <a  href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">    
-                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>    
+                            <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                                 <span class="title">Sign Out</span>
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>
+                        
                     </ul>
                 </div>
                 <!-- main container -->
@@ -207,34 +207,6 @@
                             <tr>
                                 <td><div class="imgBx"><img src="images/img1.jpg" alt=""></div></td>
                                 <td><h4>David<br><span>Italy</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img2.jpg" alt=""></div></td>
-                                <td><h4>Muhammed<br><span>India</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img3.jpg" alt=""></div></td>
-                                <td><h4>Amelia<br><span>France</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img4.jpg" alt=""></div></td>
-                                <td><h4>Olivia<br><span>USA</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img5.jpg" alt=""></div></td>
-                                <td><h4>Amit<br><span>Japan</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img6.jpg" alt=""></div></td>
-                                <td><h4>Ashraf<br><span>India</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img7.jpg" alt=""></div></td>
-                                <td><h4>Diana<br><span>Malaysia</span></h4></td>
-                            </tr>
-                            <tr>
-                                <td><div class="imgBx"><img src="images/img8.jpg" alt=""></div></td>
-                                <td><h4>Amit<br><span>India</span></h4></td>
                             </tr>
                         </table>
                     </div>
