@@ -103,7 +103,7 @@
                     </section>
                 @else
                     <div class="create">
-                        <h2>Create New <a href="/product/create">Product</a></h2>
+                        <h2>Ooops! There is no product available, come back later.</h2>
                     </div>
                 @endif
                </div>

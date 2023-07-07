@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
+        'coupon_code',
         'ref_source',
         'referrer',
         'credits',

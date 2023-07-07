@@ -36,6 +36,15 @@
                 <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
             </div>
+            <div class="inputBox">
+                <input type="text" name="coupon_code" class="@error('coupon_code') is-invalid @enderror" autocomplete="new-coupon_code">
+                <label for="coupon_code">{{__('Coupon Code')}}</label>
+                @error('coupon_code')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
             @if (isset($referrer))
             <div class="inputBox" style="display: none">
                 <input id="referrer" type="text" name="referrer" value="{{$referrer}}" readonly>
@@ -53,6 +62,7 @@
                 </div>
             @endif
         @endif
+           
         <div class="inputBox">
             <input type="submit" value="{{ __('Register') }}">
         </div>
