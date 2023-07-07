@@ -3,6 +3,7 @@
 @section('content')
 <div class="body">
     <form method="POST" action="{{ isset($referrer) ? route('registerbylink') : route('register')  }}"> 
+        @include('flash::message')
            <h2>{{ __('Register') }}</h2>
             @csrf
             <div class="inputBox">
@@ -44,7 +45,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-            </div>
+            </div>            
             @if (isset($referrer))
             <div class="inputBox" style="display: none">
                 <input id="referrer" type="text" name="referrer" value="{{$referrer}}" readonly>
@@ -74,5 +75,9 @@
     let label = document.querySelectorAll('label').forEach(label=>{ 
         label.innerHTML = label.innerText.split('').map((letters,i)=> `<span style="transition-delay:${i * 50}ms">${letters}</span>`).join('');
     })
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
 @endsection

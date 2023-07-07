@@ -213,7 +213,13 @@ class CouponController extends Controller
     {
         $coupon = Coupon::findOrFail($couponId);
         $user = auth()->user();
-        
+    
+        // Check if the coupon status is active
+        if ($coupon->status !== 'active') {
+            flash('Coupon transfer failed. The coupon status is not active.')->error();
+            return redirect()->back();
+        }
+    
         // Get all possible referred users
         $referredUsers = $user->referredUsers;
     
@@ -229,6 +235,8 @@ class CouponController extends Controller
             $referredUser->save();
         }
     
-        return redirect()->back()->with('success', 'Coupon transferred to referrals successfully.');
+        flash('Coupon transferred to referrals successfully.')->success();
+        return redirect()->back();
     }
+    
 }

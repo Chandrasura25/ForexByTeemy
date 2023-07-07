@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -10,10 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-use Illuminate\Validation\Rule;
-use App\Models\Coupon;
+
 class RegisterController extends Controller
 {
     /*
@@ -92,26 +93,27 @@ class RegisterController extends Controller
             'ref_source' => $ref_source,
             'referrer' => $referrer,
             'coupon_code' => [
-              'nullable',
-              Rule::exists('coupons', 'coupon_code'),
-          ],
+                'nullable',
+                Rule::exists('coupons', 'coupon_code'),
+            ],
         ]);
         $couponCode = $data['coupon_code'];
         if ($couponCode) {
-          $coupon = Coupon::where('coupon_code', $couponCode)->first();
-  
-          if (!$coupon) {
-              return redirect()->back()->withErrors(['coupon_code' => 'Invalid coupon code.']);
-          }
-          // Assign the coupon owner as the referrer for the new user
-          $referrer = $coupon->username;
-          $user->referrer = $referrer;
-          $user->person_coupon += 1;
-          $user->save();
-          $newCoupon = $coupon->replicate();
-          $newCoupon->username = $user->username;
-          $newCoupon->save();
-      }
+            $coupon = Coupon::where('coupon_code', $couponCode)->first();
+
+            if (!$coupon) {
+                flash('Invalid coupon code.')->error();
+                return redirect()->back();
+            }
+            // Assign the coupon owner as the referrer for the new user
+            $referrer = $coupon->username;
+            $user->referrer = $referrer;
+            $user->person_coupon += 1;
+            $user->save();
+            $newCoupon = $coupon->replicate();
+            $newCoupon->username = $user->username;
+            $newCoupon->save();
+        }
         if ($referrer) {
             // Assign 30 credits to the user registering
             $user->credits()->create([
@@ -239,13 +241,13 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         $referrer = $request->referrer;
         $request->validate([
-        // Add your existing validation rules for registration here
+            // Add your existing validation rules for registration here
 
-        'coupon_code' => [
-            'nullable',
-            Rule::exists('coupons', 'coupon_code'),
-        ],
-    ]);
+            'coupon_code' => [
+                'nullable',
+                Rule::exists('coupons', 'coupon_code'),
+            ],
+        ]);
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,

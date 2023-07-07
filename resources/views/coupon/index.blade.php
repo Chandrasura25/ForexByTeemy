@@ -40,6 +40,7 @@
         </div>
      </a>
   </div>
+  @include('flash::message')
    <div class="coupons">
         @if ($coupons->count() > 0)
         <div class="recentOrders">
@@ -118,5 +119,9 @@
         this.classList.toggle('active')
         navigation.classList.toggle('active')
     }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
 @endsection
