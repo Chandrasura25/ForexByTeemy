@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="body">
-    <form method="POST"  action="{{ isset($referrer) ? route('registerbylink') : route('register')  }}"> 
+    <form method="POST" action="{{ isset($referrer) ? route('registerbylink') : route('register')  }}"> 
            <h2>{{ __('Register') }}</h2>
             @csrf
             <div class="inputBox">
