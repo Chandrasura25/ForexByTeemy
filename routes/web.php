@@ -32,7 +32,11 @@ Route::get('/', function () {
 Route::get('/store',[StoreController::class,'index'])->name('store');
 Auth::routes(); 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');   
-Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
+Route::middleware('throttle:10,1')->group(function () {
+    // Email submission route
+    Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
+});
+
 Route::get('/register/{referral}', [RegisterController::class, 'FromLink'])->name('refer');
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
