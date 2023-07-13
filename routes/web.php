@@ -32,7 +32,7 @@ Route::get('/', function () {
 Route::get('/store',[StoreController::class,'index'])->name('store');
 Auth::routes(); 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');   
-Route::middleware('throttle:10,1')->group(function () {
+Route::middleware('throttle:5,1')->group(function () {
     // Email submission route
     Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 });

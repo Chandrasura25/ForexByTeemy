@@ -20,21 +20,9 @@ body {
 .marquee span {
     position: absolute;
     display: block;
-    width: 200%;
-    height: 100%;
     font-size: 24px;
     text-align: center;
     line-height: 50px;
-    animation: marquee 5s linear infinite;
-}
-
-@keyframes marquee {
-    0% {
-        left: 100%;
-    }
-    100% {
-        left: -100%;
-    }
 }
 .banner {
     position: relative;
@@ -93,7 +81,6 @@ section {
     position: relative;
     width: 100%;
     height: 100%;
-    /*min-height: 300px;*/
 }
 .row .col50 .imgBx img {
     position: absolute;
@@ -114,17 +101,7 @@ section {
     color: #fff;
     overflow: hidden;
     border-right: 1px solid #fff;
-    animation: texttype 10s steps(13) infinite;
     white-space: nowrap;
-}
-@keyframes texttype {
-    0%,
-    100% {
-        width: 0;
-    }
-    50% {
-        width: 100%;
-    }
 }
 nav {
     position: fixed;
