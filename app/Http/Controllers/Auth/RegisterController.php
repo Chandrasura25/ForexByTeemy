@@ -86,17 +86,21 @@ class RegisterController extends Controller
         if (empty($ref_source)) {
             $ref_source = null;
         }
-        $user = User::create([
+        $userData = [
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'ref_source' => $ref_source,
             'referrer' => $referrer,
-            'coupon_code' => [
-                'nullable',
-                Rule::exists('coupons', 'coupon_code'),
-            ],
-        ]);
+        ];
+        
+        if (isset($data['coupon_code'])) { 
+            $userData['coupon_code'] = $data['coupon_code'];
+        }
+        
+        $user = User::create($userData);
+        
+        
         $couponCode = $data['coupon_code'];
         if ($couponCode) {
             $coupon = Coupon::where('coupon_code', $couponCode)->first();
