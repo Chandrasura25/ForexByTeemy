@@ -14,12 +14,11 @@ body {
     overflow: hidden;
     position: relative;
     background-color: black;
+    text-align: center;
     color: white;
 }
 
 .marquee span {
-    position: absolute;
-    display: block;
     font-size: 24px;
     text-align: center;
     line-height: 50px;
@@ -100,7 +99,6 @@ section {
     position: absolute;
     color: #fff;
     overflow: hidden;
-    border-right: 1px solid #fff;
     white-space: nowrap;
 }
 nav {

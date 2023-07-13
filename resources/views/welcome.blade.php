@@ -82,7 +82,6 @@
             </div>
             <div class="marquee">
                 <span>Under Reconstruction</span>
-                <span>Under Reconstruction</span>
             </div>
             <section id="about" class="about">
                 <div class="row">
