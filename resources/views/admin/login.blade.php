@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Login</title>
+    <link href="{{ asset('css/flash.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/adminform.css">
 </head>
 <body>
@@ -13,6 +14,7 @@
        <form method="post" class="signin" action="{{route('admin.signin')}}">
         @csrf
             <div class="content">
+                @include('flash::message')
                 <h2>Sign In</h2>
                 <div class="form">
                     <div class="inputBx">
@@ -59,6 +61,10 @@
           section.insertBefore(span, signinDiv);
         });
 
+    </script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
 </body>
 </html>

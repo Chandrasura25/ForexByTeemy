@@ -14,6 +14,14 @@ class AdminAuthController extends Controller
         return view('admin.register');  
     }
     public function register(Request $request){
+        $existingRowCount = Admin::count();
+
+        // Limit the table to two users
+        if ($existingRowCount >= 2) {
+            // Return an error or redirect with a message indicating the limitation
+            flash('Only admins are allowed.')->error();
+            return redirect()->back();
+        }
         $request->validate([
             'username'=>'required|min:6|max:15',
             'email' => 'required|string|email|max:255|unique:admins',
@@ -57,6 +65,7 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.dashboard');
         } else {
             // Authentication failed
+            flash('Invalid credentials.')->error();
             return redirect()->route('admin.login')->withErrors([
                 'login' => 'Invalid credentials.',
             ]);
