@@ -68,6 +68,9 @@
                     </ul>
                 </nav>
             </header>
+            <section class="marquee">
+                <span>Under Reconstruction</span>
+            </section>
             <div class="banner">
                 <div class="textBox">
                     <h2 class="name" data-text="Forex By Teemy">Forex By Teemy</h2>
@@ -80,9 +83,7 @@
                     <img src="{{asset('image/img2.jpg')}}" alt="" />
                   </div>
             </div>
-            <div class="marquee">
-                <span>Under Reconstruction</span>
-            </div>
+           
             <section id="about" class="about">
                 <div class="row">
                     <div class="col50">
