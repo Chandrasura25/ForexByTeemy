@@ -37,8 +37,8 @@
                         </li>
                         <li style="--i:2;">
                             <a href="{{ route('login') }}">
-                                <span>Affiliates</span>
-                                <span><i class="fas fa-handshake"></i></span>
+                                <span>Members</span>
+                                <span><i class="fas fa-users"></i></span>
                             </a>
                         </li>
                         <li style="--i:3;">

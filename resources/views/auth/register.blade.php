@@ -38,7 +38,7 @@
                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
             </div>
             <div class="inputBox">
-                <input type="text" name="coupon_code" class="@error('coupon_code') is-invalid @enderror" autocomplete="new-coupon_code">
+                <input type="text" id="coupon_code" name="coupon_code" class="@error('coupon_code') is-invalid @enderror" autocomplete="new-coupon_code">
                 <label for="coupon_code">{{__('Coupon Code')}}</label>
                 @error('coupon_code')
                     <span class="invalid-feedback" role="alert">
