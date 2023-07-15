@@ -65,8 +65,6 @@
         btn.onclick = function(){
            btn.classList.toggle('active') 
         }
-    </script>
-    <script>
         document.addEventListener("DOMContentLoaded", function() {
           const minusButton = document.querySelector(".minus");
           const plusButton = document.querySelector(".plus");
