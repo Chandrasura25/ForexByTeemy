@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store</title>
     <link rel="stylesheet" href="/css/store.css">
+    <link rel="stylesheet" href="/css/flash.css">
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="/css/card.css">
 </head>
@@ -31,6 +32,7 @@
             @endif
               <span class="menuIcon" onclick="menuToggle()"></span>
         </header>
+        @include('flash::message')
         <div class="contain">
             <section class="carousel"></section>
             <section class="recent">
@@ -55,6 +57,7 @@
                                     <a href="product/{{$product->id}}">See More</a>
                                     <form action="/cart" method="post">
                                         @csrf
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
                                         <button type="submit">Add to Cart</button>
                                     </form>
                                 </div>
@@ -98,6 +101,7 @@
                                                         <a href="product/{{$product->id}}">See More</a>
                                                         <form action="/cart" method="post">
                                                             @csrf
+                                                            <input type="hidden" name="product_id" value="{{$product->id}}">
                                                             <button type="submit">Add to Cart</button>
                                                         </form>
                                                     </div>
@@ -141,6 +145,9 @@
                 $(this).addClass('active').siblings().removeClass('active')
             })
         })
+    </script>
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
 </body>
 </html>

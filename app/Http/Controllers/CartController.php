@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -30,9 +31,23 @@ class CartController extends Controller
        if(!auth()->user()){
             flash('You must be logged in to add items to your cart')->error();
             return redirect()->route('login');
-       }else{
-            return "cart";
-       };
+       }else if(auth()->user()){ 
+        $user = Auth::user();
+
+        // Get the product ID and quantity from the request
+        $product_id = $request->input('product_id');
+
+        // Create a new cart item for the user
+        $cart = new Cart();
+        $cart->user_id = $user->id;
+        $cart->product_id = $product_id;
+        $cart->quantity = 1;
+        $cart->save();
+
+        // Redirect or return a response
+        flash('Item added to cart successfully')->success();
+        return redirect()->back();
+    };
     }
 
     /**

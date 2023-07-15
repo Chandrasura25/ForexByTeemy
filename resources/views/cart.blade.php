@@ -6,19 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Cart</title>
     <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/flash.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     @include('layouts.loader')
     <section>
         <header>
             <h4>My Shopping Cart</h4>
+            @include('flash::message')
         </header>
         <div class="container">
             <ul>
                 <li class='head'>
                     <span>Description</span>
-                    <span>Size</span>
+                    <span>Name</span>
                     <span>Quantity</span>
                     <span>Remove</span>
                     <span>Price</span>
@@ -29,12 +32,11 @@
                             <img src="/image/avatar.jpg" alt="">
                         </div>
                         <div>
-                            <h5>Product Name</h5>
                             <p>Product Description</p>
                         </div>
                     </span>
                     <span>
-                        <h4>Size</h4>
+                        <h4>Product Name</h4>
                     </span>
                     <span>
                         <form action="" method="post">
@@ -87,5 +89,8 @@
           }
         });
       </script>
+      <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
 </body>
 </html>

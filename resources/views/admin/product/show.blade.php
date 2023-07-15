@@ -49,6 +49,7 @@
        </ul>
        <form action="/cart" method="post" class="cart">
         @csrf
+         <input type="hidden" name="product_id" value="{{$product->id}}">
          <button class="btn">Add To Cart</button>
        </form>
      </div>
