@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/cart">
                         <span class="icon"><i class="fas fa-store"></i></span>
                         <span class="title">Store Purchases</span>
                     </a>
