@@ -13,9 +13,15 @@
     <div class="navigate">
         <div class="toggleMe"><span></span></div>
         <ul class="ul">
+            @if ($isAdmin)
             <li style="--i:0"><a href="/product">Product</a></li>
             <li style="--i:0"><a href="/product/create">Create Product</a></li>
             <li style="--i:1"><a href="/admin/dashboard">Dashboard</a></li>
+            @else
+            <li style="--i:0"><a href="/home">Home</a></li>
+            <li style="--i:1"><a href="/cart">Cart</a></li>
+            <li style="--i:2"><a href="/store">Store</a></li>
+            @endif
         </ul>
     </div>
     <div class="container">
@@ -41,7 +47,10 @@
          <span>Price</span>
          <li>{{$product->price}}</li>
        </ul>
-       <a href="#" class="btn">Add To Cart</a>
+       <form action="/cart" method="post" class="cart">
+        @csrf
+         <button class="btn">Add To Cart</button>
+       </form>
      </div>
     </div> 
     <script>

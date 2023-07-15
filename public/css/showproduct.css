@@ -109,9 +109,11 @@ body{
 .container .imgBox .size li:hover{
     transform: translateY(-10px);
 }
-.container .imgBox .btn{
+.cart{
     position: absolute;
     bottom: -30px;
+}
+.container .imgBox .btn{
     background: #fff;
     display: inline-block;
     text-decoration: none;
@@ -121,6 +123,9 @@ body{
     font-weight: 500;
     color: #1e6b7b;
     transition: 0.25s;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
 .container .imgBox .btn:hover{
     letter-spacing: 2px;

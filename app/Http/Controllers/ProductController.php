@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\ProductType;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     /**
@@ -109,8 +109,15 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
+        $admin = Auth::guard('admin')->user(); // Check if user is an admin
         $product = Product::with('productType', 'images')->find($id);
-        return view('admin.product.show', ['product' => $product]);
+        if ($admin) {
+            // User is an admin
+            return view('admin.product.show', ['product' => $product, 'isAdmin' => true]);
+        } else {
+            // User is not an admin
+            return view('admin.product.show', ['product' => $product, 'isAdmin' => false]);
+        }
     }
 
     /**
