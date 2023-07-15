@@ -27,7 +27,12 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       if(!auth()->user()){
+            flash('You must be logged in to add items to your cart')->error();
+            return redirect()->route('login');
+       }else{
+            return "cart";
+       };
     }
 
     /**

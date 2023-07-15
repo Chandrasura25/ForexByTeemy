@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Cart</title>
     <link rel="stylesheet" href="/css/cart.css">
-    {{-- font awesome cdn 6.0 --}}
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
 <body>

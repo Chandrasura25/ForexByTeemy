@@ -51,8 +51,13 @@
                                     <span>Price: {{$product->price}}</span>
                                     <span>Quantity: {{$product->quantity}}</span>
                                 </div>
-                                <a href="product/{{$product->id}}">See More</a>
-                                <a href="/cart">Add to Cart</a>
+                                <div class='action'>
+                                    <a href="product/{{$product->id}}">See More</a>
+                                    <form action="/cart" method="post">
+                                        @csrf
+                                        <button type="submit">Add to Cart</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                    @endforeach
@@ -91,7 +96,10 @@
                                                     </div>
                                                     <div class="action">
                                                         <a href="product/{{$product->id}}">See More</a>
-                                                        <a href="/cart">Add to Cart</a>
+                                                        <form action="/cart" method="post">
+                                                            @csrf
+                                                            <button type="submit">Add to Cart</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

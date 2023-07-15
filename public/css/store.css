@@ -150,22 +150,24 @@ header ul li a.active::before {
 
 .box .action a{
     display: inline-block;
-    padding: 7px 15px;
-    border: 1px solid #fff;
-    border-radius: 15px;
+    padding: 10px 15px;
     transition: 0.3s;
     margin-left: 5px;
     white-space: nowrap;
     color: #333;
     text-decoration: none;
-    margin-top: 20px;
+    background: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 500;
 }
+.box .action button{
+    outline: none;
+    border: none;
+}
 .box .action a:hover{
-    background: #fff;
-    color: #333;
+    background: #333;
+    color: #fff;
 }
 .menuIcon {
     display: none;
