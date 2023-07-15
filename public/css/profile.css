@@ -189,6 +189,12 @@ section .wave.wave4 {
 .navigation ul li:nth-child(5).active ~ .indicator {
     transform: translateY(calc(70px * 4));
 }
+.navigation ul li:nth-child(6).active ~ .indicator {
+    transform: translateY(calc(70px * 5));
+}
+.navigation ul li:nth-child(7).active ~ .indicator {
+    transform: translateY(calc(70px * 6));
+}
 .navigation ul li:nth-child(1).active ~ .indicator::before {
     background: #37d72f;
 }
@@ -203,6 +209,12 @@ section .wave.wave4 {
 }
 .navigation ul li:nth-child(5).active ~ .indicator::before {
     background: #ffa801;
+}
+.navigation ul li:nth-child(6).active ~ .indicator::before {
+    background: #0bc345;
+}
+.navigation ul li:nth-child(7).active ~ .indicator::before {
+    background: #ff6b6b;
 }
 .container {
     display: flex;

@@ -46,9 +46,9 @@
                     </li>
                     <li class="list" data-color="#0fbcf9">
                         <a href="/cart">
-                                <span class="icon"><i class="fas fa-store"></i></span>
-                                <span class="title">My Store</span>
-                            </a>
+                                <span class="icon"><i class="fas fa-cart-plus"></i></span>
+                                <span class="title">My Cart</span>
+                         </a>
                     </li>
                     <li class="list" data-color="#ffa801">
                             <a href="/affiliate">
@@ -56,8 +56,24 @@
                                 <span class="title">Affiliate</span>
                             </a>
                     </li>
+                    <li class="list" data-color="#0bc345">
+                        <a href="/store">
+                            <span class="icon"><i class="fas fa-store"></i></span>
+                            <span class="title">Store</span>
+                        </a>
+                    </li>
+                    <li class="list" data-color="#ff6b6b">
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                            <span class="title">Logout</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                     <div class="indicator">
-        
+                      
                     </div>
                 </ul>
             </div>

@@ -7,6 +7,7 @@
     <title>Product {{$product->id}}</title>
     <link rel="stylesheet" href="/css/showproduct.css">
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/flash.css">
 </head>
 <body>
     @include('layouts.loader')
@@ -24,6 +25,7 @@
             @endif
         </ul>
     </div>
+    @include('flash::message')
     <div class="container">
         <ul class="thumb">
             @if ($product->images->count() > 0)
@@ -63,6 +65,10 @@
             this.classList.toggle('active')
             navigation.classList.toggle('active')
         }
+    </script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
  </body>
 </html>
