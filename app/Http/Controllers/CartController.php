@@ -12,8 +12,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cart = Cart::with('product')->where('user_id', Auth::user()->id)->get();
-        return view('cart',['cart' => $cart]);
+        $carts = Cart::with('product','product.images')->where('user_id', Auth::user()->id)->get(); 
+        return view('cart',['carts' => $carts]);    
     }
 
     /**
@@ -80,6 +80,9 @@ class CartController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cart = Cart::findOrFail($id);
+        $cart->delete();
+        flash('Item removed from cart successfully')->success();
+        return redirect()->back();
     }
 }

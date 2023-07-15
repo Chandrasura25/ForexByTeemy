@@ -18,6 +18,7 @@
             @include('flash::message')
         </header>
         <div class="container">
+            @if ($carts->count() > 0)
             <ul>
                 <li class='head'>
                     <span>Description</span>
@@ -26,27 +27,30 @@
                     <span>Remove</span>
                     <span>Price</span>
                 </li>
+                @foreach ($carts as $cart)
                 <li>
                     <span>
                         <div class="imgBx">
-                            <img src="/image/avatar.jpg" alt="">
+                            <img src="{{ $cart->product->images->first()->file_path }}" alt="{{$cart->product->name}}">
                         </div>
                         <div>
-                            <p>Product Description</p>
+                            <p>{{$cart->product->description}}</p>
                         </div>
                     </span>
                     <span>
-                        <h4>Product Name</h4>
+                        <h4>{{$cart->product->name}}</h4>
                     </span>
                     <span>
                         <form action="" method="post">
                            <i class="minus"><i class="fa fa-minus" aria-hidden="true"></i></i>
-                           <input type="text" class="quantity-input" name="quantity" value="1" min="1">
+                           <input type="text" class="quantity-input" name="quantity" value="{{$cart->quantity}}" min="1">
                            <i class="plus"><i class="fa fa-plus" aria-hidden="true"></i></i>
                         </form>
                     </span>
                     <span>
-                        <form action="" method="post">
+                        <form action="/cart/{{$cart->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
                             <input type="hidden" name="id" value="">
                             <button class="remove">
                                 <a href="#" class="btn"><i></i><text>Delete</text></a> 
@@ -54,10 +58,16 @@
                         </form>
                     </span>
                     <span>
-                        <h4>Price</h4>
+                        <h4>{{$cart->product->price}}</h4>
                     </span>
                 </li>
+                @endforeach
             </ul>
+            @else
+            <div class="visit">
+                <h3>Ooops!! Looks like you do not have any product in your cart, why don't you visit the <a href="/store">Store</a>?</h3>
+            </div>
+            @endif
         </div>
     </section>
     <script>

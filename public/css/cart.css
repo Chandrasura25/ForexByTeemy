@@ -121,7 +121,7 @@ li:not(:first-child) span:nth-child(3) input{
     border:none;
     outline:none;
 }
-a{
+.remove a{
     position: relative;
     width: 130px;
     height: 40px;
@@ -135,7 +135,7 @@ a{
     overflow: hidden;
     text-decoration: none;
 }
-a i{
+.remove a i{
     position: absolute;
     width: 18px;
     height: 20px;
@@ -146,10 +146,10 @@ a i{
     border-bottom-right-radius: 3px;
     transition: 0.3s;
 }
-a:hover i{
+.remove a:hover i{
     transform: scale(1.5) rotate(60deg) translateY(10px);
 }
-a.active i{
+.remove a.active i{
     left: 50%;
     transform: translateX(-50%) rotate(-45deg);
     border-radius: 0;
@@ -159,13 +159,13 @@ a.active i{
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
-a.active{
+.remove a.active{
     background: #2196f3;
 }
-a.active:hover span::before,a.active span::before{
+.remove a.active:hover span::before,.remove a.active span::before{
     transform: scale(0);
 }
-a i::before{
+.remove a i::before{
     content: '';
     position: absolute;
     width: 100%;
@@ -176,7 +176,7 @@ a i::before{
     transition: 0.5s;
     box-shadow: 12px -2px 0 #333, 12px -3px 0 #333, 15px -1px 0 #333,6px -2px 0 #fff;
 }
-a:hover i::before{
+.remove a:hover i::before{
     transform: rotate(-90deg) translateX(50%) translateY(-10px);
 }
 a text{
@@ -187,4 +187,13 @@ a text{
 }
 a:hover text,a.active text{
     transform:translateX(-50px) translateY(-5px) scale(0);
+}
+.visit{
+    position: relative;
+    padding: 15px 30px;
+}
+.visit h4{
+    font-size: 2em;
+    font-weight: 600;
+    color: #001944;
 }
