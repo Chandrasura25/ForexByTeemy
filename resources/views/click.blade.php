@@ -4,7 +4,7 @@
 <div class="Box">
     <div class="title">
         <h2>Refer Friends <span>And Get Reward</span></h2>
-        <p><span>Unlock the power of referrals and earn 30 credits!</span><br> Share your unique referral code with friends and family, and when they sign up using your code, you both receive a bonus of 30 credits. Start referring today and watch your credits grow as you and your loved ones reap the benefits of this referral program.</p>
+        <p><span>Unlock the power of referrals and earn a certain percenatage!</span><br> Share your unique referral code with friends and family, and when they sign up using your code, you both receive a bonus of 30 credits. Start referring today and watch your credits grow as you and your loved ones reap the benefits of this referral program.</p>
     </div> 
     <div class="cardBx">
         <div class="ref_link">
@@ -24,13 +24,13 @@
         </div>
         <div class="ref_no">
             <div class="drop">
+                <div class="">
+                 <h2>Total Commissions</h2>
+                 <span>{{$user->credits}}</span>
+                </div>
                <div class="">
                 <h2>Total Referred</h2>
                 <span>{{$totalReferred}}</span>
-               </div>
-               <div class="">
-                <h2>Total Credits</h2>
-                <span>{{$user->credits}}</span>
                </div>
             </div>
         </div>
