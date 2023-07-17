@@ -62,7 +62,7 @@
                         </form>
                     </span>
                     <span>
-                        <h4>{{$cart->product->price}}</h4>
+                        <h4>{{$cart->total_price}}</h4>
                     </span>
                 </li>
                 @endforeach
