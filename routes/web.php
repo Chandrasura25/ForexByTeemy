@@ -49,7 +49,7 @@ Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
 Route::resource('/cart',CartController::class);
-Route::post('/cart/update-quantity', 'CartController@updateQuantity')->name('updateQuantity');
+Route::post('/cart/update-quantity', [CartController::class,'updateQuantity'])->name('updateQuantity');
 
 Route::post('/coupon/{couponId}/transfer', [CouponController::class, 'transferCoupon'])->name('coupon.transfer');
 Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');

@@ -42,9 +42,13 @@
                     </span>
                     <span>
                         <form action="" method="post">
-                           <i class="minus" onclick="updateCartQuantity({{ $cart->product->id }}, {{ $cart->quantity - 1 }})"><i class="fa fa-minus" aria-hidden="true"></i></i>
-                           <input type="text" class="quantity-input" name="quantity" value="{{$cart->quantity}}" min="1">
-                           <i class="plus"onclick="updateCartQuantity({{ $cart->product->id }}, {{ $cart->quantity + 1 }})"><i class="fa fa-plus" aria-hidden="true"></i></i>
+                            <i class="minus" data-product-id="{{ $cart->product->id }}" data-quantity="{{ $cart->quantity - 1 }}">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </i>
+                            <input type="text" class="quantity-input" name="quantity" value="{{$cart->quantity}}" min="1" data-product-id="{{ $cart->product->id }}">
+                            <i class="plus" data-product-id="{{ $cart->product->id }}" data-quantity="{{ $cart->quantity + 1 }}">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </i>
                         </form>
                     </span>
                     <span>
@@ -71,6 +75,15 @@
         </div>
     </section>
     <script>
+         $(document).ready(function() {
+        // Attach event listeners to the minus and plus buttons
+        $("i.minus, i.plus").on("click", function() {
+            let product_id = $(this).data("product-id");
+            let value = $(this).data("quantity");
+
+            updateCartQuantity(product_id, value);
+        });
+    });
         let btn = document.querySelector('.btn');
         btn.onclick = function(){
            btn.classList.toggle('active') 
@@ -96,12 +109,7 @@
             quantityInput.value = newValue;
           }
         });
-      </script>
-      <script>
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-    </script>
-    <script>
-    function updateCartQuantity(product_id, quantity) {
+        function updateCartQuantity(product_id, quantity) {
         $.ajax({
             type: 'POST',
             url: '{{ route('updateQuantity') }}',
@@ -115,10 +123,14 @@
                 // For example, you can update the cart icon or cart total
                 // Example:
                 // $('#cart-total').text(response.cart_total);
-
-                // Flash a success message
-                flash('Cart quantity updated successfully', 'success');
-            },
+                response.carts.forEach(function (cart) {
+                        let inputElement = document.querySelector(`[data-product-id="${cart.product.id}"]`);
+                        if (inputElement) {
+                            inputElement.value = cart.quantity;
+                        }
+                        console.log(cart.product.id, cart.quantity, inputElement.value);
+                    });
+                },
             error: function(xhr, status, error) {
                 // Handle errors here
 
@@ -127,7 +139,9 @@
             }
         });
     }
-</script>
-
+      </script>
+      <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
 </body>
 </html>

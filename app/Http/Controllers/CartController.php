@@ -99,6 +99,7 @@ class CartController extends Controller
 
     public function updateQuantity(Request $request)
     {
+        
         // Validate the request data
         $request->validate([
             'product_id' => 'required|integer',
@@ -129,13 +130,11 @@ class CartController extends Controller
             $cartItem->save();
 
             flash('Cart quantity updated successfully')->success();
+            $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
+            return response()->json(['carts' => $carts]);
         } else {
             // For this example, we'll show an error flash message
             flash('Cart item not found')->error();
         }
-
-        // Redirect back to the previous page
-        return redirect()->back();
     }
-
 }
