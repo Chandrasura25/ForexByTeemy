@@ -113,31 +113,34 @@ class CartController extends Controller
         // Validate the request data
         $request->validate([
             'product_id' => 'required|integer',
-            'quantity' => 'required|integer|min:1', // Add any additional validation rules you need
+            'quantity' => 'required|integer|min:1',
         ]);
-
+    
         // Check if the user is authenticated
         if (!auth()->check()) {
             flash('You must be logged in to update cart quantity')->error();
             return redirect()->route('login');
         }
-
+    
         // Get the authenticated user
         $user = auth()->user();
-
+    
         // Get the product ID and quantity from the request
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
-
+    
         // Find the cart item for the current user and the specified product
         $cartItem = Cart::where('user_id', $user->id)
             ->where('product_id', $product_id)
             ->first();
-
+    
         if ($cartItem) {
-            // If the cart item exists, update the quantity
+            // If the cart item exists, update the quantity and calculate the total price
             $cartItem->quantity = $quantity;
+            $cartItem->total_price = $cartItem->product->price * $quantity; // Assuming the price is stored in the 'price' column of the 'products' table
             $cartItem->save();
+    
+            // Load the updated cart items and return as JSON response
             $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
             return response()->json(['carts' => $carts]);
         } else {
@@ -145,4 +148,5 @@ class CartController extends Controller
             flash('Cart item not found')->error();
         }
     }
+    
 }
