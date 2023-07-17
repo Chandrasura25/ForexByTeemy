@@ -55,8 +55,8 @@
                         <form action="/cart/{{$cart->id}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <input type="hidden" name="id" value="">
-                            <button class="remove">
+                            <input type="hidden" name="id" value="{{$cart->id}}">
+                            <button class="remove" type="submit">
                                 <a href="#" class="btn"><i></i><text>Delete</text></a> 
                             </button>
                         </form>
