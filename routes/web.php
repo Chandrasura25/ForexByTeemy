@@ -33,7 +33,7 @@ Route::get('/', function () {
 Route::get('/store',[StoreController::class,'index'])->name('store');
 Auth::routes(); 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');   
-Route::middleware('throttle:5,1')->group(function () {
+Route::middleware('throttle:2,1')->group(function () {
     // Email submission route
     Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
 });
@@ -49,6 +49,8 @@ Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click',ClickController::class);
 Route::resource('/coupon',CouponController::class);
 Route::resource('/cart',CartController::class);
+Route::post('/cart/update-quantity', 'CartController@updateQuantity')->name('updateQuantity');
+
 Route::post('/coupon/{couponId}/transfer', [CouponController::class, 'transferCoupon'])->name('coupon.transfer');
 Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
 Route::get('/credit',[CreditController::class,'index'])->name('credit');

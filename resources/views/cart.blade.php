@@ -42,9 +42,9 @@
                     </span>
                     <span>
                         <form action="" method="post">
-                           <i class="minus"><i class="fa fa-minus" aria-hidden="true"></i></i>
+                           <i class="minus" onclick="updateCartQuantity({{ $cart->product->id }}, {{ $cart->quantity - 1 }})"><i class="fa fa-minus" aria-hidden="true"></i></i>
                            <input type="text" class="quantity-input" name="quantity" value="{{$cart->quantity}}" min="1">
-                           <i class="plus"><i class="fa fa-plus" aria-hidden="true"></i></i>
+                           <i class="plus"onclick="updateCartQuantity({{ $cart->product->id }}, {{ $cart->quantity + 1 }})"><i class="fa fa-plus" aria-hidden="true"></i></i>
                         </form>
                     </span>
                     <span>
@@ -100,5 +100,34 @@
       <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
+    <script>
+    function updateCartQuantity(product_id, quantity) {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('updateQuantity') }}',
+            data: {
+                _token: '{{ csrf_token() }}',
+                product_id: product_id,
+                quantity: quantity
+            },
+            success: function(response) {
+                // Update the cart display on success
+                // For example, you can update the cart icon or cart total
+                // Example:
+                // $('#cart-total').text(response.cart_total);
+
+                // Flash a success message
+                flash('Cart quantity updated successfully', 'success');
+            },
+            error: function(xhr, status, error) {
+                // Handle errors here
+
+                // Flash an error message
+                flash('Failed to update cart quantity. Please try again.', 'error');
+            }
+        });
+    }
+</script>
+
 </body>
 </html>
