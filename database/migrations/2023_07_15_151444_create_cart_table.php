@@ -17,7 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('quantity');
             $table->timestamps();
-
+            // Define composite primary key
+            $table->primary(['user_id', 'product_id']);
+            // Define foreign keys
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->cascadeOnDelete();
