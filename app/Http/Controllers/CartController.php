@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,6 +53,16 @@ class CartController extends Controller
                 $cart->user_id = $user->id;
                 $cart->product_id = $product_id;
                 $cart->quantity = 1;
+                // Retrieve the product price based on the product_id
+                $product = Product::find($product_id);
+                if (!$product) {
+                    flash('Product not found')->error();
+                    return redirect()->back();
+                }
+
+                // Calculate the total_price by multiplying the product price with the quantity
+                $cart->total_price = $product->price * $request->quantity;
+
                 $cart->save();
                 flash('Item added to cart successfully')->success();
             }
@@ -99,7 +110,6 @@ class CartController extends Controller
 
     public function updateQuantity(Request $request)
     {
-        
         // Validate the request data
         $request->validate([
             'product_id' => 'required|integer',
@@ -128,8 +138,6 @@ class CartController extends Controller
             // If the cart item exists, update the quantity
             $cartItem->quantity = $quantity;
             $cartItem->save();
-
-            flash('Cart quantity updated successfully')->success();
             $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
             return response()->json(['carts' => $carts]);
         } else {

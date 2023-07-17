@@ -3,19 +3,20 @@
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AffiliateController;
-use App\Http\Controllers\CreditController;
-use App\Http\Controllers\ClickController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ClickController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\CreditController;
+use App\Http\Controllers\OpenAIController;
 use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +31,9 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/store',[StoreController::class,'index'])->name('store');
-Auth::routes(); 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');   
+Route::get('/store', [StoreController::class, 'index'])->name('store');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware('throttle:2,1')->group(function () {
     // Email submission route
     Route::post("/send-email", [PHPMailerController::class, "composeEmail"])->name("send-email");
@@ -41,22 +42,21 @@ Route::middleware('throttle:2,1')->group(function () {
 Route::get('/register/{referral}', [RegisterController::class, 'FromLink'])->name('refer');
 Route::get('/register/{referral?}-{source?}', [RegisterController::class, 'createFromLink'])->name('referred');
 Route::post('/registerbylink', [RegisterController::class, 'saveFromLink'])->name('registerbylink');
-Route::post('/upload',[App\Http\Controllers\HomeController::class,'uploadImg'])->name('upload');
-Route::post('/update',[App\Http\Controllers\HomeController::class,'update'])->name('update');
-Route::post('/updatePass',[App\Http\Controllers\HomeController::class,'updatePassword'])->name('updatePass');
+Route::post('/upload', [App\Http\Controllers\HomeController::class, 'uploadImg'])->name('upload');
+Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+Route::post('/updatePass', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePass');
 Route::resource('/sales', SaleController::class);
 Route::resource('/affiliate', AffiliateController::class);
-Route::resource('/click',ClickController::class);
-Route::resource('/coupon',CouponController::class);
-Route::resource('/cart',CartController::class);
-Route::post('/cart/update-quantity', [CartController::class,'updateQuantity'])->name('updateQuantity');
+Route::resource('/click', ClickController::class);
+Route::resource('/coupon', CouponController::class);
+Route::resource('/cart', CartController::class);
+Route::post('/updateQuantity', [CartController::class, 'updateQuantity'])->name('updateQuantity');
 
 Route::post('/coupon/{couponId}/transfer', [CouponController::class, 'transferCoupon'])->name('coupon.transfer');
 Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
-Route::get('/credit',[CreditController::class,'index'])->name('credit');
+Route::get('/credit', [CreditController::class, 'index'])->name('credit');
 // CHATBOT
-Route::post('/bot',[OpenAIController::class,'chatOpenAi'])->name('chatbot');
-
+Route::post('/bot', [OpenAIController::class, 'chatOpenAi'])->name('chatbot');
 
 // ADMINISTRATION
 Route::get('/admin', [AdminAuthController::class, 'showRegisterForm'])->name('admin.register');
@@ -75,12 +75,11 @@ Route::resource('/product', ProductController::class);
 // Admin Logout
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-
 Route::get('/{any?}', function ($any = null) {
     if ($any) {
         $segments = explode('/', $any);
         $lastSegment = end($segments);
-        
+
         // Check if the specific route exists, if not, redirect to the parent route
         if (!Route::has($lastSegment)) {
             array_pop($segments);
@@ -91,7 +90,6 @@ Route::get('/{any?}', function ($any = null) {
 
     return view('welcome');
 })->where('any', '.*');
-
 
 // Route::get('/{any}', function ($any) {
 //     session_start();
@@ -119,4 +117,3 @@ Route::get('/{any?}', function ($any = null) {
 //     echo "going home " . $FullServerName;
 //     return Redirect::away($FullServerName);
 // })->where('any', '.*');
-

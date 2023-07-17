@@ -74,74 +74,45 @@
             @endif
         </div>
     </section>
-    <script>
-         $(document).ready(function() {
-        // Attach event listeners to the minus and plus buttons
-        $("i.minus, i.plus").on("click", function() {
-            let product_id = $(this).data("product-id");
-            let value = $(this).data("quantity");
-
-            updateCartQuantity(product_id, value);
-        });
-    });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+      <script>
         let btn = document.querySelector('.btn');
         btn.onclick = function(){
            btn.classList.toggle('active') 
         }
-        document.addEventListener("DOMContentLoaded", function() {
-          const minusButton = document.querySelector(".minus");
-          const plusButton = document.querySelector(".plus");
-          const quantityInput = document.querySelector(".quantity-input");
-      
-          minusButton.addEventListener("click", function() {
-            updateQuantity(-1);
-          });
-      
-          plusButton.addEventListener("click", function() {
-            updateQuantity(1);
-          });
-      
-          function updateQuantity(value) {
-            let newValue = parseInt(quantityInput.value) + value;
-            if (newValue < 1) {
-              newValue = 1;
-            }
-            quantityInput.value = newValue;
-          }
-        });
-        function updateCartQuantity(product_id, quantity) {
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('updateQuantity') }}',
-            data: {
-                _token: '{{ csrf_token() }}',
-                product_id: product_id,
-                quantity: quantity
-            },
-            success: function(response) {
-                // Update the cart display on success
-                // For example, you can update the cart icon or cart total
-                // Example:
-                // $('#cart-total').text(response.cart_total);
-                response.carts.forEach(function (cart) {
-                        let inputElement = document.querySelector(`[data-product-id="${cart.product.id}"]`);
-                        if (inputElement) {
-                            inputElement.value = cart.quantity;
-                        }
-                        console.log(cart.product.id, cart.quantity, inputElement.value);
-                    });
-                },
-            error: function(xhr, status, error) {
-                // Handle errors here
+      document.addEventListener("DOMContentLoaded", () => {
+        const minusBtn = document.querySelector(".minus");
+        const plusBtn = document.querySelector(".plus");
+        const quantityInput = document.querySelector(".quantity-input");
 
-                // Flash an error message
-                flash('Failed to update cart quantity. Please try again.', 'error');
-            }
-        });
-    }
-      </script>
+        minusBtn.addEventListener("click", () => updateQuantity(-1));
+        plusBtn.addEventListener("click", () => updateQuantity(1));
+
+        function updateQuantity(quantityChange) {
+            const productId = quantityInput.getAttribute("data-product-id");
+            let currentQuantity = parseInt(quantityInput.value);
+
+            // Calculate the new quantity and ensure it's at least 1
+            const newQuantity = Math.max(currentQuantity + quantityChange, 1);
+
+            // Make an Axios POST request to update the quantity on the server
+            axios.post("/updateQuantity", {
+                product_id: productId,
+                quantity: newQuantity
+            })
+            .then(response => {
+                // Update the quantity input value with the new quantity
+                quantityInput.value = newQuantity;
+                console.log("Quantity updated successfully");
+            })
+            .catch(error => {
+                console.error("Failed to update quantity:", error);
+            });
+        }
+    });
+</script>
       <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-    </script>
+      </script>
 </body>
 </html>

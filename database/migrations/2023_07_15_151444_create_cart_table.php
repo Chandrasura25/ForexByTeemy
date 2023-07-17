@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
             $table->integer('quantity');
+            $table->boolean('is_purchased')->default(false);
+            $table->integer('total_price');
             $table->timestamps();
             // Define composite primary key
             $table->primary(['user_id', 'product_id']);
