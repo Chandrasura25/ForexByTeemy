@@ -65,7 +65,7 @@ class CartController extends Controller
                 }
 
                 // Calculate the total_price by multiplying the product price with the quantity
-                $cart->total_price = $product->price * $request->quantity;
+                $cart->total_price = $product->price * $cart->quantity;
 
                 $cart->save();
                 flash('Item added to cart successfully')->success();
@@ -141,9 +141,8 @@ class CartController extends Controller
         if ($cartItem) {
             // If the cart item exists, update the quantity and calculate the total price
             $cartItem->quantity = $quantity;
-            $cartItem->total_price = $cartItem->product->price * $quantity; // Assuming the price is stored in the 'price' column of the 'products' table
+            $cartItem->total_price = $cartItem->product->price * $cartItem->quantity; // Assuming the price is stored in the 'price' column of the 'products' table
             $cartItem->save();
-    
             // Load the updated cart items and return as JSON response
             $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
             return response()->json(['carts' => $carts]);

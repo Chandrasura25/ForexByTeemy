@@ -56,13 +56,11 @@
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" value="{{$cart->id}}">
-                            <button class="remove" type="submit">
-                                <a href="#" class="btn"><i></i><text>Delete</text></a> 
-                            </button>
+                            <button class="remove" type="submit">Delete</button>
                         </form>
                     </span>
                     <span>
-                        <h4>{{$cart->total_price}}</h4>
+                        <h4 class="total-price">{{ $cart->total_price }}</h4>
                     </span>
                 </li>
                 @endforeach
@@ -75,15 +73,12 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
-      <script>
-        let btn = document.querySelector('.btn');
-        btn.onclick = function(){
-           btn.classList.toggle('active') 
-        }
-      document.addEventListener("DOMContentLoaded", () => {
+    <script>
+      document.addEventListener("DOMContentLoaded", () => { 
         const minusBtn = document.querySelector(".minus");
         const plusBtn = document.querySelector(".plus");
         const quantityInput = document.querySelector(".quantity-input");
+        const totalPriceElement = document.querySelector(".total-price");
 
         minusBtn.addEventListener("click", () => updateQuantity(-1));
         plusBtn.addEventListener("click", () => updateQuantity(1));
@@ -103,15 +98,15 @@
             .then(response => {
                 // Update the quantity input value with the new quantity
                 quantityInput.value = newQuantity;
-                console.log("Quantity updated successfully");
+                totalPriceElement.innerText = response.data.carts[0].total_price; // Update the total price
             })
             .catch(error => {
                 console.error("Failed to update quantity:", error);
             });
         }
-    });
-</script>
-      <script>
+       });
+    </script>
+    <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
       </script>
 </body>
