@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Cart</title>
+    <link rel="stylesheet" href="/css/cartbtn.css">
     <link rel="stylesheet" href="/css/cart.css">
     <link rel="stylesheet" href="/css/flash.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
@@ -67,12 +68,36 @@
                 <li class="tail">
                     <div>
                         <span>
-                            <a href="#" class="btn">Swipe Back<span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a> 
+                            <a href="/store" class="btn">Swipe Back<span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a> 
                         </span>
                         <span>
                             <h4>Total</h4>
                             <p>Total Price</p>
                         </span>
+                    </div>
+                </li>
+                <li class="discount">
+                    <div>
+                        <h5>If you have a coupon code, please enter here</h5>
+                        <form action="" method="POST">
+                            @csrf
+                            <input type="text" placeholder="Please enter your code here">
+                            <button type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <div class="center">
+                        <a href="#" class="a">
+                            <div>
+                                <div>
+                                    <span>Buy Now</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                        </a>    
                     </div>
                 </li>
             </ul>

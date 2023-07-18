@@ -24,7 +24,7 @@ section header {
 }
 .container {
     position: relative;
-    background: #ffffff;
+    background: #eee;
     margin-top: 30px;
     width: 100%;
     height: auto;
@@ -154,6 +154,23 @@ li.tail{
 .tail div span:nth-child(1){
     width: 50%;
 }
+.tail div span:nth-child(2){
+    display: flex;
+    align-items: center;
+    border: 3px solid #001944;
+    padding: 0 25px;
+    gap: 20px;
+}
+.tail div span:nth-child(2) h4{
+    font-size: 1.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.tail div span:nth-child(2) p{
+    font-size: 1em;
+    font-weight: 700;
+    color: #777;
+}
 .btn{
     position: relative;
     width: 200px;
@@ -207,4 +224,43 @@ li.tail{
 }
 .btn:hover::after{
     transform: translateX(170px) skewX(30deg);
+}
+.discount{
+    position: relative;
+    width:auto;
+}
+.discount h5{
+    font-size: 1em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #001944;
+    text-transform: capitalize;
+}
+.discount form{
+    display: flex;
+}
+.discount input{
+    width: 100%;
+    height: 45px;
+    outline: none;
+    border: 2px solid #001944;
+    padding: 0 20px;
+    font-size: 1em;
+    font-weight: 600;
+    color: #777;
+}
+.discount button{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #001944;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+}
+@media (max-width: 991px) {
+    section {
+        padding: 40px 50px;
+    }
 }
