@@ -72,7 +72,7 @@
                         </span>
                         <span>
                             <h4>Total</h4>
-                            <p>Total Price</p>
+                            <p>{{$totalAmount}}</p>
                         </span>
                     </div>
                 </li>

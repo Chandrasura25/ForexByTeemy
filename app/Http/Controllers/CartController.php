@@ -19,9 +19,17 @@ class CartController extends Controller
     public function index()
     {
         $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
-        return view('cart', ['carts' => $carts]);
+        $totalAmount = $this->calculateTotalAmount($carts);
+        return view('cart', ['carts' => $carts, 'totalAmount' => $totalAmount]);
     }
-
+    private function calculateTotalAmount($carts)
+    {
+        $totalAmount = 0;
+        foreach ($carts as $cart) {
+            $totalAmount += $cart->product->price * $cart->quantity;
+        }
+        return $totalAmount;
+    }
     /**
      * Show the form for creating a new resource.
      */
