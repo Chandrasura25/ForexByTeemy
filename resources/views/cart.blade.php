@@ -67,7 +67,7 @@
                 <li class="tail">
                     <div>
                         <span>
-                            <a href="/store">Continue Shopping</a>
+                            <a href="#" class="btn">Swipe Back<span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a> 
                         </span>
                         <span>
                             <h4>Total</h4>
