@@ -29,7 +29,7 @@
                     <span>Price</span>
                 </li>
                 @foreach ($carts as $cart)
-                <li>
+                <li class="list">
                     <span>
                         <div class="imgBx">
                             <img src="{{ $cart->product->images->first()->file_path }}" alt="{{$cart->product->name}}">
@@ -77,7 +77,7 @@
                     </div>
                 </li>
                 <li class="discount">
-                    <div>
+                    <div class="coupon_code">
                         <h5>If you have a coupon code, please enter here</h5>
                         <form action="" method="POST">
                             @csrf

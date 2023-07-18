@@ -62,14 +62,12 @@
 .a div:nth-child(1) span{
 	color: #fff;
 	z-index: 1;
-    transform: translateX(20px);
 }
 .a:hover div:nth-child(1) span{
 	z-index: 1;
 	color: #262626;
 }
 .a div:nth-child(2) span{
-    transform: translateX(15px) translateY(20px);
     color: #262626;
 	z-index: 1;
 }

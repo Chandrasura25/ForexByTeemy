@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
+:root {
+    --size: 30px;
+}
 body {
     background: #d6d7ec;
     display: flex;
@@ -48,20 +51,23 @@ section header {
     border-bottom: 2px solid #777;
     list-style: none;
 }
-.container ul li span:nth-child(1) {
-    width: 25%;
+.container ul li.list span:nth-child(1) {
+    gap: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.container ul li span:nth-child(3) {
-    width: 20%;
+.container ul li.list span:nth-child(3) {
+    transform: translateX(-30px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container ul li span:nth-child(4) {
-    width: 20%;
+.container ul li.list span:nth-child(2) {
+    transform: translateX(-40px);
+}
+.container ul li.list span:nth-child(4) {
+    transform: translateX(-30px);
 }
 .head span {
     font-weight: 600;
@@ -84,31 +90,30 @@ li span .imgBx img {
 li:not(:first-child) span:nth-child(2) {
     font-size: 1em;
 }
-li:not(:first-child) span:nth-child(3) form{
+li:not(:first-child) span:nth-child(3) form {
     display: flex;
 }
 li:not(:first-child) span:nth-child(3) {
     width: fit-content;
-    height: 45px;
     outline: none;
     text-align: center;
     font-size: 1em;
     font-weight: 600;
     color: #001944;
 }
-li:not(:first-child) span:nth-child(3) i{
+li.list span:nth-child(3) i {
     cursor: pointer;
     background: #001944;
     color: #fff;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-li:not(:first-child) span:nth-child(3) input{
-    width: 45px;
-    height: 45px;
+li.list span:nth-child(3) input {
+    width: 40px;
+    height: 40px;
     border: none;
     outline: none;
     text-align: center;
@@ -117,9 +122,9 @@ li:not(:first-child) span:nth-child(3) input{
     color: #001944;
     border: 2px solid #777;
 }
-.remove{
-    border:none;
-    outline:none;
+.remove {
+    border: none;
+    outline: none;
     cursor: pointer;
     display: inline-block;
     padding: 10px 20px;
@@ -128,72 +133,72 @@ li:not(:first-child) span:nth-child(3) input{
     transition: 0.3s;
     border-radius: 20px;
 }
-.remove:hover{
+.remove:hover {
     background: #fff;
     color: #001944;
     border: 1px solid #001944;
 }
-.visit{
+.visit {
     position: relative;
     padding: 15px 30px;
 }
-.visit h4{
+.visit h4 {
     font-size: 2em;
     font-weight: 600;
     color: #001944;
 }
-li.tail{
+li.tail {
     border-bottom: none;
 }
-.tail div{
+.tail div {
     width: 100%;
     position: relative;
     display: flex;
     justify-content: space-between;
 }
 
-.tail div span:nth-child(2){
+.tail div span:nth-child(2) {
     display: flex;
     align-items: center;
     border: 3px solid #001944;
     padding: 0 25px;
     gap: 20px;
 }
-.tail div span:nth-child(2) h4{
+.tail div span:nth-child(2) h4 {
     font-size: 1.2em;
     font-weight: 500;
     text-transform: uppercase;
 }
-.tail div span:nth-child(2) p{
+.tail div span:nth-child(2) p {
     font-size: 1em;
     font-weight: 700;
     color: #777;
 }
-.btn{
+.btn {
     position: relative;
     width: 200px;
-    height:60px;
+    height: 60px;
     white-space: nowrap;
     background: #28272a;
     border-radius: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgba(255,255,255,.5);
+    color: rgba(255, 255, 255, 0.5);
     text-decoration: none;
     letter-spacing: 2px;
     padding-left: 40px;
-    transition: .5s;
+    transition: 0.5s;
     overflow: hidden;
-    border-top: 0.5px solid rgba(255,255,255,.35);
-    border-left: 0.5px solid rgba(255,255,255,.35);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.35);
+    border-left: 0.5px solid rgba(255, 255, 255, 0.35);
 }
-.btn:hover{
+.btn:hover {
     padding-left: 0px;
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     padding-right: 40px;
 }
-.btn span{
+.btn span {
     position: absolute;
     left: 5px;
     width: 50px;
@@ -201,17 +206,17 @@ li.tail{
     border-radius: 50%;
     background: #fff;
     color: #1a191d;
-    transition: .5s ease-in-out;
+    transition: 0.5s ease-in-out;
     font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.btn span i{
-    transform: translateX(10px);
-}
- .btn:hover span{
+.btn:hover span {
     left: calc(100% - 55px);
 }
-.btn::after{
-    content: '';
+.btn::after {
+    content: "";
     position: absolute;
     width: 80px;
     height: 100%;
@@ -220,24 +225,24 @@ li.tail{
     background: rgba(255, 255, 255, 0.25);
     transform: translateX(-170px) skewX(30deg);
 }
-.btn:hover::after{
+.btn:hover::after {
     transform: translateX(170px) skewX(30deg);
 }
-.discount{
+.discount {
     position: relative;
-    width:auto;
+    width: auto;
 }
-.discount h5{
+.discount h5 {
     font-size: 1em;
     margin-bottom: 8px;
     font-weight: 600;
     color: #001944;
     text-transform: capitalize;
 }
-.discount form{
+.discount form {
     display: flex;
 }
-.discount input{
+.discount input {
     width: 100%;
     height: 45px;
     outline: none;
@@ -247,7 +252,7 @@ li.tail{
     font-weight: 600;
     color: #777;
 }
-.discount button{
+.discount button {
     padding: 10px 20px;
     border: none;
     outline: none;
@@ -263,19 +268,90 @@ li.tail{
     }
 }
 @media (max-width: 800px) {
-    .tail div span:nth-child(1){
+    .tail div span:nth-child(1) {
         width: 30% !important;
     }
-    li span .imgBx {
-        max-width: 80px;
-        max-height: 80px;
+    .container ul li.list span:nth-child(1) {
+        gap: 10px;
     }
 }
-@media (max-width: 800px) {
-    .discount h5{
+@media (max-width: 700px) {
+    .discount h5 {
         font-size: 0.8em;
     }
-    div.discount{
+    div.discount {
         flex-direction: column !important;
+    }
+    li span .imgBx {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    .container ul li.list span:nth-child(2),
+    .container ul li.list span:nth-child(3),
+    .container ul li.list span:nth-child(4) {
+        transform: translateX(-20px);
+    }
+}
+@media screen and (max-width: 767px) {
+    section {
+        padding: 20px; /* Adjust the padding to make it more compact */
+    }
+
+    section header {
+        font-size: 1.5em; /* Reduce the font size for smaller screens */
+    }
+
+    .container ul li.discount {
+        flex-direction: column; /* Stack the elements vertically on small screens */
+        padding: 20px; /* Adjust the padding for a more compact layout */
+        gap: 10px; /* Adjust the gap between the elements */
+    }
+    .container ul li.discount .coupon_code {
+        width: 80%;
+    }
+    .container ul li {
+        padding: 10px 20px;
+    }
+}
+@media (max-width: 550px) {
+    section {
+        padding: 10px;
+    }
+    .container ul li.list span:nth-child(1) {
+        gap: 5px;
+    }
+    li.list span:nth-child(3) input,
+    li.list span:nth-child(3) i {
+        width: var(--size);
+        height: var(--size);
+    }
+    .tail div span:nth-child(2) {
+        padding: 0 15px;
+        gap: 10px;
+    }
+}
+@media (max-width: 440px) {
+    .tail div {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tail div span:nth-child(2) {
+        width: 200px;
+    }
+    .container ul li.list span:nth-child(1) {
+        flex-direction: column;
+    }
+    .container ul li.list span:nth-child(2),
+    .container ul li.list span:nth-child(3),
+    .container ul li.list span:nth-child(4) {
+        transform: translateX(14px);
+    }
+    .remove {
+        padding: 7px 13px;
+    }
+}
+@media (max-width: 400px) {
+    .container ul li.discount .coupon_code {
+        width: 100%;
     }
 }
