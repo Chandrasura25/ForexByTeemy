@@ -151,9 +151,7 @@ li.tail{
     display: flex;
     justify-content: space-between;
 }
-.tail div span:nth-child(1){
-    width: 50%;
-}
+
 .tail div span:nth-child(2){
     display: flex;
     align-items: center;
@@ -262,5 +260,22 @@ li.tail{
 @media (max-width: 991px) {
     section {
         padding: 40px 50px;
+    }
+}
+@media (max-width: 800px) {
+    .tail div span:nth-child(1){
+        width: 30% !important;
+    }
+    li span .imgBx {
+        max-width: 80px;
+        max-height: 80px;
+    }
+}
+@media (max-width: 800px) {
+    .discount h5{
+        font-size: 0.8em;
+    }
+    div.discount{
+        flex-direction: column !important;
     }
 }
