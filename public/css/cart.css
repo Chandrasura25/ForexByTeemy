@@ -142,3 +142,10 @@ li:not(:first-child) span:nth-child(3) input{
     font-weight: 600;
     color: #001944;
 }
+li.tail{
+    border-bottom: none;
+}
+.tail div{
+    display: flex;
+    justify-content: space-between;
+}

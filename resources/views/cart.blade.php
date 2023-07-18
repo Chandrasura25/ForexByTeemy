@@ -64,6 +64,17 @@
                     </span>
                 </li>
                 @endforeach
+                <li class="tail">
+                    <div>
+                        <span>
+                            <a href="/store">Continue Shopping</a>
+                        </span>
+                        <span>
+                            <h4>Total</h4>
+                            <p>Total Price</p>
+                        </span>
+                    </div>
+                </li>
             </ul>
             @else
             <div class="visit">
