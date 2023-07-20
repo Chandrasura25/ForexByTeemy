@@ -38,7 +38,8 @@
             <div class="drop">
                 <div class="content">
                     <h2>Add A Referral Source</h2>
-                    <form action="" method="POST">
+                    <form action="{{route('addsource')}}" method="POST">
+                        @csrf
                         <div class="inputBox">
                             <input type="text" name="source" placeholder="Referrer Source" id="ref_source">
                         </div>

@@ -48,6 +48,7 @@ Route::post('/updatePass', [App\Http\Controllers\HomeController::class, 'updateP
 Route::resource('/sales', SaleController::class);
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click', ClickController::class);
+Route::post('/addsource', [ClickController::class, 'addSource'])->name('addsource');
 Route::resource('/coupon', CouponController::class);
 Route::resource('/cart', CartController::class);
 Route::post('/updateQuantity', [CartController::class, 'updateQuantity'])->name('updateQuantity');

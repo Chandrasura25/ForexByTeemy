@@ -91,4 +91,8 @@ class ClickController extends Controller
     {
         //
     }
+    public function addSource(Request $request){
+        $user = auth()->user();
+        return $user.$request->source;
+    }
 }

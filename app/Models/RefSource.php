@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class RefSource extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'source',
+        'user_id',
+        'username'
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
