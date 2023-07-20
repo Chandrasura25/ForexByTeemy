@@ -6,6 +6,7 @@
         <h2>Refer Friends <span>And Get Reward</span></h2>
         <p><span>Unlock the power of referrals and earn a certain percenatage!</span><br> Share your unique referral code with friends and family, and when they sign up using your code, you both receive a bonus of 30 credits. Start referring today and watch your credits grow as you and your loved ones reap the benefits of this referral program.</p>
     </div> 
+    @include('flash::message')
     <div class="cardBx">
         <div class="ref_link">
             <div class="drop">
@@ -53,6 +54,9 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 <script>
     $(document).ready(function () {
         $('#copyButton').click(function () {

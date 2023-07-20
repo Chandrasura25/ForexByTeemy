@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\RefSource;
 use App\Models\Credit;
 use Illuminate\Http\Request;
 
@@ -93,6 +94,17 @@ class ClickController extends Controller
     }
     public function addSource(Request $request){
         $user = auth()->user();
-        return $user.$request->source;
+        $refsource = new RefSource();
+        $refsource->source = $request->source;
+        $refsource->user_id = $user->id;
+        $refsource->username = $user->username;
+        $refsource->save();
+        if ($refsource->save()) {
+            flash('Referral Source added successfully')->success();
+            return redirect()->back();
+        } else {
+            flash('Referral Source not added')->error();
+            return redirect()->back();
+        }
     }
 }

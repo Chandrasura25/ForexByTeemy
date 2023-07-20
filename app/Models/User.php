@@ -53,7 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Credit::class, 'user_id', 'id');
     }
-
+    public function refSources()
+    {
+        return $this->hasMany(RefSource::class, 'user_id', 'id');
+    }
     public function referredCredits()
     {
         return $this->hasMany(Credit::class, 'username', 'username');
