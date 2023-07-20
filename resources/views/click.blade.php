@@ -1,6 +1,7 @@
 @extends('sidebar')
 @section('content')
 <link rel="stylesheet" href="/css/click.css">
+<link rel="stylesheet" href="/css/flash.css">
 <div class="Box">
     <div class="title">
         <h2>Refer Friends <span>And Get Reward</span></h2>
