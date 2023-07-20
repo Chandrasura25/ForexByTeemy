@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="coupons">
+    {{-- <div class="coupons">
         @if ()
         <div class="recentOrders">
             <div class="cardHeader">
@@ -63,17 +63,13 @@
             <table>
                 <thead>
                   <tr>
-                   <td>Coupon Code</td>
-                   <td>Coupon Type</td>
-                   <td>Coupon Channel</td>
-                   <td>Description</td>
-                   <td>Effectivity</td>
-                   <td>Percent Off / Fixed Amount</td>
-                   <td>Status</td>
+                    <td>Serial Number</td>
+                   <td>Source</td>
+                   <td>Referral Link</td>
                    <td>Actions</td>
                   </tr>
                 </thead>
-                {{-- <tbody>
+               <tbody>
                     @foreach ($coupons as $coupon)
                         <tr>
                             <td>{{ $coupon->coupon_code }}</td>
@@ -112,14 +108,14 @@
                             </td>
                         </tr>
                     @endforeach
-                </tbody> --}}
+                </tbody> 
             </table>
             <div class="pagination">
-                {{-- {{ $coupons->links() }} --}}
+                {{-- {{ $coupons->links() }} 
             </div>
         </div>
         @endif
-    </div>
+    </div> --}}
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

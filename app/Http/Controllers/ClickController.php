@@ -17,7 +17,7 @@ class ClickController extends Controller
     }
     private function updateTotalCredits(User $user)
     {
-        $totalCredits = Credit::where('username', $user->username)->sum('amount'); 
+        $totalCredits = Credit::where('username', $user->username)->sum('amount');  
         $user->update(['credits' => $totalCredits]);
     }
     public function index()
