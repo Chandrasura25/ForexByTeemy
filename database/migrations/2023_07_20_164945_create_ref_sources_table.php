@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ref_source', function (Blueprint $table) {
+        Schema::create('ref_sources', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('username');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ref_source');
+        Schema::dropIfExists('ref_sources');
     }
 };
