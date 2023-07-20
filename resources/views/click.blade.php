@@ -40,7 +40,7 @@
             <div class="drop">
                 <div class="content">
                     <h2>Add A Referral Source</h2>
-                    <form action="{{route('addsource')}}" method="POST">
+                    <form action="/source" method="POST">
                         @csrf
                         <div class="inputBox">
                             <input type="text" name="source" placeholder="Referrer Source" id="ref_source">
@@ -52,6 +52,73 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="coupons">
+        @if ()
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Available Coupons</h2>
+                <a href="#" class="btn">View All</a>
+            </div>
+            <table>
+                <thead>
+                  <tr>
+                   <td>Coupon Code</td>
+                   <td>Coupon Type</td>
+                   <td>Coupon Channel</td>
+                   <td>Description</td>
+                   <td>Effectivity</td>
+                   <td>Percent Off / Fixed Amount</td>
+                   <td>Status</td>
+                   <td>Actions</td>
+                  </tr>
+                </thead>
+                {{-- <tbody>
+                    @foreach ($coupons as $coupon)
+                        <tr>
+                            <td>{{ $coupon->coupon_code }}</td>
+                            <td>{{ $coupon->coupon_type }}</td>
+                            <td>{{$coupon->couponChannel->name}}</td>
+                            <td>{{ $coupon->description }}</td>
+                            <td>{{ $coupon->effectivity }}</td>
+                            <td>
+                                @if ($coupon->percentage_off)
+                                    {{ $coupon->percentage_off }}
+                                @else
+                                    {{ $coupon->fixed_amount }}
+                                @endif
+                            </td>
+                            <td>
+                                <form action="/status/{{$coupon->id}}" method="post">
+                                @csrf
+                                  <button type="submit" class="{{ $coupon->status === 'active' ? 'delivered':'pending' }}">
+                                      {{ $coupon->status }}
+                                  </button>   
+                                </form>                     
+                            </td>
+                            <td>
+                                <div class="actionBx">
+                                    <a href="/coupon/{{$coupon->id}}/edit"><i class="fas fa-pen"></i></a>
+                                    <form action="/coupon/{{$coupon->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                    <form action="{{ route('coupon.transfer', $coupon->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"><i class="fas fa-exchange-alt"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody> --}}
+            </table>
+            <div class="pagination">
+                {{-- {{ $coupons->links() }} --}}
+            </div>
+        </div>
+        @endif
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

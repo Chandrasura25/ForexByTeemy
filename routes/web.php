@@ -13,6 +13,7 @@ use App\Http\Controllers\PHPMailerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\SourceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -48,7 +49,7 @@ Route::post('/updatePass', [App\Http\Controllers\HomeController::class, 'updateP
 Route::resource('/sales', SaleController::class);
 Route::resource('/affiliate', AffiliateController::class);
 Route::resource('/click', ClickController::class);
-Route::post('/addsource', [ClickController::class, 'addSource'])->name('addsource');
+Route::post('/source', SourceController::class);
 Route::resource('/coupon', CouponController::class);
 Route::resource('/cart', CartController::class);
 Route::post('/updateQuantity', [CartController::class, 'updateQuantity'])->name('updateQuantity');
