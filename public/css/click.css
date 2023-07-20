@@ -124,7 +124,7 @@
     padding: 10px 15px;
     font-size: 1em;
 }
-.container .drop .content form .inputBox input[type="button"] {
+.container .drop .content form .inputBox input[type="button"],.container .drop .content form .inputBox input[type="submit"] {
     color: #fff;
     font-size: 1em;
     text-transform: uppercase;

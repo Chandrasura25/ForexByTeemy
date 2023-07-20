@@ -38,13 +38,12 @@
             <div class="drop">
                 <div class="content">
                     <h2>Add A Referral Source</h2>
-                    <small>Replace the written ref source with your preferred source like facebook</small>
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="inputBox">
-                            <input type="text" name="" value="{{$myRefLink}}-refsource" placeholder="Referrer Link" id="referrerLink">
+                            <input type="text" name="source" placeholder="Referrer Source" id="ref_source">
                         </div>
                         <div class="inputBox">
-                            <input type="button" id="copySourceButton" data-clipboard-text="{{$myRefLink}}-refsource" value='Copy'>
+                            <input type="submit" value='Submit'>
                         </div>
                     </form>
                 </div>
@@ -84,7 +83,7 @@
         });
     });
     </script>
-    
+{{--     
     <script>
         document.getElementById("copySourceButton").addEventListener("click", function() {
             var referrerLink = document.getElementById("referrerLink");
@@ -117,11 +116,5 @@
                 referrerLink.value = "";
             }, 60000); // 1 minute
         }
-    </script>
-    
-    
-    
-    
-    
-    
+    </script> --}}
 @endsection
