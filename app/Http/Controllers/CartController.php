@@ -153,7 +153,8 @@ class CartController extends Controller
             $cartItem->save();
             // Load the updated cart items and return as JSON response
             $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
-            return response()->json(['carts' => $carts]);
+            $totalAmount = $this->calculateTotalAmount($carts);
+            return response()->json(['carts' => $carts, 'totalAmount' => $totalAmount]);
         } else {
             // For this example, we'll show an error flash message
             flash('Cart item not found')->error();

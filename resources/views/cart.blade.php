@@ -35,7 +35,7 @@
                             <img src="{{ $cart->product->images->first()->file_path }}" alt="{{$cart->product->name}}">
                         </div>
                         <div>
-                            <p>{{$cart->product->description}}</p>
+                            <p class="desc">{{$cart->product->description}}</p>
                         </div>
                     </span>
                     <span>
@@ -110,39 +110,48 @@
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => { 
-        const minusBtn = document.querySelector(".minus");
-        const plusBtn = document.querySelector(".plus");
-        const quantityInput = document.querySelector(".quantity-input");
-        const totalPriceElement = document.querySelector(".total-price");
-        const totalAmountElement = document.querySelector(".total-amount");
-
-        minusBtn.addEventListener("click", () => updateQuantity(-1));
-        plusBtn.addEventListener("click", () => updateQuantity(1));
-
-        function updateQuantity(quantityChange) {
-            const productId = quantityInput.getAttribute("data-product-id");
-            let currentQuantity = parseInt(quantityInput.value);
-
-            // Calculate the new quantity and ensure it's at least 1
-            const newQuantity = Math.max(currentQuantity + quantityChange, 1);
-
-            // Make an Axios POST request to update the quantity on the server
-            axios.post("/updateQuantity", {
-                product_id: productId,
-                quantity: newQuantity
-            })
-            .then(response => {
-                // Update the quantity input value with the new quantity
-                quantityInput.value = newQuantity;
-                totalPriceElement.innerText = response.data.carts[0].total_price; // Update the total price
-            })
-            .catch(error => {
-                console.error("Failed to update quantity:", error);
-            });
-        }
-       });
+        document.addEventListener("DOMContentLoaded", () => { 
+            const minusBtns = document.querySelectorAll(".minus");
+            const plusBtns = document.querySelectorAll(".plus");
+            const quantityInputs = document.querySelectorAll(".quantity-input");
+            const totalPrices = document.querySelectorAll(".total-price");
+            const totalAmountElement = document.querySelector(".total-amount");
+    
+            minusBtns.forEach((btn) => btn.addEventListener("click", () => updateQuantity(btn, -1)));
+            plusBtns.forEach((btn) => btn.addEventListener("click", () => updateQuantity(btn, 1)));
+    
+            function updateQuantity(clickedBtn, quantityChange) {
+                const productId = clickedBtn.getAttribute("data-product-id");
+                const quantityInput = clickedBtn.parentNode.querySelector(".quantity-input");
+                let currentQuantity = parseInt(quantityInput.value); 
+    
+                // Calculate the new quantity and ensure it's at least 1
+                const newQuantity = Math.max(currentQuantity + quantityChange, 1);
+    
+                // Make an Axios POST request to update the quantity on the server
+                axios.post("/updateQuantity", {
+                    product_id: productId,
+                    quantity: newQuantity
+                })
+                .then(response => {
+                    // Update the quantity input value with the new quantity
+                    quantityInput.value = newQuantity;
+    
+                    // Update the total price for the specific cart item
+                    const cartIndex = Array.from(quantityInputs).indexOf(quantityInput);
+                    totalPrices[cartIndex].innerText = response.data.carts[cartIndex].total_price;
+    
+                    // Calculate and update the total amount for all cart items
+                    const totalAmount = Array.from(totalPrices).reduce((total, el) => total + parseFloat(el.innerText), 0);
+                    totalAmountElement.innerText = totalAmount.toFixed(2);
+                })
+                .catch(error => {
+                    console.error("Failed to update quantity:", error);
+                });
+            }
+        });
     </script>
+    
     <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
       </script>

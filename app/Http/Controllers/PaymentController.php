@@ -1,16 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Redirect;
 use Paystack;
 
 class PaymentController extends Controller
 {
-   public function index(){
-    return view('payment');
-   }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    private function calculateTotalAmount($carts)
+    {
+        $totalAmount = 0;
+        foreach ($carts as $cart) {
+            $totalAmount += $cart->product->price * $cart->quantity;
+        }
+        return $totalAmount;
+    }
+    public function index()
+    {
+        $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
+        $totalAmount = $this->calculateTotalAmount($carts);
+        return view('payment',['carts' => $carts, 'totalAmount' => $totalAmount]);
+    }
     /**
      * Redirect the User to Paystack Payment Page
      * @return Url
