@@ -53,10 +53,12 @@ Route::resource('/source', SourceController::class);
 Route::resource('/coupon', CouponController::class);
 Route::resource('/cart', CartController::class);
 Route::post('/updateQuantity', [CartController::class, 'updateQuantity'])->name('updateQuantity');
-
 Route::post('/coupon/{couponId}/transfer', [CouponController::class, 'transferCoupon'])->name('coupon.transfer');
 Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
 Route::get('/credit', [CreditController::class, 'index'])->name('credit');
+// payment
+Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback']);
 // CHATBOT
 Route::post('/bot', [OpenAIController::class, 'chatOpenAi'])->name('chatbot');
 
