@@ -59,6 +59,7 @@ Route::get('/credit', [CreditController::class, 'index'])->name('credit');
 // payment
 Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback']);
+Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'index'])->name('payment');
 // CHATBOT
 Route::post('/bot', [OpenAIController::class, 'chatOpenAi'])->name('chatbot');
 

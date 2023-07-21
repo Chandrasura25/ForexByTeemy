@@ -8,7 +8,9 @@ use Paystack;
 
 class PaymentController extends Controller
 {
-
+   public function index(){
+    return view('payment');
+   }
     /**
      * Redirect the User to Paystack Payment Page
      * @return Url

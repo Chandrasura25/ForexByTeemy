@@ -72,7 +72,7 @@
                         </span>
                         <span>
                             <h4>Total</h4>
-                            <p>{{$totalAmount}}</p>
+                            <p class="total-amount">{{$totalAmount}}</p>
                         </span>
                     </div>
                 </li>
@@ -86,7 +86,7 @@
                         </form>
                     </div>
                     <div class="center">
-                        <a href="#" class="a">
+                        <a href="{{route('payment')}}" class="a">
                             <div>
                                 <div>
                                     <span>Buy Now</span>
@@ -115,6 +115,7 @@
         const plusBtn = document.querySelector(".plus");
         const quantityInput = document.querySelector(".quantity-input");
         const totalPriceElement = document.querySelector(".total-price");
+        const totalAmountElement = document.querySelector(".total-amount");
 
         minusBtn.addEventListener("click", () => updateQuantity(-1));
         plusBtn.addEventListener("click", () => updateQuantity(1));
