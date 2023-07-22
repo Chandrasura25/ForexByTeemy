@@ -23,12 +23,12 @@
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput"
-                                value="{{ Auth::user()->username }}" readonly>
+                                value="{{ Auth::user()->username }}" readonly name="username">
                             <label for="floatingInput">Username</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput"
-                                value="{{ Auth::user()->email }}">
+                                value="{{ Auth::user()->email }}" name="email">
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -39,8 +39,7 @@
                         <input type="hidden" name="amount" value="{{ $totalAmount * 100 }}">
                         <input type="hidden" name="orderID" value="{{$orderID}}">
                         <input type="hidden" name="currency" value="NGN">
-                        <input type="hidden" name="metadata"
-                            value="{{ json_encode($array = ['key_name' => 'value']) }}">
+                        <input type="hidden" name="metadata" value="{{ json_encode(['user_id' => Auth::user()->id]) }}">
                         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput"

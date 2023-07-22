@@ -37,12 +37,11 @@ class PaymentController extends Controller
      */
     public function redirectToGateway(Request $request)
     {
-        dd($request->all());
-        // try {
-        //     return Paystack::getAuthorizationUrl()->redirectNow();
-        // } catch (\Exception $e) {
-        //     return Redirect::back()->withMessage(['msg' => 'The paystack token has expired. Please refresh the page and try again.', 'type' => 'error']);
-        // }
+         return Paystack::getAuthorizationUrl($request->all())->redirectNow();
+        try {
+        } catch (\Exception $e) {
+            return Redirect::back()->withMessage(['msg' => 'The paystack token has expired. Please refresh the page and try again.', 'type' => 'error']);
+        }
     }
 
     /**
@@ -53,9 +52,12 @@ class PaymentController extends Controller
     {
         $paymentDetails = Paystack::getPaymentData();
 
-        dd($paymentDetails);
+    //     dd($paymentDetails);
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
-    }
+   }
+   
+   
+   
 }
