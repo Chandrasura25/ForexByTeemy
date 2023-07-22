@@ -23,7 +23,7 @@
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput"
-                                value="{{ Auth::user()->username }}" readonly name="username">
+                                value="{{ Auth::user()->username }}" readonly name="name">
                             <label for="floatingInput">Username</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -43,7 +43,7 @@
                         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput"
-                                value="{{ Auth::user()->number ?? '00000000000' }}">
+                                value="{{ Auth::user()->number ?? '00000000000' }}" name="phone">
                             <label for="floatingInput">Phone Number</label>
                         </div>
                         <div class="d-flex justify-content-between">

@@ -13,7 +13,6 @@ class Payment extends Model
         'status',
         'reference',
         'amount',
-        'paid_at',
         'channel',
         'currency',
         'user_id',

@@ -61,7 +61,6 @@ class PaymentController extends Controller
             'status' => $paymentData['data']['status'],
             'reference' => $paymentData['data']['reference'],
             'amount' => $paymentData['data']['amount'],
-            'paid_at' => $paymentData['data']['paid_at'],
             'channel' => $paymentData['data']['channel'],
             'currency' => $paymentData['data']['currency'],
             'user_id' => $paymentData['data']['metadata']['user_id'],
