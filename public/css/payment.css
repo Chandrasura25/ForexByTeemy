@@ -4,11 +4,10 @@
     box-sizing: border-box;
 }
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(-30deg,#03a9f4 0%,#3a78b7 50%,#262626 50%,#607d8b 100%);
-    filter: hue-rotate(120deg);
-    animation: roll 10s linear infinite;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(-30deg, #37d72f 0%, #37d72f 50%, white 50%, white 100%);
+    filter: hue-rotate(120deg);    
+    transition:0.5s;
 }

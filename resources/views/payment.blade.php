@@ -10,7 +10,23 @@
 </head>
 <body>
     <div class="container-fluid m-0 p-0">
-      
+        <h4 class="text-uppercase text-center mt-4">Make Payments</h4>
+      <div class="mt-2 p-4 d-flex justify-content-center align-items-center">
+        <div class="col-10 d-flex justify-content-between flex-wrap align-items-center gap-2">
+            <div class="shadow col-5 p-3">
+                <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                    <h4 class="text-uppercase mb-2">personal information</h4>
+                    @csrf
+                    <input type="email" readonly class="form-control mb-2" name="email" value="{{Auth::user()->email}}">
+                    <input type="hidden" name="orderID" value="345" readonly class="form-control mb-2">
+                    <input type="number" name="amount" value="{{$totalAmount}}" readonly class="form-control mb-2">
+                </form>
+            </div>
+            <div class="shadow">
+    
+            </div>
+        </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
