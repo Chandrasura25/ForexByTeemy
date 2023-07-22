@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --size:70px;
+}
 body{
     position: relative;
     height: 100vh;
@@ -10,4 +13,19 @@ body{
     background: linear-gradient(-30deg, #37d72f 0%, #37d72f 50%, white 50%, white 100%);
     filter: hue-rotate(120deg);    
     transition:0.5s;
+    overflow: hidden;
+}
+.imgBx{
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+
+}
+.imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
