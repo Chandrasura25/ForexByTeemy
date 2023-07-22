@@ -37,6 +37,7 @@ class PaymentController extends Controller
      */
     public function redirectToGateway(Request $request)
     {
+       
          return Paystack::getAuthorizationUrl($request->all())->redirectNow();
         try {
         } catch (\Exception $e) {
@@ -48,16 +49,48 @@ class PaymentController extends Controller
      * Obtain Paystack payment information
      * @return void
      */
-    public function handleGatewayCallback()
-    {
-        $paymentDetails = Paystack::getPaymentData();
+//     public function handleGatewayCallback()
+//     {
+//         $paymentDetails = Paystack::getPaymentData();
 
-    //     dd($paymentDetails);
-        // Now you have the payment details,
-        // you can store the authorization_code in your db to allow for recurrent subscriptions
-        // you can then redirect or do whatever you want
-   }
+//     //     dd($paymentDetails);
+//         // Now you have the payment details,
+//         // you can store the authorization_code in your db to allow for recurrent subscriptions
+//         // you can then redirect or do whatever you want
+//    }
    
-   
+
+public function handleGatewayCallback()
+{
+    try {
+        // Get payment data from the query parameters
+        $paymentData = request()->query();
+
+        // Retrieve transaction reference from the payment data
+        $transactionReference = $paymentData['reference'];
+
+        // Retrieve payment status from the payment data
+        $paymentStatus = $paymentData['status'];
+  dd($paymentData);
+        // Process the payment status accordingly
+        // if ($paymentStatus === 'success') {
+        //     // Payment successful, update your database and perform necessary actions
+        //     // Example: Update the order status, save payment details, etc.
+
+        //     // Redirect to a success page or any other page as desired
+        //     return Redirect::route('payment.success')->with('success', 'Payment successful!');
+        // } else {
+        //     // Payment failed, handle the error as needed
+
+        //     // Redirect to a failure page or any other page as desired
+        //     return Redirect::route('payment.failure')->with('error', 'Payment failed!');
+        // }
+    } catch (\Exception $e) {
+        // An error occurred while verifying payment status, handle it accordingly
+        return Redirect::back()->withMessage(['msg' => 'An error occurred during payment verification.', 'type' => 'error']);
+       
+    }
+}
+
    
 }
