@@ -16,7 +16,7 @@
         <h4 class="text-uppercase text-center mt-4 display-4">Make Payments</h4>
         <div class="mt-2 p-4 d-flex justify-content-center align-items-center">
             <div class="col-11 d-flex justify-content-between flex-wrap align-items-center">
-                <div class="shadow col-5 p-3">
+                <div class="shadow col-md-5 p-3 col-sm-11">
                     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal"
                         role="form">
                         <h4 class="text-uppercase mb-2">It's almost done...</h4>
@@ -32,11 +32,12 @@
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="number" id="floatingAmount" name="amount" value="{{ $totalAmount }}"
+                            <input type="number" id="floatingAmount" value="{{ $totalAmount }}"
                                 readonly class="form-control mb-2">
                             <label for="floatingAmount">Total Amount</label>
                         </div>
-                        <input type="hidden" class="form-control" name="orderID" value="">
+                        <input type="hidden" name="amount" value="{{ $totalAmount * 100 }}">
+                        <input type="hidden" name="orderID" value="{{$orderID}}">
                         <input type="hidden" name="currency" value="NGN">
                         <input type="hidden" name="metadata"
                             value="{{ json_encode($array = ['key_name' => 'value']) }}">
@@ -52,14 +53,24 @@
                         </div>
                     </form>
                 </div>
-                <div class="shadow col-5 p-3 bg-white">
+                <div class="shadow col-md-5 col-sm-11 p-3 bg-white">
                     @foreach ($carts as $cart)
-                    <div class="shadow p-2 mb-3 ">
+                    <div class="shadow p-3 mb-3 d-flex justify-content-between align-items-center">
                         <div class="imgBx">
                             <img src="{{ $cart->product->images->first()->file_path }}" alt="{{$cart->product->name}}">
                         </div>
+                        <div>
+                            <p class="fs-4 text-capitalize">{{$cart->product->name}}</p>
+                        </div>
+                        <div>
+                            <p class="fs-4 fw-bold">₦{{ $cart->product->price }} x {{ $cart->quantity }}</p>
+                        </div>
                     </div>
                     @endforeach
+                    <div class="d-flex justify-content-between">
+                        <p class="fs-4 fw-bold">Total Amount</p>
+                        <p class="fs-4 fw-bold border border-2 px-3 py-2">₦{{ $totalAmount }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,33 +81,3 @@
 </body>
 
 </html>
-{{-- <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
-            <div class="row" style="margin-bottom:40px;">
-                <div class="col-md-8 col-md-offset-2">
-                    <p>
-                        <div>
-                            Lagos Eyo Print Tee Shirt
-                            ₦ 2,950
-                        </div>
-                    </p>
-                   <input type="hidden" name="email" value="{{Auth::user()->email}}">
-                  {{--  <input type="hidden" name="orderID" value="345">
-                    <input type="number" name="amount" value="800" required> {{-- required in kobo --}}
-{{-- <input type="hidden" name="quantity" value="3">
-                    <input type="hidden" name="currency" value="NGN">
-                    <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" >  For other necessary things you want to add to your payload. it is optional though --}}
-{{-- <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">  --}}
-{{-- required --}}
-
-{{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
-
-
-
-{{-- <p>
-                        <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
-                            <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
-                        </button>
-                    </p> --}}
-{{-- </div>
-            </div>
-        </form> --}}

@@ -21,11 +21,15 @@ class PaymentController extends Controller
         }
         return $totalAmount;
     }
+    private function generateOrderID() {
+        return uniqid(); // Generates a unique identifier based on the current time
+    }
     public function index()
     {
         $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
         $totalAmount = $this->calculateTotalAmount($carts);
-        return view('payment',['carts' => $carts, 'totalAmount' => $totalAmount]);
+        $orderID = $this->generateOrderID();
+        return view('payment',['carts' => $carts, 'totalAmount' => $totalAmount, 'orderID' => $orderID]); 
     }
     /**
      * Redirect the User to Paystack Payment Page
