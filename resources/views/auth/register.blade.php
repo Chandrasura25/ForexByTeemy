@@ -42,9 +42,9 @@
                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
             </div>
             <div class="inputBox">
-                <input id="first_name" type="text" name="coupon_code" value="{{ old('first_name') }}"
-                    class="@error('first_name') is-invalid @enderror" required autofocus autocomplete="coupon_code">
-                <label for="first_name">{{ __('coupon code') }}</label>
+                <input id="coupon_code" type="text" name="coupon_code" value="{{ old('coupon_code') }}"
+                    class="@error('coupon_code') is-invalid @enderror" autofocus autocomplete="coupon_code" readonly>
+                <label for="coupon_code">{{ __('coupon code') }}</label>
                 @error('coupon_code')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -76,14 +76,30 @@
 
         </form>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         let label = document.querySelectorAll('label').forEach(label => {
             label.innerHTML = label.innerText.split('').map((letters, i) =>
                 `<span style="transition-delay:${i * 50}ms">${letters}</span>`).join('');
         })
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
+   <script>
+    $(document).ready(function() {
+      // Function to remove the "readonly" attribute from the input with id "coupon_code" on focus
+      function removeReadonlyOnFocus() {
+        $("#coupon_code").removeAttr("readonly");
+      }
+
+      // Function to add back the "readonly" attribute to the input with id "coupon_code" on blur (when focus is removed)
+      function addReadonlyOnBlur() {
+        $("#coupon_code").attr("readonly", "readonly");
+      }
+
+      // Attach event handlers to the input with id "coupon_code"
+      $("#coupon_code").focus(removeReadonlyOnFocus).blur(addReadonlyOnBlur);
+    });
+  </script>
 @endsection
