@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="/css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/modal.css">
+    <link href="{{ asset('css/flash.css') }}" rel="stylesheet">
     @cloudinaryJS
 </head>
 
 <body>
     @include('layouts.loader')
-    <div class="body">
+    <div class="body" id="blur">
         <div class="glass">
             <div class="container">
                 <div class="navigation">
@@ -100,22 +101,22 @@
                             <img src="{{ $admin->image_path }}" alt="">
                         </div>
                     </div>
-
+                    @include('flash::message')
                 </div>
             </div>
         </div>
     </div>
     <div id="popup">
-        <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('admin.updateImage')}}" enctype="multipart/form-data" method="post">
             @csrf
             <h2>Upload Your Profile Picture</h2>
             <span class="close" onclick="setoggle()">&times;</span>
-            <input type="file" id="fileInput" name="profile_pic" accept=".jpg,.jpeg,.png,.svg,.gif">
+            <input type="file" id="fileInput" name="image_path" accept=".jpg,.jpeg,.png,.svg,.gif">
             <button class="closeBtn" onclick="setoggle()">Upload</button>
         </form>
     </div>
     <div id="passup">
-        <form action="{{route('updatePass')}}" method="post">
+        <form action="{{route('admin.updatePassword')}}" method="post">
             @csrf
             <h2>Update Your Password</h2>
             <span class="close" onclick="setpass()">&times;</span>
@@ -159,5 +160,8 @@
             item.addEventListener('mouseover', activeLink));
     </script>
 </body>
-
+<script src="//code.jquery.com/jquery.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 </html>

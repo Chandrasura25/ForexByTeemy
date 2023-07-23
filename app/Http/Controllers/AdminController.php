@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Payment;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class AdminController extends Controller
 {
     public function __construct()
@@ -36,21 +37,25 @@ class AdminController extends Controller
         $admin->username = $request->username;
         $admin->email = $request->email;
         $admin->save();
-        return redirect()->route('admin.dashboard');
+        flash('Your profile has been updated!')->success();
+        return redirect()->back();
     }
     public function updatePassword(Request $request)
     {
         $admin = Auth::guard('admin')->user(); 
         $admin->password = Hash::make($request->password);
         $admin->save();
-        return redirect()->route('admin.dashboard');
+        flash('Your password has been updated!')->success();
+        return redirect()->back();
     }
     public function updateImage(Request $request)
     {
         $admin = Auth::guard('admin')->user(); 
-        $admin->image_path = $request->image_path;
+        $image_path = Cloudinary::upload($request->file('image_path')->getRealPath())->getSecurePath();
+        $admin->image_path = $image_path;
         $admin->save();
-        return redirect()->route('admin.dashboard');
+        flash('Your Profile Picture has been updated!')->success();
+        return redirect()->back();
     }
 }
 
