@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="/css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/modal.css">
     @cloudinaryJS
 </head>
 
@@ -36,7 +37,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/product">
+                            <a href="#" onclick="setoggle()">
                                 <span class="icon">
                                     <i class="fa-solid fa-upload" aria-hidden="true"></i>
                                 </span>
@@ -44,19 +45,19 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/store">
-                                <span class="icon">
-                                    <ion-icon name="storefront"></ion-icon>
-                                </span>
-                                <span class="title">Store</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/admin/edit">
+                            <a href="#" onclick="setpass()">
                                 <span class="icon">
                                     <i class="fa-solid fa-lock" aria-hidden="true"></i>
                                 </span>
                                 <span class="title">Password</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/store">
+                                <span class="icon">
+                                    <ion-icon name="bar-chart"></ion-icon>
+                                </span>
+                                <span class="title">Purchases</span>
                             </a>
                         </li>
                         <li>
@@ -104,6 +105,37 @@
             </div>
         </div>
     </div>
+    <div id="popup">
+        <form action="{{route('upload')}}" enctype="multipart/form-data" method="post">
+            @csrf
+            <h2>Upload Your Profile Picture</h2>
+            <span class="close" onclick="setoggle()">&times;</span>
+            <input type="file" id="fileInput" name="profile_pic" accept=".jpg,.jpeg,.png,.svg,.gif">
+            <button class="closeBtn" onclick="setoggle()">Upload</button>
+        </form>
+    </div>
+    <div id="passup">
+        <form action="{{route('updatePass')}}" method="post">
+            @csrf
+            <h2>Update Your Password</h2>
+            <span class="close" onclick="setpass()">&times;</span>
+            <input type="password" id="fileInput" name="password" placeholder='Password'>
+            <button class="closeBtn" onclick="setpass()">Update</button>
+        </form>
+    </div>
+    <script>
+        let popup = document.getElementById('popup')
+        let passup = document.getElementById('passup')
+        let blur = document.getElementById('blur')
+        function setoggle(){
+           popup.classList.toggle('active')
+           blur.classList.toggle('active')
+        }
+         function setpass(){
+           passup.classList.toggle('active')
+           blur.classList.toggle('active')
+        }
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
