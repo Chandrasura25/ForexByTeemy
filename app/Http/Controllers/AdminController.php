@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Payment;
 class AdminController extends Controller
 {
     public function __construct()
@@ -21,7 +21,9 @@ class AdminController extends Controller
         $users = User::latest()->get();
         $productCountFormatted = ($productCount < 10) ? '0' . $productCount : $productCount; 
         $userCountFormatted = ($userCount < 10) ? '0' . $userCount : $userCount;
-        return view('admin.dashboard', ['admin' => $admin, 'productCount' => $productCountFormatted, 'userCount' => $userCountFormatted, 'users' => $users]);
+        $sumTotalAmount = Payment::sum('amount');
+        $sumTotalAmountFormatted = ($sumTotalAmount < 10) ? '0' . $sumTotalAmount : $sumTotalAmount;
+        return view('admin.dashboard', ['admin' => $admin, 'productCount' => $productCountFormatted, 'userCount' => $userCountFormatted, 'users' => $users, 'sumTotalAmount' => $sumTotalAmountFormatted]);
     }
     public function edit()
     {

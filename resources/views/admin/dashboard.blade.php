@@ -125,7 +125,7 @@
                      </div>
                      <div class="card">
                         <div>
-                         <div class="numbers">$6,504</div>
+                         <div class="numbers">{{$sumTotalAmount}}</div>
                          <div class="cardName">Earning</div>
                         </div> 
                         <div class="iconBx">
