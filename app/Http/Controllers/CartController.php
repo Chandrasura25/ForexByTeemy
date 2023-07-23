@@ -18,7 +18,10 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::with('product', 'product.images')->where('user_id', Auth::user()->id)->get();
+        $carts = Cart::with('product', 'product.images')
+        ->where('user_id', Auth::user()->id)
+        ->where('is_purchased', false) // Filter only cart items with is_purchased set to false
+        ->get();
         $totalAmount = $this->calculateTotalAmount($carts);
         return view('cart', ['carts' => $carts, 'totalAmount' => $totalAmount]);
     }

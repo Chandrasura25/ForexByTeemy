@@ -69,7 +69,7 @@ class PaymentController extends Controller
         if ($paymentData['data']['status'] == 'success') {
             $carts = Cart::where('user_id', Auth::user()->id)->get();
             foreach ($carts as $cart) {
-                $cart->delete();
+                $cart->update(['is_purchased' => true]);
             }
             flash('Payment was successful. Your order will be processed shortly.')->success();
             return redirect()->route('store');
