@@ -74,6 +74,14 @@ class SourceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $refsource = RefSource::findO($id);
+         $refsource->delete();
+        if ($refsource->delete()) {
+            flash('Referral Source deleted successfully')->success();
+            return redirect()->back();
+        } else {
+            flash('An Error Occured')->error();
+            return redirect()->back();
+        }
     }
 }
