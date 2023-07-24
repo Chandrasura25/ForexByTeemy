@@ -53,57 +53,39 @@
             </div>
         </div>
     </div>
-    {{-- <div class="coupons">
-        @if ()
+    <div class="coupons">
+        @if  ($ref_sources->count() > 0)
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Available Coupons</h2>
+                <h2>Available Referral Sources</h2>
                 <a href="#" class="btn">View All</a>
             </div>
             <table>
                 <thead>
                   <tr>
-                    <td>Serial Number</td>
+                   <td>Serial Number</td>
                    <td>Source</td>
                    <td>Referral Link</td>
                    <td>Actions</td>
                   </tr>
                 </thead>
                <tbody>
-                    @foreach ($coupons as $coupon)
+                    @foreach ($ref_sources as $ref)
                         <tr>
-                            <td>{{ $coupon->coupon_code }}</td>
-                            <td>{{ $coupon->coupon_type }}</td>
-                            <td>{{$coupon->couponChannel->name}}</td>
-                            <td>{{ $coupon->description }}</td>
-                            <td>{{ $coupon->effectivity }}</td>
-                            <td>
-                                @if ($coupon->percentage_off)
-                                    {{ $coupon->percentage_off }}
-                                @else
-                                    {{ $coupon->fixed_amount }}
-                                @endif
-                            </td>
-                            <td>
-                                <form action="/status/{{$coupon->id}}" method="post">
-                                @csrf
-                                  <button type="submit" class="{{ $coupon->status === 'active' ? 'delivered':'pending' }}">
-                                      {{ $coupon->status }}
-                                  </button>   
-                                </form>                     
-                            </td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $ref->source }}</td>
+                            <td>{{ url('/register/' . $user->username . '/' . $ref->source) }}</td>
                             <td>
                                 <div class="actionBx">
-                                    <a href="/coupon/{{$coupon->id}}/edit"><i class="fas fa-pen"></i></a>
-                                    <form action="/coupon/{{$coupon->id}}" method="post">
+                                    <a href="/coupon/{{$ref->id}}/edit"><i class="fas fa-pen"></i></a>
+                                    <form action="/coupon/{{$ref->id}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"><i class="fas fa-trash"></i></button>
                                     </form>
-                                    <form action="{{ route('coupon.transfer', $coupon->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit"><i class="fas fa-exchange-alt"></i></button>
-                                    </form>
+                                    <div class="ref_copy">
+                                        <input type="button" id="copySourceButton" data-clipboard-text="{{ url('/register/' . $user->username . '/' . $ref->source) }}" value='Copy'>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -111,11 +93,11 @@
                 </tbody> 
             </table>
             <div class="pagination">
-                {{-- {{ $coupons->links() }} 
+                {{-- {{ $ref_sources->links() }} --}}
             </div>
         </div>
         @endif
-    </div> --}}
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -152,7 +134,7 @@
         });
     });
     </script>
-{{--     
+    
     <script>
         document.getElementById("copySourceButton").addEventListener("click", function() {
             var referrerLink = document.getElementById("referrerLink");
@@ -185,5 +167,5 @@
                 referrerLink.value = "";
             }, 60000); // 1 minute
         }
-    </script> --}}
+    </script>
 @endsection

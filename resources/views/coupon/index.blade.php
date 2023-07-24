@@ -8,8 +8,6 @@
             <ul class="ul">
                 <li style="--i:0"><a href="/coupon/create">Create Coupon</a></li>
                 <li style="--i:1"><a href="/store">Store</a></li>
-                {{-- <li style="--i:2"><a href="#">Services</a></li>
-                <li style="--i:3"><a href="#">Work</a></li> --}}
             </ul>
         </div>
     </div> 

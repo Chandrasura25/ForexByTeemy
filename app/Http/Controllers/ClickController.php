@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Credit;
 use Illuminate\Http\Request;
-
+use App\Models\RefSource;
 class ClickController extends Controller
 {
     /**
@@ -41,7 +41,8 @@ class ClickController extends Controller
             $formattedReferrerNumber = ($totalReferred < 10) ? '0' . $totalReferred : $totalReferred;
 
         }
-        return view('click', ['user' => $user, 'myRefLink' => $myRefLink, 'totalReferred' => $formattedReferrerNumber]);
+        $ref_sources = RefSource::where('user_id', $user->id)->get();
+        return view('click', ['user' => $user, 'myRefLink' => $myRefLink, 'totalReferred' => $formattedReferrerNumber, 'ref_sources' => $ref_sources]);
     }
 
     /**

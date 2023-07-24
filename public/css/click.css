@@ -139,6 +139,25 @@
         15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
     width: 120px;
 }
+.ref_copy input{
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    background: #37d72f;
+    color: #fff;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.5s ease;
+}
+.ref_copy input:hover{
+    border: 1px solid #fff;
+    background: transparent;
+}
 .container .drop .content form .inputBox:last-child:hover {
     width: 150px;
 }
