@@ -58,7 +58,7 @@ class SourceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       return view('refsource.edit', ['refsource' => RefSource::find($id)]);
     }
 
     /**
@@ -74,7 +74,7 @@ class SourceController extends Controller
      */
     public function destroy(string $id)
     {
-       $refsource = RefSource::findO($id);
+       $refsource = RefSource::find($id);
          $refsource->delete();
         if ($refsource->delete()) {
             flash('Referral Source deleted successfully')->success();
