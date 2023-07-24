@@ -181,3 +181,18 @@
     margin-top: 10px;
     border-radius: 25px;
 }
+.actionBx a i, .actionBx form button{
+    font-size: 1.2em;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    background: #37d72f;
+    transition: all 0.5s ease;
+}
+.actionBx form button{
+    font-size: 1em;
+}
+.actionBx a i:hover, .actionBx form button:hover{
+    background: transparent;
+    border: 1px solid #fff;
+}

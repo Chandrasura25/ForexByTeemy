@@ -77,8 +77,8 @@
                             <td>{{ url('/register/' . $user->username . '/' . $ref->source) }}</td>
                             <td>
                                 <div class="actionBx">
-                                    <a href="/coupon/{{$ref->id}}/edit"><i class="fas fa-pen"></i></a>
-                                    <form action="/coupon/{{$ref->id}}" method="post">
+                                    <a href="/source/{{$ref->id}}/edit"><i class="fas fa-pen"></i></a>
+                                    <form action="/source/{{$ref->id}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"><i class="fas fa-trash"></i></button>
