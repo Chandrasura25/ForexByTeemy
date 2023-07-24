@@ -12,11 +12,11 @@
         <div class="drop">
             <div class="content">
                 <h2>Edit Your Ref Source</h2>
-                <form action="/source/{{$refsouce->id}}">
+                <form action="/source/{{$refsource->id}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="inputBox">
-                        <input type="text" name="source" placeholder="{{$refsource->source}}" id="">
+                        <input type="text" name="source" placeholder="{{$refsource->source}}" value="{{$refsource->source}}">
                     </div>
                     <div class="inputBox">
                         <input type="submit" name="" value='Update' id="">

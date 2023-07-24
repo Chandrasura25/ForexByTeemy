@@ -133,7 +133,7 @@
             }, 60000); // 60000 milliseconds = 1 minute 60000 milliseconds = 1 minute
         });
     });
-    </script>
+</script>
     
     <script>
         document.getElementById("copySourceButton").addEventListener("click", function() {

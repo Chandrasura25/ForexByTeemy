@@ -66,7 +66,20 @@ class SourceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'source' => 'required',
+        ]);
+        $refsource = RefSource::findOrFail($id);
+        if ($refsource) {
+            $refsource->update([
+                'source' => $request->source,
+            ]);
+            flash('Referral Source updated successfully')->success();
+            return redirect()->route('click.index');
+        } else {
+            flash('An Error Occured')->error();
+            return redirect()->back();
+        }
     }
 
     /**
