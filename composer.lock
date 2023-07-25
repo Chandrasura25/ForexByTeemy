@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1975b9ba2131f81ae0c8c97349a42cf",
+    "content-hash": "c239a410d9d9ed78c7840f973169e8d4",
     "packages": [
         {
             "name": "brick/math",
@@ -257,6 +257,50 @@
                 "issues": "https://github.com/cloudinary/php-transformation-builder-sdk/issues"
             },
             "time": "2023-03-23T02:09:04+00:00"
+        },
+        {
+            "name": "coinremitter/laravel",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CoinRemitter/coinremitter-laravel.git",
+                "reference": "ebad82a8548de872c307e340b43647964b7dd13a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CoinRemitter/coinremitter-laravel/zipball/ebad82a8548de872c307e340b43647964b7dd13a",
+                "reference": "ebad82a8548de872c307e340b43647964b7dd13a",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Coinremitter\\CoinremiterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coinremitter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Official laravel plugin for coinremitter cryptocurrency payment gateway",
+            "support": {
+                "issues": "https://github.com/CoinRemitter/coinremitter-laravel/issues",
+                "source": "https://github.com/CoinRemitter/coinremitter-laravel/tree/0.2.0"
+            },
+            "time": "2023-01-31T13:35:23+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
