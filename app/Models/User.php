@@ -70,4 +70,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'referrer_id');
     }
+     public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

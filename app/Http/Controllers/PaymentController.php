@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,11 +67,36 @@ class PaymentController extends Controller
             'user_id' => $paymentData['data']['metadata']['user_id'],
             'email' => $paymentData['data']['customer']['email'],
         ]);
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        foreach ($carts as $cart) {
+            $cart->update(['is_purchased' => true]);
+        }
         if ($paymentData['data']['status'] == 'success') {
-            $carts = Cart::where('user_id', Auth::user()->id)->get();
-            foreach ($carts as $cart) {
-                $cart->update(['is_purchased' => true]);
+            // Get all carts with is_purchased = true
+            $cartsToBePurchased = Cart::where('user_id', Auth::user()->id)
+                ->where('is_purchased', true)
+                ->get();
+
+            // Create an Order record for each cart item
+            foreach ($cartsToBePurchased as $cart) {
+                Order::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $cart->product_id,
+                    'quantity' => $cart->quantity,
+                    'total_price' => $cart->product->price * $cart->quantity,
+                    'payment_id' => $paymentData['data']['id'],
+                    'payment_status' => $paymentData['data']['status'],
+                    'reference' => $paymentData['data']['reference'],
+                    'amount' => $paymentData['data']['amount'],
+                    'channel' => $paymentData['data']['channel'],
+                    'currency' => $paymentData['data']['currency'],
+                    'email' => $paymentData['data']['customer']['email'],
+                ]);
             }
+
+            // Delete the carts that are being purchased
+            $cartsToBePurchased->each->delete();
+
             flash('Payment was successful. Your order will be processed shortly.')->success();
             return redirect()->route('store');
         } else {
