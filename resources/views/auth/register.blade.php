@@ -17,7 +17,7 @@
                 @enderror
             </div>
             <div class="inputBox">
-                <input id="email" type="text" name="email" value="{{ old('email') }}"
+                <input id="email" type="email" name="email" value="{{ old('email') }}"
                     class="@error('email') is-invalid @enderror" required autofocus autocomplete="email">
                 <label for="email">{{ __('Email Address') }}</label>
                 @error('email')

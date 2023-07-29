@@ -46,7 +46,6 @@ form h2{
     outline: none;
     color: #fff;
     font-size: 1em;
-    /* text-transform: uppercase; */
     letter-spacing: 0.15em;
 }
 .inputBox label{
@@ -97,4 +96,10 @@ form p a{
     color: var(--clr);
     text-decoration: none;
     font-weight: 500;
+}
+.invalid-feedback{
+    color: red;
+    font-size: 0.8em;
+    margin-top: 3px;
+    text-align: left;
 }
