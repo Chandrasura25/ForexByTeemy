@@ -91,6 +91,7 @@ class PaymentController extends Controller
                     'channel' => $paymentData['data']['channel'],
                     'currency' => $paymentData['data']['currency'],
                     'email' => $paymentData['data']['customer']['email'],
+                    'payment_date'=> $paymentData['data']['paid_at'],
                 ]);
             }
 
