@@ -194,14 +194,15 @@ class CartController extends Controller
 
         // Apply the coupon to the user's cart
         $cartItem = Cart::where('user_id', $user->id)
-            ->where('product_id', $coupon->product_id)
-            ->first();
+        ->where('is_purchased', false) // Filter only cart items with is_purchased set to false
+        ->get();
 
         if (!$cartItem) {
-            flash('Coupon is not applicable to this product')->error();
+            flash('There is no object in the cart')->error();
             return redirect()->back();
         }
 
+        $totalAmount = $this->calculateTotalAmount($cartItem);
         // Update the cart item with the coupon details
         $cartItem->coupon_id = $coupon->id;
         // Calculate the new total_price after applying the coupon
