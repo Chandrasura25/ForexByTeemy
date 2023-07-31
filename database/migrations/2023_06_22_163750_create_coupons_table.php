@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('status')->default('active');
             $table->string('usage')->default('unused');
             $table->string('username');
+            $table->unsignedBigInteger('user_id');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->string('minimum_purchase')->nullable();
@@ -30,6 +31,7 @@ return new class extends Migration
             
             $table->foreign('coupon_channel_id')->references('id')->on('coupon_channels')->onDelete('cascade');
             $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

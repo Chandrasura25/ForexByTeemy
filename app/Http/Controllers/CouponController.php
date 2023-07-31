@@ -90,6 +90,7 @@ class CouponController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'minimum_purchase' => $request->minimum_purchase,
+            'user_id' => $user->id,
         ]);
 
         if ($coupon) {

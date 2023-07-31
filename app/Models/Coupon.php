@@ -22,6 +22,7 @@ class Coupon extends Model
         'start_date',
         'end_date',
         'minimum_purchase',
+        'user_id'
     ];
     public function couponChannel()
     {

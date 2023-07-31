@@ -172,6 +172,7 @@ class CartController extends Controller
         ]);
 
         $user = auth()->user();
+    
 
         // Find the cart items for the current user that are not yet purchased
         $cartItems = Cart::where('user_id', $user->id)
@@ -187,7 +188,11 @@ class CartController extends Controller
         $coupon = Coupon::where('user_id', $user->id)
             ->where('coupon_code', $request->coupon_code)
             ->first();
-
+    // Ensure the coupon belongs to the authenticated user
+    if ($coupon->user_id === $user->id) {
+        flash('You can noy use the coupon self created')->error();
+        return redirect()->back();
+    }
         if (!$coupon) {
             flash('Invalid coupon code')->error();
             return redirect()->back();
