@@ -3,5 +3,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif, 'poppins';
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    position: relative;
+    min-height: 100vh;
+    background: #c9ff96;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+header h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #28272A;
+    font-size: 30px;
 }
