@@ -54,42 +54,6 @@ class CouponController extends Controller
 
         return $code;
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     $channels = CouponChannel::get();
-    //     $request->validate([
-    //         'coupon_code' => 'required',
-    //         'coupon_channel_id' => 'required',
-    //         'coupon_type' => 'required',
-    //         'description' => 'required|min:6',
-    //         'effectivity' => 'required',
-    //     ]);
-    //     $coupon = Coupon::create([
-    //         'coupon_code' => $request->coupon_code,
-    //         'coupon_channel_id' => $request->coupon_channel_id,
-    //         'coupon_type' => $request->coupon_type,
-    //         'percentage_off' => $request->percentage_off,
-    //         'fixed_amount' => $request->fixed_amount,
-    //         'description' => $request->description,
-    //         'effectivity' => $request->effectivity,
-    //         'username' => auth()->user()->username,
-    //         'start_date' => $request->start_date,
-    //         'end_date' => $request->end_date,
-    //         'minimum_purchase' => $request->minimum_purchase,
-    //     ]);
-    //     $user = auth()->user();
-
-    //     $coupon_code = $this->generateCouponCode($user->username, $user->id);
-    //     if ($coupon) {
-    //         return view('coupon.create')->with('message', 'Coupon created successfully.')->with('success', true)->with('channels', $channels)->with('coupon_code', $coupon_code);
-    //     } else {
-    //         return view('coupon.create')->with('message', 'An error occured')->with('success', false)->with('channels', $channels)->with('coupon_code', $coupon_code);
-    //     }
-    // }
     public function store(Request $request)
     {
         $user = auth()->user();

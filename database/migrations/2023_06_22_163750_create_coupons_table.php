@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('description');
             $table->enum('effectivity', ['first purchases', 'unlimited usage']);
             $table->string('status')->default('active');
+            $table->string('usage')->default('unused');
             $table->string('username');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();

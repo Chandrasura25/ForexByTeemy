@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->boolean('is_purchased')->default(false);
             $table->integer('total_price');
+            $table->string('coupon_code')->nullable();
             $table->timestamps();
             
             // Define foreign keys
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->cascadeOnDelete();
+            $table->foreign('coupon_code')->references('coupon_code')->on('coupons')->cascadeOnDelete();
         });
     }
 

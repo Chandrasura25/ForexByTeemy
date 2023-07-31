@@ -78,5 +78,16 @@ class Coupon extends Model
         // If none of the above conditions are met, the coupon is still valid.
         return false;
     }
+    public function isAlreadyUsedByUser($userId) 
+    {
+        // Check if a cart item with this coupon ID exists for the specified user
+        // and the coupon effectivity is 'first purchases'.
+        return Cart::where('user_id', $userId) 
+            ->where('coupon_id', $this->id) 
+            ->whereHas('coupon', function ($query) {
+                $query->where('effectivity', 'first purchases');
+            })
+            ->exists();
+    }
 }
 

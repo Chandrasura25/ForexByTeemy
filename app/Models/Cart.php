@@ -15,6 +15,7 @@ class Cart extends Model
         'quantity',
         'total_price',
         'is_purchased',
+        'coupon_code',
     ];
     public function user()
     {
