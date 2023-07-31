@@ -25,14 +25,23 @@
             </div>
         </header>
         <div class="order">
-            @if ($orders->count() > 0)
-                @foreach ($orders as $order)
+            @if ($orders)
+            <table>
+                <thead>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Quantity</th>
+                    <th>Product Total</th>
+                </thead>
+                {{-- @foreach ($orders as $order)
                     <div class="orderItem">
                         <div class="orderItemHeader">
                             <h3>Order ID: {{ $order->id }}</h3>
                             <h3>Order Date: {{ $order->created_at }}</h3>
                         </div>
-                        <div class="orderItemBody">
+                        <div class="$orders->count() < 0">
                             <div class="orderItemBodyLeft">
                                 <h3>Product Name</h3>
                                 <h3>Product Price</h3>
@@ -47,7 +56,8 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
+            </table>
             @else
                 <div class="unpaidBx">
                     <h3>Ooops!!! You have no paid orders yet</h3>
