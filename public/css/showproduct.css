@@ -10,9 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(/image/bg.jpg);
-    background-size: cover;
-    background-attachment: fixed;
+    background: #d6d7ec;
 }
 .container{
     position: relative;
