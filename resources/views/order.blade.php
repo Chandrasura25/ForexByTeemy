@@ -25,38 +25,32 @@
             </div>
         </header>
         <div class="order">
-            @if ($orders)
+            @if ($orders->count() > 0)
             <table>
                 <thead>
                     <th>Order ID</th>
                     <th>Order Date</th>
+                    <th>Payment Status</th>
+                    <th>Payment Channel</th>
                     <th>Product Name</th>
                     <th>Product Price</th>
                     <th>Product Quantity</th>
                     <th>Product Total</th>
                 </thead>
-                {{-- @foreach ($orders as $order)
-                    <div class="orderItem">
-                        <div class="orderItemHeader">
-                            <h3>Order ID: {{ $order->id }}</h3>
-                            <h3>Order Date: {{ $order->created_at }}</h3>
-                        </div>
-                        <div class="$orders->count() < 0">
-                            <div class="orderItemBodyLeft">
-                                <h3>Product Name</h3>
-                                <h3>Product Price</h3>
-                                <h3>Product Quantity</h3>
-                                <h3>Product Total</h3>
-                            </div>
-                            <div class="orderItemBodyRight">
-                                <h3>{{ $order->product->name }}</h3>
-                                <h3>{{ $order->product->price }}</h3>
-                                <h3>{{ $order->quantity }}</h3>
-                                <h3>{{ $order->total }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach --}}
+                <tbody>
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->created_at }}</td>
+                            <td>{{ $order->payment_status }}</td>
+                            <td>{{ $order->payment_channel }}</td>
+                            <td>{{ $order->product->name }}</td>
+                            <td>{{ $order->product->price }}</td>
+                            <td>{{ $order->quantity }}</td>
+                            <td>{{ $order->total }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
             @else
                 <div class="unpaidBx">
