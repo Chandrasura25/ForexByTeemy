@@ -17,7 +17,9 @@ class Order extends Model
         'payment_date',
         'reference',
         'channel',
-        'currency'
+        'currency',
+        'amount',
+        'payment_id',
     ];
     public function user()
     {
@@ -28,5 +30,9 @@ class Order extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
     }
 }

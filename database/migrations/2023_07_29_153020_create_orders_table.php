@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('payment_id');
             $table->unsignedInteger('quantity');
             $table->integer('total_price');
             $table->enum('payment_status', ['paid', 'pending', 'failed'])->default('pending');
@@ -24,10 +25,10 @@ return new class extends Migration
             $table->string('channel');
             $table->string('currency');
             $table->timestamps();
-            
             // Add foreign key constraints
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
         });
     }
 
