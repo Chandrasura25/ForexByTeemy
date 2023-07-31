@@ -31,25 +31,42 @@ class Coupon extends Model
     {
         return $this->belongsTo(User::class, 'username', 'username');
     }
-    public function isCouponValidForUser($user)
+    class Coupon extends Model
     {
-        // Check if the coupon is not expired
-        if ($this->isExpired()) { 
-            return false;
+        // ...
+    
+        public function isCouponValidForUser($user)
+        {
+            // Check if the coupon is active
+            if ($this->status !== 'active') {
+                return false;
+            }
+    
+            // Check if the coupon is expired
+            if ($this->isExpired()) {
+                return false;
+            }
+    
+            // Check if the coupon is already used for 'first purchases'
+            if ($this->isAlreadyUsedByUser($user->id)) {
+                return false;
+            }
+    
+            // Check if the coupon is valid for the user's effectivity type
+            if ($this->effectivity === 'first purchases') {
+                // If the user has already made a purchase before, the coupon is not valid
+                if ($user->orders->count() > 0) {
+                    return false;
+                }
+            }
+    
+            // If the coupon is valid and meets all conditions, return true
+            return true;
         }
-
-        // Check if the coupon is already used by the user
-        if ($this->isAlreadyUsedByUser($user)) {
-            return false;
-        }
-
-        // Add any other validation rules for the coupon here
-        // For example, if you have a "maximum number of uses" restriction, you can check it here.
-        // You can also check if the coupon is valid for first purchases or unlimited usage.
-
-        // If all checks pass, the coupon is valid for the user
-        return true;
+    
+        // ...
     }
+    
 
     public function isExpired()
     {
@@ -78,16 +95,19 @@ class Coupon extends Model
         // If none of the above conditions are met, the coupon is still valid.
         return false;
     }
-    public function isAlreadyUsedByUser($userId) 
+    public function isAlreadyUsedByUser($userId)
     {
-        // Check if a cart item with this coupon ID exists for the specified user
-        // and the coupon effectivity is 'first purchases'.
-        return Cart::where('user_id', $userId) 
-            ->where('coupon_id', $this->id) 
-            ->whereHas('coupon', function ($query) {
-                $query->where('effectivity', 'first purchases');
-            })
-            ->exists();
+        // Check if the coupon effectivity is 'first purchases'
+        if ($this->effectivity === 'first purchases') {
+            // Check if the coupon has been used by the user for 'first purchases'
+            $couponUsage = $this->usage;
+
+            // If the coupon's usage is 'used', it has been used for 'first purchases'
+            return $couponUsage === 'used';
+        }
+
+        // For coupons with 'unlimited usage' effectivity, return false as they can be used multiple times
+        return false;
     }
 }
 
