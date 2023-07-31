@@ -175,7 +175,7 @@ li.tail {
     color: #777;
 }
 .desc{
-    white-space: normal;
+    max-width: 100px;
 }
 .btn {
     position: relative;

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,6 +11,7 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('order');
+        $orders = auth()->user()->orders;
+        return view('order')->with('orders', $orders);
     }
 }
