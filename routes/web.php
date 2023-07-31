@@ -60,6 +60,8 @@ Route::get('/credit', [CreditController::class, 'index'])->name('credit');
 Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback']);
 Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'index'])->name('payment');
+// Route::get('/payment/{id}', [App\Http\Controllers\PaymentController::class, 'show'])->name('payment.show');
+Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
 // CHATBOT
 Route::post('/bot', [OpenAIController::class, 'chatOpenAi'])->name('chatbot');
 
