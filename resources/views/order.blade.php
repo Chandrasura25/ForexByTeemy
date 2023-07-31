@@ -47,7 +47,7 @@
                             <td>{{ $order->product->name }}</td>
                             <td>{{ $order->product->price }}</td>
                             <td>{{ $order->quantity }}</td>
-                            <td>{{ $order->total }}</td>
+                            <td>{{ $order->total_price }}</td>
                         </tr>
                     @endforeach
                 </tbody>

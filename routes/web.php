@@ -53,6 +53,7 @@ Route::resource('/source', SourceController::class);
 Route::resource('/coupon', CouponController::class);
 Route::resource('/cart', CartController::class);
 Route::post('/updateQuantity', [CartController::class, 'updateQuantity'])->name('updateQuantity');
+Route::post('/applyCoupon', [CartController::class, 'applyCoupon'])->name('coupon.apply');
 Route::post('/coupon/{couponId}/transfer', [CouponController::class, 'transferCoupon'])->name('coupon.transfer');
 Route::post('/status/{coupon}', [CouponController::class, 'toggleStatus'])->name('coupons.toggleStatus');
 Route::get('/credit', [CreditController::class, 'index'])->name('credit');

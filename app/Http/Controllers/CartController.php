@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -163,5 +164,52 @@ class CartController extends Controller
             flash('Cart item not found')->error();
         }
     }
-    
+    public function applyCoupon(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'coupon_code' => 'required|string',
+        ]);
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Get the coupon code from the request
+        $couponCode = $request->input('coupon_code');
+
+        // Find the coupon with the given code for the authenticated user
+        $coupon = Coupon::where('user_id', $user->id)
+            ->where('coupon_code', $couponCode)
+            ->first();
+
+        if (!$coupon) {
+            flash('Invalid coupon code')->error();
+            return redirect()->back();
+        }
+
+        // Check if the coupon is still active
+        if ($coupon->status !== 'active') {
+            flash('This coupon is no longer active')->error();
+            return redirect()->back();
+        }
+
+        // Apply the coupon to the user's cart
+        $cartItem = Cart::where('user_id', $user->id)
+            ->where('product_id', $coupon->product_id)
+            ->first();
+
+        if (!$cartItem) {
+            flash('Coupon is not applicable to this product')->error();
+            return redirect()->back();
+        }
+
+        // Update the cart item with the coupon details
+        $cartItem->coupon_id = $coupon->id;
+        // Calculate the new total_price after applying the coupon
+        // For example, if the coupon is for 10% off, you can calculate the new total price here
+        // $cartItem->total_price = $cartItem->product->price * (1 - ($coupon->percentage_off / 100));
+        $cartItem->save();
+
+        flash('Coupon applied successfully')->success();
+        return redirect()->back();
+    }
 }
