@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,42 +32,35 @@ class Coupon extends Model
     {
         return $this->belongsTo(User::class, 'username', 'username');
     }
-    class Coupon extends Model
+
+    public function isCouponValidForUser($user)
     {
-        // ...
-    
-        public function isCouponValidForUser($user)
-        {
-            // Check if the coupon is active
-            if ($this->status !== 'active') {
-                return false;
-            }
-    
-            // Check if the coupon is expired
-            if ($this->isExpired()) {
-                return false;
-            }
-    
-            // Check if the coupon is already used for 'first purchases'
-            if ($this->isAlreadyUsedByUser($user->id)) {
-                return false;
-            }
-    
-            // Check if the coupon is valid for the user's effectivity type
-            if ($this->effectivity === 'first purchases') {
-                // If the user has already made a purchase before, the coupon is not valid
-                if ($user->orders->count() > 0) {
-                    return false;
-                }
-            }
-    
-            // If the coupon is valid and meets all conditions, return true
-            return true;
+        // Check if the coupon is active
+        if ($this->status !== 'active') {
+            return false;
         }
-    
-        // ...
+
+        // Check if the coupon is expired
+        if ($this->isExpired()) {
+            return false;
+        }
+
+        // Check if the coupon is already used for 'first purchases'
+        if ($this->isAlreadyUsedByUser($user->id)) {
+            return false;
+        }
+
+        // Check if the coupon is valid for the user's effectivity type
+        if ($this->effectivity === 'first purchases') {
+            // If the user has already made a purchase before, the coupon is not valid
+            if ($user->orders->count() > 0) {
+                return false;
+            }
+        }
+
+        // If the coupon is valid and meets all conditions, return true
+        return true;
     }
-    
 
     public function isExpired()
     {
@@ -110,4 +104,3 @@ class Coupon extends Model
         return false;
     }
 }
-

@@ -20,9 +20,9 @@ class CartController extends Controller
     public function index()
     {
         $carts = Cart::with('product', 'product.images')
-        ->where('user_id', Auth::user()->id)
-        ->where('is_purchased', false) // Filter only cart items with is_purchased set to false
-        ->get();
+            ->where('user_id', Auth::user()->id)
+            ->where('is_purchased', false) // Filter only cart items with is_purchased set to false
+            ->get();
         $totalAmount = $this->calculateTotalAmount($carts);
         return view('cart', ['carts' => $carts, 'totalAmount' => $totalAmount]);
     }
@@ -131,25 +131,25 @@ class CartController extends Controller
             'product_id' => 'required|integer',
             'quantity' => 'required|integer|min:1',
         ]);
-    
+
         // Check if the user is authenticated
         if (!auth()->check()) {
             flash('You must be logged in to update cart quantity')->error();
             return redirect()->route('login');
         }
-    
+
         // Get the authenticated user
         $user = auth()->user();
-    
+
         // Get the product ID and quantity from the request
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
-    
+
         // Find the cart item for the current user and the specified product
         $cartItem = Cart::where('user_id', $user->id)
             ->where('product_id', $product_id)
             ->first();
-    
+
         if ($cartItem) {
             // If the cart item exists, update the quantity and calculate the total price
             $cartItem->quantity = $quantity;
@@ -164,21 +164,28 @@ class CartController extends Controller
             flash('Cart item not found')->error();
         }
     }
+
     public function applyCoupon(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'coupon_code' => 'required|string',
         ]);
-        // Get the authenticated user
-        $user = Auth::user();
 
-        // Get the coupon code from the request
-        $couponCode = $request->input('coupon_code');
+        $user = auth()->user();
 
-        // Find the coupon with the given code for the authenticated user
+        // Find the cart items for the current user that are not yet purchased
+        $cartItems = Cart::where('user_id', $user->id)
+            ->where('is_purchased', false)
+            ->get();
+
+        if (!$cartItems || $cartItems->isEmpty()) {
+            flash('Cart item not found')->error();
+            return redirect()->back();
+        }
+
+        // Check if the coupon exists and is valid for the user
         $coupon = Coupon::where('user_id', $user->id)
-            ->where('coupon_code', $couponCode)
+            ->where('coupon_code', $request->coupon_code)
             ->first();
 
         if (!$coupon) {
@@ -186,31 +193,44 @@ class CartController extends Controller
             return redirect()->back();
         }
 
-        // Check if the coupon is still active
-        if ($coupon->status !== 'active') {
-            flash('This coupon is no longer active')->error();
+        // Check if the coupon is valid for the user
+        if (!$coupon->isCouponValidForUser($user)) {
+            flash('Coupon is not valid for this user')->error();
             return redirect()->back();
         }
 
-        // Apply the coupon to the user's cart
-        $cartItem = Cart::where('user_id', $user->id)
-        ->where('is_purchased', false) // Filter only cart items with is_purchased set to false
-        ->get();
-
-        if (!$cartItem) {
-            flash('There is no object in the cart')->error();
-            return redirect()->back();
+        // Calculate the total amount for all cart items
+        $totalAmount = 0;
+        foreach ($cartItems as $cartItem) {
+            $totalAmount += $cartItem->product->price * $cartItem->quantity;
         }
 
-        $totalAmount = $this->calculateTotalAmount($cartItem);
-        // Update the cart item with the coupon details
-        $cartItem->coupon_id = $coupon->id;
-        // Calculate the new total_price after applying the coupon
-        // For example, if the coupon is for 10% off, you can calculate the new total price here
-        // $cartItem->total_price = $cartItem->product->price * (1 - ($coupon->percentage_off / 100));
-        $cartItem->save();
+        // Calculate the discount amount based on the coupon type
+        $discountAmount = 0;
+        if ($coupon->coupon_type === 'fixed') {
+            $discountAmount = $coupon->fixed_amount;
+        } elseif ($coupon->coupon_type === 'percentage') {
+            $discountAmount = ($totalAmount * $coupon->percentage_off) / 100;
+        }
+
+        // Apply the discount to the total amount
+        $newTotalAmount = $totalAmount - $discountAmount;
+
+        // If the coupon is for 'first purchases' and the user has no previous purchases, mark the coupon as used
+        if ($coupon->effectivity === 'first purchases' && $user->orders->isEmpty()) {
+            $coupon->usage = 'used';
+            $coupon->save();
+        }
+
+        // Apply the discount to each cart item and save it
+        foreach ($cartItems as $cartItem) {
+            $cartItem->coupon_code = $coupon->coupon_code;
+            $cartItem->save();
+        }
+        $cartItem->totalAmount = $newTotalAmount;
 
         flash('Coupon applied successfully')->success();
         return redirect()->back();
     }
+
 }
