@@ -99,10 +99,10 @@ class PaymentController extends Controller
             $cartsToBePurchased->each->delete();
 
             flash('Payment was successful. Your order will be processed shortly.')->success();
-            return redirect()->route('store');
+            return redirect()->route('order');
         } else {
             flash('Payment was not successful. Please try again.')->error();
-            return redirect()->route('store');
+            return redirect()->route('payment');
         }
     }
 
