@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\JsonResponse;   
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -238,6 +236,4 @@ class CartController extends Controller
         flash('Coupon applied successfully')->success();
         return redirect()->back();
     }
-    
-    
 }
