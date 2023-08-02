@@ -79,9 +79,9 @@
                 <li class="discount">
                     <div class="coupon_code">
                         <h5>If you have a coupon code, please enter here</h5>
-                        <form action="" method="POST">
+                        <form action="{{route('coupon.apply')}}" method="POST">
                             @csrf
-                            <input type="text" placeholder="Please enter your code here">
+                            <input type="text" placeholder="Please enter your code here" id="coupon_code" name="coupon_code">
                             <button type="submit">Apply</button>
                         </form>
                     </div>
@@ -151,7 +151,7 @@
             }
         });
     </script>
-    
+
     <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
       </script>
