@@ -6,7 +6,7 @@
            @csrf
             <h2>{{ __('Login') }}</h2>
             <div class="inputBox">
-                <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 <label for="email">{{ __('Email Address or username') }}</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
