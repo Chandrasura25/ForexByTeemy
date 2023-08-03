@@ -73,3 +73,9 @@
     opacity: 1;
     transition: 0.5s;
 }
+@media (max-width: 370px){
+    #popup,#passup {
+        max-width: 340px;
+        padding: 30px;
+    }
+}
