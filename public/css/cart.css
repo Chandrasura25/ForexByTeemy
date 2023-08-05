@@ -9,7 +9,7 @@
     --size: 30px;
 }
 body {
-    background: #c9ff96;
+    background: #fff;
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -23,11 +23,11 @@ section header {
     font-size: 2em;
     text-align: center;
     font-weight: 700;
-    color: #28272A;
+    color: #37d72f;
 }
 .container {
     position: relative;
-    background: #eee;
+    background: #37d72f;
     margin-top: 30px;
     width: 100%;
     height: auto;
@@ -48,7 +48,7 @@ section header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    border-bottom: 2px solid #777;
+    border-bottom: 2px solid #fff;
     list-style: none;
 }
 .container ul li.list span:nth-child(1) {
@@ -71,6 +71,7 @@ section header {
 }
 .head span {
     font-weight: 600;
+    color: #fff;
 }
 li span .imgBx {
     position: relative;
@@ -89,6 +90,7 @@ li span .imgBx img {
 }
 li:not(:first-child) span:nth-child(2) {
     font-size: 1em;
+    color: #fff;
 }
 li:not(:first-child) span:nth-child(3) form {
     display: flex;
@@ -99,12 +101,12 @@ li:not(:first-child) span:nth-child(3) {
     text-align: center;
     font-size: 1em;
     font-weight: 600;
-    color: #28272A;
+    color: #ffff;
 }
 li.list span:nth-child(3) i {
     cursor: pointer;
-    background: #28272A;
-    color: #fff;
+    background: #fff;
+    color: #37d72f;
     width: 40px;
     height: 40px;
     display: flex;
@@ -119,8 +121,8 @@ li.list span:nth-child(3) input {
     text-align: center;
     font-size: 1em;
     font-weight: 600;
-    color: #28272A;
-    border: 2px solid #777;
+    color: #37d72f;
+    border: 2px solid #37d72f;
 }
 .remove {
     border: none;
@@ -142,10 +144,12 @@ li.list span:nth-child(3) input {
     position: relative;
     padding: 15px 30px;
 }
-.visit h4 {
-    font-size: 2em;
+.visit h3 {
     font-weight: 600;
-    color: #28272A;
+    color: #fff;
+}
+.visit h3 a{
+    color: #fff;
 }
 li.tail {
     border-bottom: none;
@@ -160,7 +164,7 @@ li.tail {
 .tail div span:nth-child(2) {
     display: flex;
     align-items: center;
-    border: 3px solid #28272A;
+    border: 3px solid #fff;
     padding: 0 25px;
     gap: 20px;
 }
