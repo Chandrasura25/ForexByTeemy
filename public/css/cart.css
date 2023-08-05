@@ -122,7 +122,8 @@ li.list span:nth-child(3) input {
     font-size: 1em;
     font-weight: 600;
     color: #37d72f;
-    border: 1px solid #28272A;
+    border-left: 1px solid #37d72f;
+    border-right: 1px solid #37d72f;
     pointer-events: none;
 }
 .remove {
@@ -245,7 +246,7 @@ li.tail {
     font-size: 1em;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #28272A;
+    color: #fff;
     text-transform: capitalize;
 }
 .discount form {
@@ -255,7 +256,7 @@ li.tail {
     width: 100%;
     height: 45px;
     outline: none;
-    border: 2px solid #28272A;
+    border: 2px solid #fff;
     padding: 0 20px;
     font-size: 1em;
     font-weight: 600;
