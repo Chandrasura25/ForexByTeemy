@@ -51,19 +51,19 @@
                 </nav>
             </header>
             <section class="marquee">
-                <span>Under Reconstruction</span>
+                <span>MetaTrader 4 EA Coding Service</span>
             </section>
             <div class="banner">
-                <div class="textBox">
+               {{--  <div class="textBox">
                     <h2 class="name" data-text="Forex By Teemy">Forex By Teemy</h2>
-                    <p>
+                     <p>
                         This is a place for all your forex needs. Whether you are a novice looking to learn forex trading or an experienced trader seeking advanced services, we have got you covered. Our comprehensive range of offerings includes forex trading training, coding of expert advisors, providing well-analyzed trading signals, and much more.
-                    </p>
-                    <a href="#">Read More</a>
+                    </p> 
+                    <a href="#portfolio">Read More</a>
                   </div>
                   <div class="imgBox">
                     <img src="{{asset('image/img2.jpg')}}" alt="" />
-                  </div>
+                  </div> --}}
             </div>
             <section class="portfolio" id="portfolio">
                     <div class="title">
