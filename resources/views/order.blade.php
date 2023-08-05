@@ -54,7 +54,7 @@
             </table>
             @else
                 <div class="unpaidBx">
-                    <h3>Ooops!!! You have no paid orders yet</h3>
+                    <h3>Ooops!!! You have no paid orders yet!!!</h3>
                 </div>
             @endif
         </div>
