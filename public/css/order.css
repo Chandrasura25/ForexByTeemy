@@ -8,7 +8,7 @@
 body {
     position: relative;
     min-height: 100vh;
-    background: #c9ff96;
+    background: #fff;
 }
 header {
     display: flex;
@@ -18,7 +18,7 @@ header {
 header h4 {
     font-weight: 700;
     text-transform: uppercase;
-    color: #28272a;
+    color: #37d72f;
     font-size: 30px;
 }
 .container {
@@ -31,7 +31,7 @@ header h4 {
     position: relative;
     height: auto;
     padding: 20px 40px;
-    background: #eee;
+    background: #37d72f;
     margin-top: 30px;
     border-radius: 10px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
@@ -40,7 +40,7 @@ header h4 {
     text-align: center;
     font-size: 1.5em;
     font-weight: 700;
-    color: #28272a;
+    color: #fff;
     text-transform: uppercase;
 }
 .container .order {
