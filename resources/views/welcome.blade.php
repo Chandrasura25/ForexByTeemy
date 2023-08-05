@@ -30,36 +30,18 @@
                             </a>
                         </li>
                         <li style="--i:1;">
-                            <a href="#about">
-                                <span>About</span>
-                                <span><i class="fas fa-info-circle"></i></span> 
+                            <a href="#portfolio">
+                                <span>Portfolio</span>
+                                <span><i class="fas fa-folder-open"></i></span> 
                             </a>
                         </li>
                         <li style="--i:2;">
-                            <a href="{{ route('login') }}">
-                                <span>Members</span>
-                                <span><i class="fas fa-users"></i></span>
-                            </a>
-                        </li>
-                        <li style="--i:3;">
-                            <a href="/store">
-                                <span>Store</span>
-                                <span><i class="fas fa-store"></i></span>
-                            </a>
-                        </li>
-                        <li style="--i:4;">
-                            <a href="/blog">
-                                <span>Blog</span>
-                                <span><i class="fas fa-blog"></i></span>
-                            </a>
-                        </li>
-                        <li style="--i:5;">
                             <a href="#services">
                                 <span>Services</span>
                                 <span><i class="fas fa-cogs"></i></span>
                             </a>
                         </li>
-                        <li style="--i:6;">
+                        <li style="--i:3;">
                             <a href="#contact">
                                 <span>Contact</span>
                                 <span><i class="fas fa-envelope"></i></span>
@@ -83,26 +65,7 @@
                     <img src="{{asset('image/img2.jpg')}}" alt="" />
                   </div>
             </div>
-           
-            <section id="about" class="about">
-                <div class="row">
-                    <div class="col50">
-                        <h2 class="titleText"><span>A</span>bout Us</h2>
-                        <p>
-                           <span> Teemy helps clients to create amazing Forex experience.</span>
-                            <br><br><span>Teemy can help you unlock better trading opportunities through convenient tools and one on one consultation.</span>
-                            <br><br>
-                            <span>Our Forex Analyst knows collaboration is the essence of any project. It’s a simple philosophy we followed for nearly two decades. And it delivers results.</span>
-                        </p>
-                    </div>
-                    <div class="col50">
-                        <div class="imgBx">
-                            <img src="{{asset('image/img3.jpg')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="portfolio">
+            <section class="portfolio" id="portfolio">
                     <div class="title">
                         <h2 class="titleText">The <span>P</span>ortfolio</h2>
                         <p>Diversify. Grow. Succeed. Build a winning portfolio for financial prosperity.</p>
