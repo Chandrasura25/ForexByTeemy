@@ -88,7 +88,7 @@ li span .imgBx img {
     height: 100%;
     object-fit: cover;
 }
-li:not(:first-child) span:nth-child(2) {
+li:not(:first-child) span:nth-child(2), span h4.total-price {
     font-size: 1em;
     color: #fff;
 }
@@ -122,7 +122,8 @@ li.list span:nth-child(3) input {
     font-size: 1em;
     font-weight: 600;
     color: #37d72f;
-    border: 2px solid #37d72f;
+    border: 1px solid #28272A;
+    pointer-events: none;
 }
 .remove {
     border: none;
@@ -130,15 +131,15 @@ li.list span:nth-child(3) input {
     cursor: pointer;
     display: inline-block;
     padding: 10px 20px;
-    background: #28272A;
-    color: #fff;
+    background: #fff;
+    color: #37d72f;
     transition: 0.3s;
     border-radius: 20px;
 }
 .remove:hover {
-    background: #fff;
-    color: #28272A;
-    border: 1px solid #28272A;
+    background: none;
+    color: #fff;
+    border: 1px solid #fff;
 }
 .visit {
     position: relative;
@@ -176,10 +177,11 @@ li.tail {
 .tail div span:nth-child(2) p {
     font-size: 1em;
     font-weight: 700;
-    color: #777;
+    color: #eee;
 }
 .desc{
     max-width: 100px;
+    color: #fff;
 }
 .btn {
     position: relative;

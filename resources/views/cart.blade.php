@@ -46,7 +46,7 @@
                             <i class="minus" data-product-id="{{ $cart->product->id }}" data-quantity="{{ $cart->quantity - 1 }}">
                                 <i class="fa fa-minus" aria-hidden="true"></i>
                             </i>
-                            <input type="text" class="quantity-input" name="quantity" value="{{$cart->quantity}}" min="1" data-product-id="{{ $cart->product->id }}">
+                            <input type="text" class="quantity-input" name="quantity" value="{{$cart->quantity}}" min="1" data-product-id="{{ $cart->product->id }}" readonly>
                             <i class="plus" data-product-id="{{ $cart->product->id }}" data-quantity="{{ $cart->quantity + 1 }}">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </i>
