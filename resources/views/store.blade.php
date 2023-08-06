@@ -33,6 +33,7 @@
               <span class="menuIcon" onclick="menuToggle()"></span>
         </header>
         @include('flash::message')
+        @include('layouts.share')
         <div class="contain">
             <section class="carousel"></section>
             <section class="recent">

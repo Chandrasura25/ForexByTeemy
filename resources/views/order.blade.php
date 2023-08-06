@@ -24,6 +24,7 @@
                 </ul>
             </div>
         </header>
+        @include('layouts.share')
         <div class="order">
             @if ($orders->count() > 0)
             <table>

@@ -13,6 +13,7 @@
 <body>
     @include('layouts.loader')
     <div class="container" id="blur">
+        @include('layouts.share')
         <div class="navigation">
             <ul>
                 <li>
@@ -40,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/order">
                         <span class="icon"><i class="fas fa-store"></i></span>
                         <span class="title">Store Purchases</span>
                     </a>

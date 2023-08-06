@@ -14,6 +14,7 @@
 </head>
 <body>
     @include('layouts.loader')
+    @include('layouts.share')
     <section class="body" id="blur">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
