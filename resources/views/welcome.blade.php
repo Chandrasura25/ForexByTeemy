@@ -47,14 +47,12 @@
                     </ul>
                 </nav>
             </header>
-            <section class="marquee">
-                <span>MetaTrader 4 EA Coding Service</span>
-            </section>
             <div class="banner">
-                @include('layouts.share')
                 <div class="video">
+                    <span>MetaTrader 4 EA Coding Service</span>
                     <iframe width="853" height="480" src="https://www.youtube.com/embed/KIk0LGLNSmQ" title="How I Made $2000 Winning Free Demo Trading Contests (forex and binary options) Promo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
+                @include('layouts.share')
             </div>
             <section class="portfolio" id="portfolio">
                     <div class="title">
