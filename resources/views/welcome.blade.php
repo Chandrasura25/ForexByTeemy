@@ -52,6 +52,9 @@
             </section>
             <div class="banner">
                 @include('layouts.share')
+                <div class="video">
+                    <iframe width="560" height="315" src="https://youtube.com/watch?v=KIk0LGLNSmQ" title="How I Made $2000 Winning Free Demo Trading Contests (forex and binary options) Promo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
             <section class="portfolio" id="portfolio">
                     <div class="title">

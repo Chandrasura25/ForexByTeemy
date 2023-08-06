@@ -4,7 +4,7 @@
 <div class="menu-wrapper">
     <div class="menu">
         <div class="toggle">
-            <ion-icon name="share-social"></ion-icon>
+            <ion-icon name="chatbubble-outline"></ion-icon>
         </div>
         <li style="--i:0;--clr:#1877f2">
             <a href="https://facebook.com/forexbyteemy" target="_blank">
