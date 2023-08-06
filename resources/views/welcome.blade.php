@@ -3,10 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>ForexByTeemy</title>
-       
-        <!-- Fonts -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> 
@@ -54,16 +51,7 @@
                 <span>MetaTrader 4 EA Coding Service</span>
             </section>
             <div class="banner">
-               {{--  <div class="textBox">
-                    <h2 class="name" data-text="Forex By Teemy">Forex By Teemy</h2>
-                     <p>
-                        This is a place for all your forex needs. Whether you are a novice looking to learn forex trading or an experienced trader seeking advanced services, we have got you covered. Our comprehensive range of offerings includes forex trading training, coding of expert advisors, providing well-analyzed trading signals, and much more.
-                    </p> 
-                    <a href="#portfolio">Read More</a>
-                  </div>
-                  <div class="imgBox">
-                    <img src="{{asset('image/img2.jpg')}}" alt="" />
-                  </div> --}}
+                @include('layouts.share')
             </div>
             <section class="portfolio" id="portfolio">
                     <div class="title">
@@ -83,7 +71,7 @@
                                     <img src="/image/port2.png" alt="">
                                 </div>
                                 <div class="text">
-                                    <h3>3rd Place Aprill 11 2012</h3>
+                                    <h3>3rd Place, April 11 2012</h3>
                                 </div>
                             </div>
                             <div class="box">

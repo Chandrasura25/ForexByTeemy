@@ -5,6 +5,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    z-index: 100;
+    cursor: grab;
 }
 .menu .toggle{
 	position: relative;
