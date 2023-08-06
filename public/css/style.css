@@ -11,15 +11,17 @@ body {
 }
 .video {
     z-index: 10;
-    margin-top: 40px;
+    margin-top: 50px;
+position: relative;
 }
-.video span{
-    margin-bottom: 25px;
+.video span {
     font-size: 4em;
     line-height: 50px;
     color: white;
-} 
-
+}
+.video iframe {
+    margin-top: 30px;
+}
 .banner {
     position: relative;
     background: #262626;
