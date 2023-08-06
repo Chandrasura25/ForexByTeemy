@@ -38,7 +38,7 @@
                         </div>
                         <input type="hidden" name="amount" value="{{ $totalAmount * 100 }}">
                         <input type="hidden" name="orderID" value="{{$orderID}}">
-                        <input type="hidden" name="currency" value="NGN">
+                        <input type="hidden" name="currency" value="USD">
                         <input type="hidden" name="metadata" value="{{ json_encode(['user_id' => Auth::user()->id]) }}">
                         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
                         <div class="form-floating mb-3">
