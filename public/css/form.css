@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif, 'poppins';
+    font-family: sans-serif, "poppins";
 }
-:root{
-    --clr:#37d72f;
+:root {
+    --clr: #37d72f;
 }
-.body{
+.body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 91vh;
     background: #1c2630;
 }
-form{
+form {
     background: #29313c;
     padding: 40px 80px 40px;
     text-align: center;
@@ -23,7 +23,7 @@ form{
     flex-direction: column;
     border-radius: 10px;
 }
-form h2{
+form h2 {
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
@@ -31,12 +31,12 @@ form h2{
     letter-spacing: 0.1em;
     margin-bottom: 35px;
 }
-.inputBox{
+.inputBox {
     position: relative;
     width: 300px;
     margin-bottom: 30px;
 }
-.inputBox input{
+.inputBox input {
     position: relative;
     width: 100%;
     padding: 10px 0;
@@ -48,7 +48,7 @@ form h2{
     font-size: 1em;
     letter-spacing: 0.15em;
 }
-.inputBox label{
+.inputBox label {
     position: absolute;
     left: 0;
     padding: 10px 0;
@@ -56,23 +56,23 @@ form h2{
     color: #999;
     text-transform: uppercase;
 }
-.inputBox label span{
+.inputBox label span {
     position: relative;
     display: inline-flex;
     letter-spacing: 0.05em;
     transition: 0.2s ease-in-out;
 }
 .inputBox input:focus ~ label span,
-.inputBox input:valid ~ label span{
+.inputBox input:valid ~ label span {
     color: var(--clr);
     letter-spacing: 0.15em;
     transform: translateY(-18px);
 }
 .inputBox input:focus,
-.inputBox input:valid{
+.inputBox input:valid {
     border-bottom: 2px solid var(--clr);
 }
-.inputBox input[type="submit"]{
+.inputBox input[type="submit"] {
     background: var(--clr);
     border: none;
     padding: 15px;
@@ -85,21 +85,51 @@ form h2{
     cursor: pointer;
     transition: 0.5s;
 }
-.inputBox input[type="submit"]:hover{
+.inputBox input[type="submit"]:hover {
     letter-spacing: 0.35em;
 }
-form p{
+form p {
     color: #fff;
     text-transform: uppercase;
 }
-form p a{
+form p a {
     color: var(--clr);
     text-decoration: none;
     font-weight: 500;
 }
-.invalid-feedback{
+.invalid-feedback {
     color: red;
     font-size: 0.8em;
     margin-top: 3px;
     text-align: left;
+}
+@media (max-width: 500px) {
+    form {
+        padding: 30px 60px 30px;
+    }
+}
+@media (max-width: 440px) {
+    form {
+        padding: 20px 40px 20px;
+    }
+}
+@media (max-width: 360px) {
+    form {
+        padding: 15px 30px;
+    }
+    .inputBox {
+        position: relative;
+        width: 280px;
+    }
+}
+@media (max-width: 335px) {
+    form {
+        padding: 10px 20px;
+    }
+    .inputBox {
+        position: relative;
+        width: 260px;
+        font-size: 0.85em;
+        letter-spacing: 0.1em;
+    }
 }

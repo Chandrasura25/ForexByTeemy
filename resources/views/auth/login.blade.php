@@ -7,7 +7,7 @@
             <h2>{{ __('Login') }}</h2>
             <div class="inputBox">
                 <input id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                <label for="email">{{ __('Email Address or username') }}</label>
+                <label for="email">Email&nbsp;Address&nbsp;or&nbsp;username</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -45,20 +45,11 @@
                 </div>
         </form>
     </div>
-
     <script>
-        document.querySelectorAll('label').forEach(label => {
-            const text = label.innerText.trim().split(' ');
-            const transformedText = text.map((word) => {
-                const letters = word.split('').map((letter, i) => {
-                    return `<span style="transition-delay:${i * 50}ms">${letter}</span>`;
-                });
-    
-                return `<span>${letters.join('')}</span>`;
-            });
-    
-            label.innerHTML = transformedText.join(' ');
-        });
+        let label = document.querySelectorAll('label').forEach(label => {
+            label.innerHTML = label.innerText.split('').map((letters, i) =>
+                `<span style="transition-delay:${i * 50}ms">${letters}</span>`).join('');
+        })
     </script>
 
 @endsection
