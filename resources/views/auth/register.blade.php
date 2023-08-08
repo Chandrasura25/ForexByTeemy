@@ -19,7 +19,7 @@
             <div class="inputBox">
                 <input id="email" type="email" name="email" value="{{ old('email') }}"
                     class="@error('email') is-invalid @enderror" required autofocus autocomplete="email">
-                <label for="email">{{ __('Email Address') }}</label>
+                <label for="email">Email&nbsp;Address</label>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -39,12 +39,12 @@
             <div class="inputBox">
                 <input id="password-confirm" type="password" name="password_confirmation" required
                     autocomplete="new-password">
-                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <label for="password-confirm">Confirm&nbsp;Password</label>
             </div>
             <div class="inputBox">
                 <input id="coupon_code" type="text" name="coupon_code" value="{{ old('coupon_code') }}"
                     class="@error('coupon_code') is-invalid @enderror" autofocus autocomplete="coupon_code" readonly>
-                <label for="coupon_code">{{ __('coupon code') }}</label>
+                <label for="coupon_code">coupon&nbsp;code</label>
                 @error('coupon_code')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
