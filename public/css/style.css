@@ -533,15 +533,26 @@ p {
     }
 }
 @media (max-width: 765px) {
+    .video span {
+        font-size: 2.2em;
+    }
     .video iframe {
         max-width: 500px;
     }
 }
 @media (max-width: 480px) {
     .banner .content h2, .video span {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     .video iframe {
-        max-width: 480px;
+        max-width: 400px;
+    }
+}
+@media (max-width: 380px) {
+    .video span {
+        font-size: 1.5em;
+    }
+    .video iframe {
+        max-width: 300px;
     }
 }
