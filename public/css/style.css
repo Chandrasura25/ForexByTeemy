@@ -525,9 +525,23 @@ p {
         margin-top: 20px;
         margin-bottom: 30px;
     }
+    .video span {
+        font-size: 2.5em;
+    }
+    .video iframe {
+        max-width: 600px;
+    }
+}
+@media (max-width: 765px) {
+    .video iframe {
+        max-width: 500px;
+    }
 }
 @media (max-width: 480px) {
-    .banner .content h2 {
+    .banner .content h2, .video span {
         font-size: 2.2em;
+    }
+    .video iframe {
+        max-width: 480px;
     }
 }
