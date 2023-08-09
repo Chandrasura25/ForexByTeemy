@@ -78,6 +78,24 @@
     opacity: 1;
     transition: 0.5s;
 }
+@media (max-width: 480px) {
+    #popup,
+    #passup {
+        width: 340px;
+        padding: 50px;
+    }
+    #popup input,
+    #passup input {
+        width: 90%;
+    }
+}
+@media (max-width: 410px) {
+    #popup,
+    #passup {
+        width: 320px;
+        padding: 50px;
+    }
+}
 @media (max-width: 370px) {
     #popup,
     #passup {
@@ -87,8 +105,14 @@
     .closeBtn {
         padding: 8px 15px;
     }
-    #popup input,
-    #passup input {
-        width: 90%;
+}
+@media (max-width: 330px) {
+    #popup,
+    #passup {
+        width: 240px;
+        padding: 45px;
+    }
+    .closeBtn {
+        padding: 6px 13px;
     }
 }
