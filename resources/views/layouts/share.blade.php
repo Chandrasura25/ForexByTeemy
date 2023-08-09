@@ -47,26 +47,6 @@
     toggle.onclick = () => {
         menu.classList.toggle('active') 
     }
-
-    function handleScroll() {
-      // Get scroll position
-      let scroll = window.pageYOffset;
-
-      // Calculate the maximum allowable scroll position where the menu should stop moving
-      let menuHeight = menu.clientHeight;
-      let windowHeight = window.innerHeight;
-      let contentHeight = document.documentElement.scrollHeight;
-      let maxScroll = contentHeight - windowHeight;
-
-      // Calculate the translation value based on the scroll position
-      let translateYValue = Math.max(0, Math.min(scroll, maxScroll));
-
-      // Apply the translation to the menu
-      menu.style.transform = `translateY(${translateYValue}px)`;
-    }
-
-    // Attach the scroll event listener
-    window.addEventListener('scroll', handleScroll);
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
