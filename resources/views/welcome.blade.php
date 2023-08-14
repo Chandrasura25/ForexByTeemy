@@ -58,7 +58,7 @@
                             <ion-icon name="logo-facebook"></ion-icon>
                         </a>
                     </li>
-                    <li style="--i:1;--clr:#25d366">
+                    <li style="--i:1;--clr:#ffb508">
                         <a href="http://wa.me/2347031459341?text=I%20need%20your%20Ea%20Coding%20service" target="_blank">
                             <ion-icon name="logo-whatsapp"></ion-icon>
                         </a>
