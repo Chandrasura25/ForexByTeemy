@@ -12,7 +12,7 @@ body {
 .video {
     z-index: 10;
     margin-top: 50px;
-position: relative;
+    position: relative;
 }
 .video span {
     font-size: 4em;
@@ -52,27 +52,28 @@ position: relative;
     transform: skewX(-25deg);
     z-index: 1;
 }
-.media{
+.media {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
     width: 80px;
     background: #fff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	border-left: 3px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-left: 3px solid #333;
+    z-index: 10;
 }
-.media li{
+.media li {
     border-radius: 50%;
-	position: relative;
-	width: 30px;
-	height: 30px;
-	background: var(--clr);
-	margin: 15px 0;
-	cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: var(--clr);
+    margin: 15px 0;
+    cursor: pointer;
     list-style: none;
     transition: 0.5s;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
@@ -472,6 +473,14 @@ p {
 .alert-danger {
     color: #dc3545;
 }
+@media (max-width: 1000px) {
+    .media {
+        width: 70px;
+    }
+    .media li {
+        margin: 12px 0;
+    }
+}
 @media (max-width: 991px) {
     nav {
         background: #444;
@@ -591,8 +600,22 @@ p {
         max-width: 500px;
     }
 }
+@media (max-width: 650px) {
+    .media {
+        top: 90%;
+        left: 5%;
+        width: fit-content;
+        flex-direction: row;
+        height: 70px;
+        transform: translateY(0);
+    }
+    .media li {
+        margin: 0 12px;
+    }
+}
 @media (max-width: 480px) {
-    .banner .content h2, .video span {
+    .banner .content h2,
+    .video span {
         font-size: 2em;
     }
     .video iframe {
