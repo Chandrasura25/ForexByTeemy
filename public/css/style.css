@@ -602,12 +602,12 @@ p {
 }
 @media (max-width: 650px) {
     .media {
-        top: 90%;
-        left: 5%;
+        top: 80%;
+        left: 9%;
         width: fit-content;
         flex-direction: row;
         height: 70px;
-        transform: translateY(0);
+        transform: translateY(-80%);
     }
     .media li {
         margin: 0 12px;
