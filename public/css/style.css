@@ -52,6 +52,13 @@ position: relative;
     transform: skewX(-25deg);
     z-index: 1;
 }
+.media{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 80px;
+}
 section {
     padding: 100px;
 }
