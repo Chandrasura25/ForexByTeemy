@@ -196,8 +196,9 @@
                         </div>
                       </div>
                 </div>
+                @include('layouts.share')
             </section>
-            <section class="contact" id="contact">
+            {{-- <section class="contact" id="contact">
                 <div class="title">
                     <h2 class="titleText">Our <span>C</span>ontacts</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -234,8 +235,8 @@
                     </div>
                   </form>
                 </div>
-                @include('layouts.share')
-            </section>
+                
+            </section> --}}
         <div class="copyrightText">
           <p>Copyright 2023 <a href="/">ForexByTeemy</a>. All Right Reserved</p>
          </div>
