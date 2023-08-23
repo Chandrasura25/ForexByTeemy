@@ -602,8 +602,8 @@ p {
 }
 @media (max-width: 650px) {
     .media {
-        top: 80%;
-        left: 9%;
+        top: 12%;
+        left: 2%;
         width: fit-content;
         flex-direction: row;
         height: 70px;

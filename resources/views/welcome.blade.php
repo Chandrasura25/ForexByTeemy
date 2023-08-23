@@ -196,6 +196,7 @@
                         </div>
                       </div>
                 </div>
+                
                 @include('layouts.share')
             </section>
             {{-- <section class="contact" id="contact">
