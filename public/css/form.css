@@ -66,7 +66,7 @@ form h2 {
 .inputBox input:valid ~ label span {
     color: var(--clr);
     letter-spacing: 0.15em;
-    transform: translateY(-18px);
+    transform: translateY(-28px);
 }
 .inputBox input:focus,
 .inputBox input:valid {
